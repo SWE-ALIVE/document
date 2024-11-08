@@ -1,0 +1,761 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+
+\setlength{\parindent}{1em}  % 문단 들여쓰기 설정
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+    
+\begin{document}
+    
+\title{MACS\\{\large
+ An AI-Driven Multi-Agent Chat System for Intuitive Smart Home Management
+ }
+}
+
+% Team Member 소개
+\author{\IEEEauthorblockN{Jun Seong Pyo}
+\IEEEauthorblockA{\textit{College of Engineering} \\
+\textit{Hanyang University}\\
+\textit{Dept.of Information Systems}\\
+Seoul, Korea \\
+standardstar@hanyang.ac.kr}
+
+\and
+
+\IEEEauthorblockN{Byeong Hyun Yang}
+\IEEEauthorblockA{\textit{College of Engineering} \\
+\textit{Hanyang University}\\
+\textit{Dept.of Information Systems}\\
+Seoul, Korea \\
+zxvm5962@hanyang.ac.kr}
+
+\and
+
+\IEEEauthorblockN{Dong Hun Kang}
+\IEEEauthorblockA{\textit{College of Engineering} \\
+\textit{Hanyang University}\\
+\textit{Dept.of Information Systems}\\
+Seoul, Korea \\
+kdu3840@hanyang.ac.kr}
+
+\and
+
+\IEEEauthorblockN{Hye Jin Bae}
+\IEEEauthorblockA{\textit{College of Engineering} \\
+\textit{Hanyang University}\\
+\textit{Dept.of Information Systems}\\
+Seoul, Korea \\
+cats5565@hanyang.ac.kr}
+}
+
+\maketitle
+
+
+\begin{abstract}
+Smart home provides automated control and convenience in home environments. Although smart homes have improved convenience in daily life, their rigid and uniform structures limit customization and integration of diverse information sources, leading to passive and inflexible management systems. We propose a new multi-turn AI based Chat Room system, AIfred, which enables users to manage and control home appliances. With AIfred, users can register home appliances directly or import them from compatible apps, allowing them to create custom chat rooms for seamless device management. Through our appliance chat rooms, users can identify the most suitable appliances for specific situations and execute them simultaneously, simplifying the process of smart home control. Users can efficiently manage and control their appliances at any time through the chat interface. Furthermore, we've integrated a human feedback mechanism to improve the system. Users can evaluate their experience after the end of process, providing valuable insights for continuous enhancement of the application. This data is systematically stored and utilized for learning and refining the system's performance. AIfred represents a significant step forward in smart home technology, addressing the need for more flexible, user-centric solutions in the evolving landscape of home automation.
+\end{abstract}
+
+% Role Assignment
+\begin{table}[h]
+\caption{Role Assignments}
+\def\arraystretch{1.24} \small
+
+\begin{tabular}{|p{1.5cm}|p{1.2cm}|p{4.9cm}|}
+    \hline
+    Roles & Name & Task description and etc. \\ 
+    \hline
+    User, \par Customer,\par Development \par manager & Pyo \par Jun Seong & Users/customers consider what features should be added from the perspective of users or customers. They think about what needs exist and what solutions could address these needs.
+    The Development Manager takes charge of the project's comprehensive elements, including timeline creation, strategic planning, and maintaining the quality standards of products and services. Furthermore, they ensure a thorough understanding of user specifications and oversee the complete software engineering lifecycle, encompassing phases such as design, implementation, and quality assurance testing.\\
+    \hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\def\arraystretch{1.24} \small 
+
+\begin{tabular}{|p{1.5cm}|p{1.2cm}|p{4.9cm}|}
+    \hline
+    AI \par Developer & Yang \par Byeong Hyun & AI developers create customized programs tailored to business needs based on collected and analyzed data. In this service, they build AI systems that present various scenarios using users' historical data and user requirements. Specifically, they apply multi-agent technology to provide accurate and personalized responses to user requirements. AI developers are responsible for the design, development, implementation, and monitoring of the entire AI system, focusing on building efficient data collection and transformation architectures.  \\ 
+    \hline
+    Software \par Developer \par(Back-end) & Kang \par Dong hun & Software developers (backend) design and manage server-side infrastructure and database systems required for project development. This includes building and maintaining robust backend solutions that support the capabilities of web and mobile applications, and ensuring seamless integration with front-end components. This includes database operations, efficient query generation, and API endpoint implementation. It also involves leveraging Java, Kotlin, and Spring programming languages to develop scalable and maintainable systems that meet the requirements of the project. \\ 
+    \hline
+    Software \par Developer\par(Front-end) & Bae \par Hye jin & Software Developers (Front-end) are responsible for designing and implementing the overall UI/UX of applications to create exceptional user experiences. They craft visual layouts and interactive elements, ensuring interfaces are aesthetically pleasing, intuitive, and user-friendly. Using tools like Figma, they create and refine designs, which they then implement using technologies such as React-Native, TypeScript, and CSS. The role involves creating responsive interfaces, optimizing performance, and ensuring accessibility throughout the development process.\\ 
+    \hline
+\end{tabular}
+\end{table}
+
+% Introduction 시작
+\section{INTRODUCTION}
+
+\subsection{Motivation}
+
+\begin{itemize}
+    \item [1)] The Advancement of AI Technology and the Rise of Multi-Agent Systems \\ \\
+     Artificial intelligence technology has been developing at an astonishing rate over the past few years. In 2016, Google DeepMind's AlphaGo defeating the world's top Go player marked the beginning of the AI era. Since then, AI technology has become even more sophisticated, with the release of OpenAI's ChatGPT in late 2022 ushering in the era of generative AI. ChatGPT reached 1 million users within a week of its launch and saw explosive growth, surpassing 100 million active users in just two months.
+
+    \hspace{1em} In 2023, GPT-4 was released, showcasing even more advanced features. GPT-4 evolved into a multimodal model that can simultaneously process various input data such as text, images, audio, and video, utilizing a dataset about 500 times larger than its previous model. These advancements reflect a broader trend in AI development, where the technology is moving beyond simple content generation to more complex, interactive, and adaptive capabilities.
+    
+    \hspace{1em} The future of the AI industry points to evolve from generative models to autonomous agents, ushering in an era of multi-agents where multiple agents collaborate, think, and learn independently. This evolution will likely lead to the integration of multi-agent systems within the Artificial Intelligence of Things (AIoT), which combines AI and the Internet of Things (IoT), and is expected to spread to various industries, centered around manufacturing. \\
+
+    \item [2)] IoT Technology Market Trends and the Current Status of Smart Homes  \\ \\
+    The spread of IoT technology is dramatically changing all aspects of daily life, with `smart homes' being a prime example. In smart homes, home appliances and various devices are interconnected via the internet, allowing users to control them remotely and automate daily tasks.  The smart appliance market continues to grow rapidly, fueled by increasing consumer interest in convenience, energy efficiency, and personalized living environments. 
+
+    \hspace{1em} Despite widespread awareness and adoption of smart home devices, many users are not fully utilizing their potential. Over Half of users (53.1\%) still rely on basic functions like power control and status monitoring, while advanced capabilities such as automation or device interlinking remain underutilized. This indicates a gap between the technology's capabilities and how users engage with it, suggesting a need for more intuitive interfaces and seamless integration to encourage deeper interaction.
+    
+    \hspace{1em} As smart home technology continues to evolve, there is a growing opportunity to move beyond simple control features and offer more intelligent, adaptive experiences that anticipate users' needs. The next step for smart homes involves leveraging AI to enable dynamic collaboration among devices, creating environments that actively respond to user behavior and preferences.
+    
+    \hspace{1em} Our team's goal is to push the boundaries of smart home technology by advancing from passive AI systems to dynamic and intelligent interactions. We aim to deliver optimal results for users by implementing the ability for smart devices to communicate with each other using Large Language Models (LLMs). Through this solution, we aim to address the current gap between the potential of smart home technology and its real-world use to increase access and smoothness to advanced automation, ultimately improving the daily life experience of individual users.
+\end{itemize}
+
+
+\subsection{Problem Statement}
+\begin{itemize}
+    \item [a.] Need for improved Customization and Differentiated User Experience \\ \\
+    According to the Smart Home Trend Report 2023, major dissatisfaction factors for smart home appliances include `lack of additional functions when using devices in conjunction'. The response `lack of additional functions when using devices in conjunction' suggests that users are not fully utilizing the functions of smart home appliances. In fact, while smart appliances offer various functions through applications, customer satisfaction is declining as users fail to effectively utilize these functions. This indicates the need for improved Customization and User Experience so that users can effectively use them. \\ 
+    
+    \item [b.] Limited and Uniform Scenarios \\ \\ 
+    While the current routine functions of smart appliances are useful for automating users' daily patterns, they have limitations in responding to complex and diverse real-life scenarios. For example, in situations with many variables such as sudden weather changes, pre-set routines alone are insufficient for appropriate responses. Moreover, it's difficult to flexibly handle complex interactions between various appliances or immediate changes in user demands. Therefore, for a truly smart home solution, more advanced technologies such as real-time situation awareness and machine learning are needed. This requires the development of intelligent systems that can understand users' living patterns more deeply and respond according to the situation. \\
+    
+    \item [c.] Limitations of Passive and Individual Management \\ \\
+    Despite being labeled as `smart', current smart home appliances still heavily rely on passive and individual management by users. In most cases, users need to adjust settings for each device separately and make judgments and decisions for various situations directly. For example, user intervention is required in many aspects such as adjusting the air conditioner's temperature, selecting the washing machine's cycle, or setting the robot vacuum's cleaning schedule. Furthermore, even in routine settings, users have to perform logical structure design themselves, which can lead to logical errors. This indicates that the focus is on the independent operation of each device rather than on device interconnection and overall home environment optimization.\\
+    
+    \item [d.] Lack of Information Integration \\ \\
+    Smart home applications individually offer rich features and information. Each app provides useful data such as energy usage monitoring, device status checks, and even general lifestyle information. However, these diverse information and functions are not connected into a single integrated system, which limits the user experience. As a result, users must open each section separately to check information and make their own judgments to decide on their next actions based on this information. This hinders the convenience and efficiency of smart homes, causing users the inconvenience of having to manually integrate and analyze multiple pieces of information.
+    
+\end{itemize} 
+
+
+\subsection{Solution}
+\begin{itemize}
+    \item [a.] Providing Customized Services and improving user Experience \\ \\ 
+    It is necessary to improve the user experience by providing customized services that meet user needs. This can be achieved by using AI to provide user-customized interfaces and improve user experience through more user interactions.
+
+    \hspace{1em} Specifically, in this system, when the user simply instructs a task via chat or voice, AI coordinates the `conversation' between home appliances to derive the optimal execution plan. It obtains user confirmation before execution, suggests alternatives based on changing situations, and learns user preferences. It also collects feedback after task completion for continuous improvement.
+    
+    \hspace{1em} This approach goes beyond simply controlling devices, providing a true smart home experience that deeply understands and reflects the user's intentions and values. As a result, users can enjoy a home environment perfectly tailored to their lifestyle and preferences without complex settings, making the interaction between technology and humans more natural and efficient.\\
+    
+    \item [b.] AI-based Integrated Control and Scenario Optimization \\ \\
+    LLM (Large Language Model) technology can generate and analyze various complex scenarios. Based on tasks instructed by users via chat or voice, LLM can establish comprehensive preparation plans.
+    
+    For example, with just the simple information that "friends are coming over tonight," LLM can establish a comprehensive preparation plan including lighting settings, indoor temperature adjustment, music playback, and activating cleaning robots. In this process, LLM suggests optimal solutions considering the user's past preferences, current situation, and energy efficiency.
+    
+    \hspace{1em} If changes are needed during execution, LLM immediately generates alternatives and provides options to the user. Additionally, by analyzing feedback collected after task completion, it can provide better solutions in similar situations in the future. In this way, LLM acts as an intelligent mediator between users and appliances, contributing to more accurately understanding and realizing the user's intentions.\\
+    
+    \item [c.] Integrated Control Between Devices and Adaptation to Changing Environments \\ \\ 
+    The optimization of environment-adaptive scenarios through integrated control systems and collaboration between products greatly enhances the efficiency and user experience of smart homes. Each device performs status checks and transmissions, and the central control system monitors this and comprehensively analyzes data collected from each device.
+    
+    \hspace{1em} Based on this, dynamic adjustments between devices are made according to changing environmental conditions (e.g., weather changes, indoor air quality, user activity patterns). For example, when the temperature rises, the air conditioner and blinds can work together to efficiently maintain indoor temperature, or the air purifier and ventilation system can be linked to create an optimal indoor air environment.
+    
+    \hspace{1em} This system maintains the optimal living environment continuously with minimal user intervention and can flexibly respond to unpredictable situations, thus implementing a smart home in the true sense of the term. Furthermore, by entrusting logical structure design to AI, it can solve the problem of logical errors that may occur when users set it directly.\\
+    
+    \item [d.] Integration of IoT Technology and Information \\ \\
+    Integrating and utilizing the diverse information and functions provided by IoT devices greatly improves the efficiency of smart home systems. Current smart home appliances, i.e., IoT devices, offer a wide variety of convenient functions, but users are not fully utilizing them.
+    
+    \hspace{1em} To solve this problem, we propose managing various lifestyle information such as energy consumption, indoor environmental data, user schedules, and weather information provided by apps comprehensively on a single platform. This integrated information is used for smarter decision-making by home appliances.
+    
+    \hspace{1em} For example, a washing machine can analyze the user's schedule and power usage patterns to suggest optimal operating times. This integrated approach enables complex scenario settings that optimize the entire home environment, going beyond simple automation of individual devices.
+    
+    \hspace{1em} As a result, users can enjoy a more convenient and energy-efficient smart home experience. Additionally, it allows users to easily obtain information and maximize the interaction effect with IoT devices and, by extension, with the smart home.
+\end{itemize}
+
+
+\subsection{Research on Related Software}
+
+\begin{itemize}
+\item [1.]LG ThinQ ON\\
+LG ThinQ ON is an AI home hub equipped with Furon, which integrates various large language models (LLM) into the LG ThinQ platform. This system continuously monitors the home environment and appliances, engaging in conversations with users to assess situations and optimally control devices. Unlike traditional voice recognition speakers that provide simple responses and execute predefined commands, LG ThinQ ON offers a more interactive and intelligent experience. \\
+\item [2.]SmartThings\\
+SmartThings is Samsung’s integrated smart home platform that allows users to easily control and manage various IoT devices through a mobile app. This platform include SmartThings Energy, an AI-based automated energy management service that optimizes energy usage through the "Energy AI Save Mode," and SmartThings Air Care, which controls air flow recommends appropriate air purification methods.\\
+\item [3.]Amazon Alexa Hunches\\
+Amazon Alexa Hunches is a feature that enables Alexa to learn user patterns related to smart home devices. It proactively suggest actions or automatically perform tasks based on these behaviors. Additionally, users can configure Alexa to execute actions automatically with their consent. Hunches also helps optimize energy consumption by monitoring the status of devices such as lights, thermostats, and plugs, thereby assisting in energy savings.
+\\
+\item [4.]Vivint Smart Home\\
+Vivint Smart Home is a home automation and security platform that provides comprehensive smart home solutions, including security cameras, smart locks, lighting, and energy management systems. It integrates various smart devices into a single system, enabling users to control their home environment via the Vivint app or voice commands through smart assistants. Vivint's security-focused features, such as professional monitoring and customizable alerts, ensure safety, while its smart home automation enhances convenience and energy efficiency for users.
+\\
+\item [5.]Apple HomeKit\\
+Apple HomeKit is a software framework that allows users to configure, communicate with, and control smart appliances through Apple devices such as iPhones and macOS computers. It supports both Apple’s own products and those compatible with Matter, enabling users to register devices using their setup codes. HomeKit facilitates the management of these devices, allowing for control and the registration of detailed routines.
+\\
+\item [6.]Google Nest Hub\\
+Smart display developed by Google, this provides a range of smart home features based on Google Assistant. It extends the voice-centric capabilities of Google Home by adding conversational interactions and learning user behavior patterns to better understand and anticipate their needs. In addition, its display-based interface offers visual feedback, enhancing user interaction with smart home devices and delivering a more intuitive and engaging experience.
+\\
+\item [7.]Azure IoT Hub\\
+Azure IoT Hub is a versatile and scalable cloud platform (IoT PaaS) that caters to multiple tenants. It comprises an IoT device registry, data storage, and robust security features. It also offers a service interface to facilitate IoT application development.
+
+\end{itemize}
+
+
+\section{REQUIREMENT}
+
+\begin{itemize}
+    \item [A.] Sign up \\
+    AIfred needs five types of information to sign up. These are phone numbers, passwords, name, email, and birth dates.
+\end{itemize}
+\begin{enumerate}
+    \item Enter phone numbers \\
+    The phone number must be entered, and the phone number is verified through the carrier’s authentication system to confirm whether the phone number is valid for membership registration. The phone number serves as an ID in the subsequent login process.
+
+    \item Enter passwords \\
+    Passwords must be entered and must be at least 8 characters long in a combination of 3 or more of English uppercase, English lowercase, numbers, or special characters. When the user enters the desired password, it is displayed in the form of ‘****’ on the screen, with each condition changing color to green when it is satisfied, and red when it is not.
+
+    \item Enter a name \\
+    The name must be entered, and it is subsequently set as the default nickname at the first login. The name is also used in ID search.
+
+    \item Enter birth dates \\
+    The birth date must be entered, and a pop-up window is displayed every year to celebrate the user's birthday. The date of birth is also used in ID search. \\
+\end{enumerate}
+
+\begin{itemize}
+    \item [B.] Sign in \\
+    There are two types of logins: 1) Local logins through AIfred membership, 2) SNS logins through SNS linkage.
+\end{itemize}
+
+\begin{enumerate}
+    \item Local logins through AIfred membership
+    \begin{enumerate}
+        \item The system checks whether the ID and password entered by the user have been filled.
+        \item When the ID and password input by the user exist in the member database, the user succeeds in logging in. After that, it moves to the main page.
+        \item If the phone number and password entered by the user do not exist in the member database, the user fails to log in and a “Non-existent member” message is displayed in the pop-up window. \\
+    \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [C.] Register home appliances 
+    You can register your appliances in AIfred in two ways: 1) Register your appliances directly, 2) Import your registered appliances from the LG ThinQ app.
+\end{itemize}
+
+\begin{enumerate}
+    \item Register your appliances directly
+    \begin{enumerate}
+        \item via QR code: When the camera access permission request screen appears, simply follow the instructions to grant access. After that, locate the QR code on each product. Scan the QR code along the guide lines on the edge.
+        \item find appliances on your own: you can search for appliances by two methods:
+        \begin{itemize}
+            \item Wi-Fi or Bluetooth
+            \item Product name and serial number
+        \end{itemize}
+    \end{enumerate}
+    \item Import from LG ThinQ \\
+    You can import a list of appliances pre-registered in the LG ThinQ app. After clicking the `Import from LG ThinQ' button, the LG ThinQ app will open. The user must agree to the following:
+    \begin{itemize}
+        \item Agree to import the information of the registered home appliances into the app.
+        \item Agree to import the settings from the ThinQ app into the app.
+    \end{itemize}
+    If information is imported from the LG ThinQ app, it may include the following:
+    \begin{itemize}
+        \item Registered home appliances
+        \item Room list and list of appliances added to the room
+        \item Smart routines
+    \end{itemize}
+    After all the settings are imported, the following chat rooms will be opened automatically:
+    \begin{itemize}
+        \item A chat room with all your appliances
+        \item A room-specific chat room \\
+    \end{itemize} 
+\end{enumerate}
+
+\begin{itemize}
+    \item [D.] Creation of Appliance Chat Rooms
+\end{itemize}
+
+\begin{enumerate}
+    \item Integration with LG ThinQ App \\
+    Enable users to retrieve all connected electronic appliances by integrating with the LG ThinQ app. Ensure seamless synchronization so that any changes in connected devices are reflected in the chat application.
+
+    \item Automatic Generation of Default Chat Room \\
+    Automatically generate default chat rooms during the initial setup, including all connected appliances and grouping them by room. This provides users with immediate access to control all their devices without additional configuration.
+
+    \item Custom Chat Room Creation \\
+    Allow users to create new chat rooms through the "+" button at the top right corner of the screen, and invite only the appliances they wish to include.
+
+    \item Support for Multiple Chat Rooms \\
+    Permit the creation of multiple chat rooms to manage appliances based on rooms, functions, or user preferences.
+
+    \item Dynamic Management of Appliances \\
+    Enable users to later invite additional appliances or remove existing ones. Provide easy-to-use interfaces for managing device participation within chat rooms.
+\end{enumerate}
+
+By incorporating these features, users can efficiently manage their connected appliances through customizable chat rooms. This approach enhances usability and provides personalized control over their smart home environment, allowing for a more intuitive and flexible user experience. \\
+
+\section{DEVELOPMENT ENVIRONMENT}
+
+\subsection{Choice of software development platform}
+\begin{enumerate}
+\item[1] Development Platform
+
+\begin{itemize}
+\item [1)] Windows\\
+Windows provides a wide range of development tools and integrated development environments (IDEs) for creating various types of applications, including web applications, desktop applications, mobile apps, and games. This supports effective code editing, debugging, testing, deployment, and collaboration, ultimately enhancing developers’ productivity. Furthermore, Windows supports multiple programming languages and frameworks, allowing developers to choose their preferred languages and technologies to flexibly meet project requirements. Windows offers a user-friendly and intuitive interface, making it easy for developers to configure and manage their development environments. A robust community and support system enable developers to share experiences and receive assistance. Lastly, Windows continuously updates and improves, ensuring access to the latest technologies and tools, empowering developers to stay current and modernize their applications. Windows is recognized as a versatile platform suitable for various software
+development fields, playing a crucial role in turning developers’ ideas into reality. \\
+
+\item [2)] macOS\\
+macOS is a highly regarded operating system in the field of software development, known for its user-friendly interface and exceptional versatility. This operating system offers several advantages to developers, and let’s explore some of them. Firstly, macOS provides essential development tools and an integrated development environment (IDE) for creating a wide range of applications, including web applications, desktop applications, mobile apps, and games. Official IDEs like Xcode are powerful tools for application development across various platforms such as macOS, iOS, watchOS, and tvOS. They support tasks like code writing, debugging, testing, deployment, and collaboration, significantly enhancing developer productivity. Additionally, macOS supports a variety of programming languages and frameworks, allowing developers to choose their preferred languages and technologies, making it flexible to adapt to project requirements. macOS offers an intuitive and user-friendly interface that simplifies development environment setup and project management. The active macOS developer community provides a platform for sharing experiences and collaboration among developers. Finally, macOS ensures access to the latest technologies and tools through continuous updates and improvements. Apple’s dedication to innovation provides developers with the necessaryfeatures to leverage the latest technologies and modernize their applications. For these reasons, macOS is recognized as an essential platform for software development, playing a significant role in turning ideas into reality.
+\\
+\end{itemize}
+
+\item[2] Language / Framework
+
+\begin{itemize}
+\item [1)] Programming Languages
+\begin{itemize}
+\item [(1)] React Native\cite{ReactNative}
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\columnwidth]{img/DevEnv/ReactNative.png}
+\centering
+\caption{React Native} 
+\end{figure}\\
+React Native is a cross-platform framework developed by Facebook, enabling developers to build iOS and Android applications simultaneously using JavaScript. React Native ensures a consistent UI/UX across platforms while providing high compatibility with native modules, allowing optimal user experiences without compromising performance. Leveraging React's component-based architecture, it maximizes code reusability, which enhances project efficiency and manageability. Consequently, React Native supports fast release cycles and delivers high-quality mobile applications, making it a powerful solution for efficient mobile app development.\\
+
+\item [(2)] TypeScript\cite{Typescript}
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\columnwidth]{img/DevEnv/TypeScript.png}
+\centering
+\caption{Typescript} 
+\end{figure}\\
+TypeScript is a superset of JavaScript developed by Microsoft, introducing a static type system that improves code stability and readability. TypeScript catches errors at compile time, reducing runtime issues and enhancing maintainability, especially for large-scale projects. Its rich type inference allows developers to clearly define code structure and intent, fostering better collaboration and improving code quality. Ultimately, TypeScript enables the writing of robust, high-performance applications while retaining JavaScript’s flexibility.\\
+
+\item [(3)] Kotlin\cite{Kotlin}
+\begin{figure}[h]
+\centering
+\includegraphics[width=.6\columnwidth]{img/DevEnv/Kotlin.png}\centering
+\caption{Kotlin} 
+\end{figure}\\
+Kotlin is a modern language developed by JetBrains and widely adopted as a Java alternative, particularly in Android development. With concise syntax and a strong type system, Kotlin simplifies code writing and maintenance, allowing developers to produce efficient, maintainable code. Its seamless Java interoperability supports integrating new code into legacy projects, improving productivity and minimizing runtime issues. Kotlin empowers Android developers to build efficient applications with better user experiences, making it an ideal choice for modern, high-quality programming.\\
+
+\end{itemize}
+\item [2)] Frameworks
+\begin{itemize}
+\item [(1)] Spring Boot\cite{SpringBoot}
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\columnwidth]{img/DevEnv/SpringBoot.png}
+\caption{Spring Boot} 
+\end{figure}\\
+Spring Boot is a framework designed to simplify the development of Java-based web applications and microservices. This framework offers streamlined configuration, an embedded web server, automatic setup, starter dependencies, monitoring and management tools, robust microservices support, and integration with a vast ecosystem of libraries and tools. By using Spring Boot, developers can accelerate application development, simplify complex configurations, and boost overall productivity, making it an ideal choice for scalable and maintainable applications.\\
+
+\item [(2)] Hibernate\cite{Hibernate}
+\begin{figure}[h]
+\centering
+\includegraphics[width=.6\columnwidth]{img/DevEnv/Hibernate.jpg}
+\caption{Hibernate} 
+\end{figure}\\
+Hibernate is an open-source Object-Relational Mapping (ORM) framework for Java, facilitating seamless interaction between Java objects and relational databases. Hibernate offers database independence, automatic schema generation, an Object-Oriented Query Language (HQL), caching support, integrated transaction management, and a well-established community and ecosystem. In essence, Hibernate optimizes database operations in Java applications, providing flexibility, efficiency, and cross-database portability.\\
+
+\item [(3)] FastApi\cite{FastAPI}\\
+\begin{figure}[h]
+\centering
+\includegraphics[width=.8\columnwidth]{img/DevEnv/FastApi.png}
+\caption{FastApi} 
+\end{figure} \\ 
+FastAPI is a modern Python-based web framework designed for fast and efficient API development. FastAPI offers asynchronous support and data validation through Pydantic, maximizing developer productivity. Its automatic OpenAPI and JSON Schema documentation simplifies API testing and enhances collaboration. Renowned for its high performance, FastAPI is widely adopted across fields like machine learning model deployment and data analysis, making it a trusted choice for designing reliable APIs.\\
+
+\clearpage
+
+
+\subsection{Software in use}
+\begin{enumerate}
+\item[1] visual Studio Code
+\begin{figure}[h]
+\centering
+\includegraphics[width=.4\columnwidth]{img/SoftInUse/VisualStudioCode.png}
+\caption{Visual Studio Code} 
+\end{figure}\\
+Visual Studio Code is a lightweight yet powerful source code editor developed by Microsoft, optimized for modern development workflows. It offers essential features including IntelliSense code completion, debugging support, and Git integration, while maintaining high performance. The editor's extensive marketplace provides diverse extensions supporting various programming languages and frameworks, particularly beneficial for React Native development. Its customizable interface and integrated terminal enhance development efficiency, making it an ideal choice for cross-platform mobile application development.
+\\
+
+\item[2] Xcode
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\columnwidth]{img/SoftInUse/Xcode.png}
+\caption{Xcode} 
+\end{figure}\\
+Xcode is Apple's integrated development environment (IDE) essential for iOS app development and simulation. It provides comprehensive tools including iOS simulators, debugging capabilities, and Interface Builder for UI design. While primarily used for native iOS development, it serves as a crucial tool for React Native developers by offering high-fidelity iOS simulation and testing environments. The IDE integrates seamlessly with Apple's development ecosystem, providing essential features like device management, performance profiling, and automated testing capabilities for ensuring iOS app quality.\\
+
+\item[3] Github
+\begin{figure}[h]
+\centering
+\includegraphics[width=.4\columnwidth]{img/SoftInUse/Github.png}
+\caption{Github} 
+\end{figure}\\
+GitHub is a cloud-based platform for version control and collaborative software development using Git. It provides essential features including repository hosting, branch management, pull requests, and issue tracking. The platform enables smooth team collaboration through code review tools, project management features, and continuous integration/deployment capabilities. With its extensive documentation support and robust security features, GitHub serves as a centralized hub for maintaining code quality and managing development \\
+
+\item[4] Figma
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\columnwidth]{img/SoftInUse/Figma.png}
+\caption{Figma} 
+\end{figure}\\
+Figma is a collaborative web-based interface design tool for creating user interfaces and prototypes. It offers powerful design features including component-based systems, auto-layout, and interactive prototyping capabilities. The platform allows real-time collaboration among designers and developers, streamlining the design-to-development workflow with efficient handoff tools and design system management. With its cloud-based nature and extensive plugin ecosystem, Figma enhances team productivity and ensures consistent design implementation across projects.\\
+
+\item[5] Jira
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\columnwidth]{img/SoftInUse/Jira.png}
+\caption{Jira} 
+\end{figure}\\
+Jira is an agile project management tool developed by Atlassian that streamlines software development processes. It provides comprehensive features for issue tracking, sprint planning, and workflow customization. The platform offers robust reporting tools, integration capabilities with development tools, and flexible board views for different agile methodologies. With its detailed task management and progress tracking features, Jira enables teams to effectively monitor project progress and maintain development efficiency.\\
+
+
+\item[6] IntelliJ
+\begin{figure}[h]
+\centering
+\includegraphics[width=.4\columnwidth]{img/SoftInUse/Intellij.png}
+\caption{IntelliJ} 
+\end{figure}\\
+IntelliJ IDEA is a comprehensive Java-based integrated development environment (IDE) developed by JetBrains. It offers advanced code analysis, intelligent code completion, and powerful refactoring tools that enhance development productivity. The IDE provides robust debugging capabilities, seamless integration with various frameworks, and extensive plugin support for multiple programming languages. With its smart code navigation and efficient build tools, IntelliJ IDEA accelerates development processes while maintaining code quality and consistency.\\
+
+\item[7] Notion
+\begin{figure}[h]
+\centering
+\includegraphics[width=.4\columnwidth]{img/SoftInUse/Notion.png}
+\caption{Notion} 
+\end{figure}\\
+Notion is a versatile collaborative workspace that unifies note-taking, task management, and documentation tools. The platform excels in organizing information through customizable databases, interconnected pages, and flexible templates. Its all-in-one approach combines wiki-style documentation, project tracking, and team coordination capabilities. With its adaptable interface and cross-platform accessibility, Notion simplifies knowledge sharing and enhances team communication across projects.\\
+
+\item[8] PostgreSQL
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\columnwidth]{img/SoftInUse/PostgreSQL.png}
+\caption{PostgreSQL} 
+\end{figure}\\
+PostgreSQL is an advanced open-source relational database management system known for its reliability and data integrity. The system supports complex queries, custom functions, and multi-version concurrency control for efficient data handling. Its architecture enables handling of diverse workloads, from single machines to distributed systems, while maintaining robust security features. With extensive support for SQL standards and scalable performance, PostgreSQL stands as a preferred choice for managing structured data in modern applications.\\
+
+\item[9] Overleaf
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\columnwidth]{img/SoftInUse/Overleaf.png}
+\caption{Overleaf} 
+\end{figure}\\
+Overleaf is a web-based LaTeX editor that facilitates academic writing and document preparation. The platform combines real-time preview capabilities, extensive template libraries, and reference management tools for scholarly publications. Its browser-based environment enables collaborative writing among researchers, supporting version control and simultaneous editing features. With its integrated compilation engine and comprehensive documentation, Overleaf streamlines the creation of professional academic documents and research papers.\\
+
+\item[10] Postman
+\begin{figure}[h]
+\centering
+\includegraphics[width=.4\columnwidth]{img/SoftInUse/Postman.png}
+\caption{Postman} 
+\end{figure}\\
+Postman is a specialized API development and testing platform that simplifies the API lifecycle management. The tool offers intuitive request building, automated testing sequences, and detailed response validation capabilities. Its environment management system facilitates API testing across different configurations while supporting team collaboration through shared workspaces. With comprehensive documentation generation and mock server features, Postman accelerates API development and ensures reliable endpoint functionality.\\
+
+\item[11] ChatGPT
+\begin{figure}[h]
+\centering
+\includegraphics[width=.4\columnwidth]{img/SoftInUse/ChaGPT.png}
+\caption{ChatGPT} 
+\end{figure}\\
+ChatGPT is an AI-powered API that integrates generative AI capabilities into applications through OpenAI's endpoints. The service, based on GPT-3.5 and GPT-4 models trained on extensive datasets, provides natural language processing functionalities. Through REST API integration, it enables features like text generation, language translation, and content summarization in applications. Its flexible token-based system and documented endpoints allow developers to implement sophisticated AI features effectively.\\
+
+\end{enumerate}
+
+\clearpage
+
+\item[3] Task Distribution
+
+\begin{table}[h]
+\caption{Role Assignments}
+\def\arraystretch{1.24} \small
+
+\begin{tabular}{|p{1.2cm}|p{1.2cm}|p{5.4cm}|}
+    \hline
+    Tasks & Name & Descriptions \\
+    \hline
+    Project Manager & Kang DongHun & A Project Manager functions as the operational orchestrator responsible for planning, executing, and delivering projects within specified constraints of scope, time, and budget. Their role involves developing comprehensive project plans, establishing critical milestones, and implementing methodologies such as Agile or Waterfall to ensure efficient project delivery. They are accountable for resource allocation, timeline management, and budget control, utilizing project management tools and methodologies to track progress, identify bottlenecks, and maintain project momentum. Critical responsibilities include conducting regular status meetings, managing project documentation, tracking deliverables, and ensuring quality standards are met throughout the project lifecycle. Their success is measured through project completion metrics, team performance, and adherence to initial project parameters, requiring strong leadership skills and the ability to adapt to changing project demands while maintaining team cohesion and project focus.  \\ 
+    \hline
+    Frontend Developer & Pyo \par JunSeong, \par Bae \par Hyejin & Frontend developers utilize languages like React Native and TypeScript to create applications. They are responsible for designing the interfaces that users interact with, such as tapping buttons and swiping through screens. Their primary objective is to create a user experience that is both accessible and engaging, while adhering to the specified design. Additionally, frontend developers are responsible for transferring user-entered information to the backend developers. The reason for having three frontend developers is that two of them write code for each screen, while the third developer reviews and optimizes the code for the screens that users see. This organizational structure requires effective teamwork, clear role allocation, excellent communication skills, and collaborative synergy. \\
+    \hline
+    Backend Developer & Kang DongHun,  Yang Byeong \par Hyun & Backend developers are responsible for designing the database and application architecture, as well as writing the APIs used by frontend developers. When working with APIs, backend developers need to be able to receive information from application users through the frontend and provide the correct return value to the API. \\
+    \hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\def\arraystretch{1.24} \small 
+
+\begin{tabular}{|p{1.2cm}|p{1.2cm}|p{5.2cm}|}
+    \hline
+    Backend Developer & Kang DongHun,  Yang Byeong \par Hyun & They also need to design APIs that interact with the backend to leverage generative AI and machine learning features, and make them accessible to application users. This role requires a strong understanding of the central database and software structure, and ensuring that software development aligns with that structure.moment \\ 
+    \hline
+    UI-UX Designer & Pyo \par JunSeong, \par Bae \par Hyejin & The UI-UX designer, using Figma, is responsible for determining how the application screens are presented to users. This role involves deciding which screens will be more engaging and comfortable for users to use. As a UI-UX designer, the goal is to create a design that keeps users engaged and encourages them to return to the application. Once the UI-UX decisions are finalized, they can be communicated to the front-end developers \\ 
+    \hline
+    AI Developer & Pyo \par JunSeong, Yang Byeong \par Hyun & A machine learning software developer works with algorithms, data, and artificial intelligence. Their role involves researching, building, and designing artificial intelligence software specifically for machine learning purposes. They primarily focus on applying artificial intelligence systems to various applications. The responsibilities of this role include collecting, cleaning, and preprocessing data to extract meaningful value. They then use this data to train models and deploy them in software. Additionally, the machine learning software developer must appropriately implement machine learning algorithms into software functions, conduct experiments and tests of AI systems, and determine the most suitable models for the application’s functions. They are also responsible for designing and developing machine learning systems, as well as performing statistical analysis. \\
+    \hline
+    \end{tabular}
+    \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ 
+
+\end{table}
+
+\clearpage
+
+
+\section{SPECIFICATION}
+
+\subsection{Splash Screen Page}
+    \begin{enumerate}
+    \item[1.] TBD-Entry-splashing \\
+        When the application is launched, the startup page should be displayed for a duration of 1 to 2 seconds to prevent an empty page from being shown while the application is loading its data. This ensures a smooth and visually appealing user experience during the app’s startup process. \\
+    \end{enumerate}
+
+\subsection{SignUp Page}
+
+    \begin{enumerate}
+        \item[1.] TBD-Login-Page \\
+        Users should be able to use the following features in the login page: Sign Up, Log In, Find ID, Reset Password, SNS Login, and Language Change. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[2.] TBD-Sign Up-Phone Number \\
+        Users are required to enter their phone number. The phone number will serve as the user’s ID during the login process after registration. The validity of the phone number should be verified through the authentication system of the mobile service provider. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[3.] TBD-Sign Up-Password \\
+        Users must enter a password. The password should be at least 8 characters long and must contain a combination of at least 3 of the following: uppercase letters, lowercase letters, numbers, and special characters. When the user enters their desired password, it is displayed in the form of ‘****’ on the screen, with each condition changing color to green when it is satisfied, and red when it is not. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[4.] TBD-Sign Up-Name and Birthdate \\
+        Users must enter their name and date of birth. This information will be used for ’ID retrieval’ purposes. The date of birth should be entered in the ’YY/MM/DD’ format, and gender will be verified based on the first digit of the resident registration number. This information is utilized for the ‘Find ID’ functionality. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[5.] TBD-Sign{\hspace{4pt}}Up-Preventing{\hspace{4pt}}Duplicated PhoneNumber \\
+        Registration with duplicate phone numbers must be prevented. Attempting to register with a phone number that is already in use should not be allowed. \\
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[6.] TBD-Sign{\hspace{4pt}}Up-Registration Completed \\
+        Upon successful registration, a notification should be displayed to the user, and they should be automatically redi- rected to the login process. \\
+    \end{enumerate}
+\\
+
+\subsection{Login Page}
+
+    \begin{enumerate}
+        \item[1.] TBD-Login-Types \\ 
+        Users should be able to log in using two types of login methods: (1) Local login via HOLME membership, (2) SNS login via social media integration. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[2.] TBD-Login-Local Success \\
+        If the ID and password entered by the user exist in the member database, the user will successfully log in and be directed to the main page. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[3.] TBD-Login-Local Failed (1) \\
+        If the user enters their ID and pass- word, but either the ID or the password is incorrect, a popup window will request the user to check their ID and password again. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[4.] TBD-Login-Local Failed (2) \\
+        If the phone number and password entered by the user do not exist in the member database, the user will fail to log in, and a popup window will display the message ’Non-existent Member’. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[5.] TBD-Login-SNS login \\
+        The system utilizes SNS registration APIs such as Google, Facebook, Kakao, and more. Users should be able to conveniently log in through these platforms. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[6.] TBD-Login-Password Reset-Authentication \\
+        The system should offer users guidance on setting a new password through carrier-based verification. Upon successful carrier authentication, users will be directed to the ’Password Reset’ page; in case of failure, they will return to this page. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[7.] TBD-Login-Password Reset Page \\
+        Users should enter their registered phone number. The entered phone number should be verified to match the information in the user database. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[8.] TBD-Login-New Password \\
+        When setting a new password, users should be provided with appropriate security requirements, such as a combination of at least 8 characters, including uppercase letters, lowercase letters, numbers, and special characters. \\
+    \end{enumerate}
+    
+    
+
+\subsection{Home Page}
+
+    \begin{enumerate}
+        \item[1.] TBD-Default-Not Imported \\
+        System must initialize with import options when no devices are registered. System should display two primary action buttons: 'Import ThinQ' and 'Import Directly' in the main interface. These buttons must remain prominently visible until initial device registration is completed. \\
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[2.] TBD-Import ThinQ \\
+        When users tap the Import ThinQ button, a connection popup should immediately appear on screen. The system should then automatically initiate ThinQ service connection while displaying a loading indicator to show progress. Upon completion, the system must show either a success or failure message to inform the user of the connection status. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[3.] TBD-Import Directly \\
+        When users select the Import Directly option, the system should display a modal popup presenting two distinct import methods: QR scanning and WiFi/Bluetooth connection.  \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[4.] TBD-Import Directly-QR \\
+        Upon selecting the QR method, the system should first request camera permissions if not previously granted. The QR scanner should immediately open, displaying a clear scanning area in the viewfinder. The system should display appropriate error messages for invalid or unrecognized QR codes.  \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[5.] TBD-Import Directly-Wifi or Bluetooth \\
+        When users choose the WiFi/Bluetooth import method, the system should check and request any necessary device permissions. The interface should display a list of available devices for connection, clearly indicating the connection status throughout the process. Users should be provided with clear, step-by-step connection instructions to ensure successful device pairing.\\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[6.] TBD-Entire Chat \\
+        The system should display the main chat room interface that includes all connected appliances. The header section must contain four essential buttons: a chat room selection toggle for switching between different chat rooms, a create chat room button for establishing new chat spaces, a notification button for accessing system alerts, and an others button for additional settings. This comprehensive chat interface serves as the default landing page, providing users with immediate access to all their connected appliances and core functionality. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[7.] TBD-Select ChatRoom \\
+        The system should allow users to navigate between different appliance chat rooms through the chat room toggle button. When clicked, users should be presented with a list of available chat rooms and can easily switch to their desired room. The selected chat room should become immediately active, displaying all relevant appliance interactions and chat history. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[8.] TBD-Create ChatRoom \\
+        When users tap the create chat room button, the system should display a comprehensive list of all connected appliances. Users should be able to freely select any combination of room appliances to create customized chat groups. The interface must show clear checkboxes or selection indicators next to each appliance, and include a prominent create button that becomes active only when at least one appliance is selected. User can assign chat room name maximum 10 letters. Upon clicking the create button, the system should immediately generate and display the new chat room. The maximum number of chat room is 5 and the maximum number of appliances are 20. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[9.] TBD-Notice \\
+        The notification system should provide users with important app alerts and updates. A red dot indicator must appear on the notification icon when there are unread alerts, ensuring users are aware of new notifications. Upon clicking the notification button, the system should display a chronological list of all notifications, distinguishing between read and unread messages. Each notification should include timestamps and allow for direct interaction when applicable. \\
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[10.] TBD-Others-Edit \\
+        User should be able to edit chat room information. User can rename chat room, and can add and delete appliances of chat room. But, the minimum number of appliance must be more than 1 appliance.
+Also users should be able to click on active devices listed in the chat room to toggle their power status (ON/OFF). When a device is turned OFF, it becomes inactive in the chat room and cannot participate in conversations until turned back ON. Only active (ON) devices can receive commands and participate in chat room interactions. \\
+    \end{enumerate}
+  
+    \begin{enumerate}
+        \item[11.] TBD-Chat-Appliance-Tag \\
+                Users should be able to tag and command home appliances within chat rooms using "@" symbol (e.g., "@WashingMachine"). System must provide real-time validation of device availability. \\
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[12.] TBD-Voice-Command \\
+                Users should be able to directly communicate with their appliances through voice commands, creating a personal connection with each device. For example, users can say "Air conditioner, I'm feeling a bit warm" and receive conversational responses about adjusting the temperature settings. \\
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[13.] TBD-Command-Verification \\
+                The appliance should respond within the chat with a message asking the user if they would like the appliance to perform the suggested action. Next to this message, there should be small "Confirm" (O) and "Cancel" (X) icons that the user can click to approve or reject the appliance's proposed action. The appliance will only execute the action after the user confirms. \\
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[14.] TBD-Rating-System \\
+                Users should be able to rate their experience with the executed command by selecting 1 to 5 stars on a small popup that appears after command completion. The rating window should not interrupt ongoing tasks \\
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[15.] TBD-Feedback-Collection \\
+                Users should be able to type additional comments or suggestions about their experience in a text box limited to 100 characters. Users can skip this step if they choose. \\
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[16.] TBD-Learning-Integration \\
+                 System must systematically store and analyze user feedback, ratings, and usage patterns to improve device recommendations and command execution accuracy. \\
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[17.] TBD-ChatRoom-Search\\
+            Users should be able to search for past conversations within the chat room by typing keywords or device names. The search function should display relevant chat history, allowing users to review previous interactions and commands with their appliances. The search results should be easily navigable and provide context around when the conversations took place. \\
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[18.] TBD-ChatRoom-Delete\\
+            Users should be able to delete an appliance chat room they have created. When deleting, the user will be prompted to confirm the action, and upon confirmation, the chat room and all its contents will be permanently removed. Users should have the option to archive the chat room history before deletion if desired. \\
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[19.] TBD-ChatRoom-Chat\\
+            Users should be able to send text messages within the appliance chat room. The chat interface should have a text input field with a 150-character limit, allowing users to communicate with their connected devices. Users can click a "Send" button to transmit their messages to the active devices in the chat room. \\
+    \end{enumerate}
+    
+
+\subsection{Appliance Page}
+    \begin{enumerate}
+        \item[1.] TBD-Appliances-Default \\
+        The system should display a comprehensive list of all connected appliances, providing users with a clear overview of their smart home ecosystem. Each appliance entry should show essential information including connection status, device name, and current operational status. The list must be automatically updated whenever device status changes or new devices are added. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[2.] TBD-Appliances-Sync \\
+        When users activate the sync button, the system should initiate synchronization with ThinQ services and application list in the internal app to update the appliance list. Upon successful synchronization of new devices, the system must automatically add them to the entire chat room and display a welcome message in the format "Appliance [Name] joined default chat room". The synchronization process should show a clear progress indicator and confirmation of completion or any errors encountered. \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[3.] TBD-Appliances-Import \\
+        The appliance import functionality should mirror the import options available on the main page, providing users with two distinct import methods: QR code scanning and WiFi/Bluetooth connection. For QR scanning, the system must activate the device camera and provide clear scanning guidance. The WiFi/Bluetooth method should display available devices and guide users through the connection process with clear step-by-step instructions.  \\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[4.] TBD-Applications-Detail \\
+        When users select an appliance from the list, the system should display a detailed information page including comprehensive usage statistics and interaction history. This detail view must show total operation time, user feedback and ratings, and a chronological history of interactions with other appliances. The interface should present this information in clearly organized sections, allowing users to easily track and analyze their appliance usage patterns and performance history. \\
+    \end{enumerate}
+
+\subsection{Result Page}
+    \begin{enumerate}
+        \item[1.] Results Analysis Page
+        \begin{enumerate}
+            \item[(a)] This page presents a calendar-based view of all interaction outcomes from appliance conversations, where each date shows specific choices and results provided to the user. This format enables users to look back on prior interactions and see how the system responded to different situations over time.
+            \item[(b)] By displaying these results in a calendar, users can track patterns in their interactions and easily identify dates with particular results, providing a clear and organized way to review the history of appliance responses and decision-making outcomes
+        \end{enumerate}
+    \end{enumerate}
+
+        
+\subsection{MyPage}
+
+    \begin{enumerate}    
+        \item[1.] TBD-Password Change
+        \begin{enumerate}
+            \item[(a)] Users must enter their current password to verify identity before changing it.
+            \item[(b)] The new password must be at least 8 characters long and meet security criteria. \\
+        \end{enumerate}
+    \end{enumerate}
+
+    \begin{enumerate} 
+        \item[2.] TBD-Profile Picture Update \\
+         Users can upload a new profile picture or select from existing images on their mobile device. The updated profile picture will be visible across user-related sections within the app. \\
+    \end{enumerate}
+
+    \begin{enumerate}  
+        \item[3.] TBD-Notification Settings \\
+        Users can enable or disable notifications for various app events such as messages, updates, and alerts. Notification preferences are saved immediately and can be modified at any time to reflect the user’s choices. \\
+    \end{enumerate}
+
+    \begin{enumerate}    
+        \item[4.] TBD-App Version Check \\ 
+             The current app version installed on the user’s device is displayed in this section. Users can check for the latest version by comparing it with their current version to ensure they are up-to-date. \\
+    \end{enumerate}
+
+    \begin{enumerate} 
+        \item[5.] TBD-Language Settings \\
+        Users can select their preferred language for the app interface from a list of supported languages. Changing the language setting will adjust all in-app text to the chosen language immediately upon selection. \\
+    \end{enumerate}
+
+    \begin{enumerate}    
+        \item[6.] TBD-Announcements Check \\
+        This section provides important announcements related to the app, covering updates, new feature releases, and maintenance alerts. Users are advised to review these announcements frequently to stay informed on the latest improvements and any upcoming changes to the app. \\
+    \end{enumerate}
+
+
+
+\begin{thebibliography}{9}
+\bibitem{opensurvey}“opensurvey,"https://blog.opensurvey.co.kr/trendreport/smart-home-2023/, 2023.
+\bibitem{ReactNative}  “React Native,” https://reactnative.dev/, 2023.
+\bibitem{Typescript}  “Typescript,” https://www.typescriptlang.org/, 2023.
+\bibitem{Kotlin}  “Kotlin,” https://kotlinlang.org/, 2023.
+\bibitem{SpringBoot}  “SpringBoot,” https://spring.io/projects/spring-boot, 2023.
+\bibitem{Hibernate}  “Hivernate,” https://hibernate.org/, 2023.
+\bibitem{FastAPI} “FastAPI,” https://fastapi.tiangolo.com/, 2023.
+
+
+\end{thebibliography}
+
+\end{document}
