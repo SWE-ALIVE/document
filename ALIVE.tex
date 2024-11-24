@@ -7,6 +7,8 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{caption}
+
 
 \setlength{\parindent}{1em}  % 문단 들여쓰기 설정
 
@@ -15,7 +17,7 @@
     
 \begin{document}
     
-\title{MACS\\{\large
+\title{ALIVE\\{\large
  An AI-Driven Multi-Agent Chat System for Intuitive Smart Home Management
  }
 }
@@ -145,7 +147,7 @@ Smart home provides automated control and convenience in home environments. Alth
     \item [b.] AI-based Integrated Control and Scenario Optimization \\ \\
     LLM (Large Language Model) technology can generate and analyze various complex scenarios. Based on tasks instructed by users via chat or voice, LLM can establish comprehensive preparation plans.
     
-    For example, with just the simple information that "friends are coming over tonight," LLM can establish a comprehensive preparation plan including lighting settings, indoor temperature adjustment, music playback, and activating cleaning robots. In this process, LLM suggests optimal solutions considering the user's past preferences, current situation, and energy efficiency.
+    For example, with just the simple information that ``friends are coming over tonight," LLM can establish a comprehensive preparation plan including lighting settings, indoor temperature adjustment, music playback, and activating cleaning robots. In this process, LLM suggests optimal solutions considering the user's past preferences, current situation, and energy efficiency.
     
     \hspace{1em} If changes are needed during execution, LLM immediately generates alternatives and provides options to the user. Additionally, by analyzing feedback collected after task completion, it can provide better solutions in similar situations in the future. In this way, LLM acts as an intelligent mediator between users and appliances, contributing to more accurately understanding and realizing the user's intentions.\\
     
@@ -173,7 +175,7 @@ Smart home provides automated control and convenience in home environments. Alth
 \item [1.]LG ThinQ ON\\
 LG ThinQ ON is an AI home hub equipped with Furon, which integrates various large language models (LLM) into the LG ThinQ platform. This system continuously monitors the home environment and appliances, engaging in conversations with users to assess situations and optimally control devices. Unlike traditional voice recognition speakers that provide simple responses and execute predefined commands, LG ThinQ ON offers a more interactive and intelligent experience. \\
 \item [2.]SmartThings\\
-SmartThings is Samsung’s integrated smart home platform that allows users to easily control and manage various IoT devices through a mobile app. This platform include SmartThings Energy, an AI-based automated energy management service that optimizes energy usage through the "Energy AI Save Mode," and SmartThings Air Care, which controls air flow recommends appropriate air purification methods.\\
+SmartThings is Samsung’s integrated smart home platform that allows users to easily control and manage various IoT devices through a mobile app. This platform include SmartThings Energy, an AI-based automated energy management service that optimizes energy usage through the ``Energy AI Save Mode," and SmartThings Air Care, which controls air flow recommends appropriate air purification methods.\\
 \item [3.]Amazon Alexa Hunches\\
 Amazon Alexa Hunches is a feature that enables Alexa to learn user patterns related to smart home devices. It proactively suggest actions or automatically perform tasks based on these behaviors. Additionally, users can configure Alexa to execute actions automatically with their consent. Hunches also helps optimize energy consumption by monitoring the status of devices such as lights, thermostats, and plugs, thereby assisting in energy savings.
 \\
@@ -188,6 +190,9 @@ Smart display developed by Google, this provides a range of smart home features 
 \\
 \item [7.]Azure IoT Hub\\
 Azure IoT Hub is a versatile and scalable cloud platform (IoT PaaS) that caters to multiple tenants. It comprises an IoT device registry, data storage, and robust security features. It also offers a service interface to facilitate IoT application development.
+\\
+\item [8.]ChatThinQ\\
+ChatThinQ is an AI feature within LG's ThinQ platform that enhances smart home interactions. By using large language models, it supports natural, context-aware conversations for controlling appliances, offering personalized recommendations, and providing status updates. It can proactively suggest actions, optimize device settings, and create custom routines based on user preferences. The multi-turn dialogue capability ensures fluid interactions, making the smart home experience more intuitive and engaging.
 
 \end{itemize}
 
@@ -272,7 +277,7 @@ Azure IoT Hub is a versatile and scalable cloud platform (IoT PaaS) that caters 
     Automatically generate default chat rooms during the initial setup, including all connected appliances and grouping them by room. This provides users with immediate access to control all their devices without additional configuration.
 
     \item Custom Chat Room Creation \\
-    Allow users to create new chat rooms through the "+" button at the top right corner of the screen, and invite only the appliances they wish to include.
+    Allow users to create new chat rooms through the ``+" button at the top right corner of the screen, and invite only the appliances they wish to include.
 
     \item Support for Multiple Chat Rooms \\
     Permit the creation of multiple chat rooms to manage appliances based on rooms, functions, or user preferences.
@@ -356,9 +361,6 @@ Hibernate is an open-source Object-Relational Mapping (ORM) framework for Java, 
 \caption{FastApi} 
 \end{figure} \\ 
 FastAPI is a modern Python-based web framework designed for fast and efficient API development. FastAPI offers asynchronous support and data validation through Pydantic, maximizing developer productivity. Its automatic OpenAPI and JSON Schema documentation simplifies API testing and enhances collaboration. Renowned for its high performance, FastAPI is widely adopted across fields like machine learning model deployment and data analysis, making it a trusted choice for designing reliable APIs.\\
-
-\clearpage
-
 
 \subsection{Software in use}
 \begin{enumerate}
@@ -452,6 +454,82 @@ Postman is a specialized API development and testing platform that simplifies th
 \end{figure}\\
 ChatGPT is an AI-powered API that integrates generative AI capabilities into applications through OpenAI's endpoints. The service, based on GPT-3.5 and GPT-4 models trained on extensive datasets, provides natural language processing functionalities. Through REST API integration, it enables features like text generation, language translation, and content summarization in applications. Its flexible token-based system and documented endpoints allow developers to implement sophisticated AI features effectively.\\
 
+
+\subsection{Software in use}
+\begin{enumerate}
+\item[1] visual Studio Code
+\begin{figure}[h]
+\centering
+\includegraphics[width=.3\columnwidth]{img/SoftInUse/VisualStudioCode.png}
+\caption{Visual Studio Code} 
+\end{figure}\\
+Visual Studio Code is a lightweight yet powerful source code editor developed by Microsoft, optimized for modern development workflows. It offers essential features including IntelliSense code completion, debugging support, and Git integration, while maintaining high performance. The editor's extensive marketplace provides diverse extensions supporting various programming languages and frameworks, particularly beneficial for React Native development. Its customizable interface and integrated terminal enhance development efficiency, making it an ideal choice for cross-platform mobile application development.
+\\
+
+\item[2] Xcode
+\begin{figure}[h]
+\centering
+\includegraphics[width=.4\columnwidth]{img/SoftInUse/Xcode.png}
+\caption{Xcode} 
+\end{figure}\\
+Xcode is Apple's integrated development environment (IDE) essential for iOS app development and simulation. It provides comprehensive tools including iOS simulators, debugging capabilities, and Interface Builder for UI design. While primarily used for native iOS development, it serves as a crucial tool for React Native developers by offering high-fidelity iOS simulation and testing environments. The IDE integrates seamlessly with Apple's development ecosystem, providing essential features like device management, performance profiling, and automated testing capabilities for ensuring iOS app quality.\\
+
+\item[3] Github
+\begin{figure}[h]
+\centering
+\includegraphics[width=.3\columnwidth]{img/SoftInUse/Github.png}
+\caption{Github} 
+\end{figure}\\
+GitHub is a cloud-based platform for version control and collaborative software development using Git. It provides essential features including repository hosting, branch management, pull requests, and issue tracking. The platform enables smooth team collaboration through code review tools, project management features, and continuous integration/deployment capabilities. With its extensive documentation support and robust security features, GitHub serves as a centralized hub for maintaining code quality and managing development \\
+
+\item[4] Figma
+\begin{figure}[h]
+\centering
+\includegraphics[width=.4\columnwidth]{img/SoftInUse/Figma.png}
+\caption{Figma} 
+\end{figure}\\
+Figma is a collaborative web-based interface design tool for creating user interfaces and prototypes. It offers powerful design features including component-based systems, auto-layout, and interactive prototyping capabilities. The platform allows real-time collaboration among designers and developers, streamlining the design-to-development workflow with efficient handoff tools and design system management. With its cloud-based nature and extensive plugin ecosystem, Figma enhances team productivity and ensures consistent design implementation across projects.\\
+
+\item[5] Jira
+\begin{figure}[h]
+\centering
+\includegraphics[width=.6\columnwidth]{img/SoftInUse/Jira.png}
+\caption{Jira} 
+\end{figure}\\
+Jira is an agile project management tool developed by Atlassian that streamlines software development processes. It provides comprehensive features for issue tracking, sprint planning, and workflow customization. The platform offers robust reporting tools, integration capabilities with development tools, and flexible board views for different agile methodologies. With its detailed task management and progress tracking features, Jira enables teams to effectively monitor project progress and maintain development efficiency.\\
+
+
+\item[6] IntelliJ
+\begin{figure}[h]
+\centering
+\includegraphics[width=.3\columnwidth]{img/SoftInUse/Intellij.png}
+\caption{IntelliJ} 
+\end{figure}\\
+IntelliJ IDEA is a comprehensive Java-based integrated development environment (IDE) developed by JetBrains. It offers advanced code analysis, intelligent code completion, and powerful refactoring tools that enhance development productivity. The IDE provides robust debugging capabilities, seamless integration with various frameworks, and extensive plugin support for multiple programming languages. With its smart code navigation and efficient build tools, IntelliJ IDEA accelerates development processes while maintaining code quality and consistency.\\
+
+\item[7] Notion
+\begin{figure}[h]
+\centering
+\includegraphics[width=.3\columnwidth]{img/SoftInUse/Notion.png}
+\caption{Notion} 
+\end{figure}\\
+Notion is a versatile collaborative workspace that unifies note-taking, task management, and documentation tools. The platform excels in organizing information through customizable databases, interconnected pages, and flexible templates. Its all-in-one approach combines wiki-style documentation, project tracking, and team coordination capabilities. With its adaptable interface and cross-platform accessibility, Notion simplifies knowledge sharing and enhances team communication across projects.\\
+
+\item[8] PostgreSQL
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\columnwidth]{img/SoftInUse/PostgreSQL.png}
+\caption{PostgreSQL} 
+\end{figure}\\
+PostgreSQL is an advanced open-source relational database management system known for its reliability and data integrity. The system supports complex queries, custom functions, and multi-version concurrency control for efficient data handling. Its architecture enables handling of diverse workloads, from single machines to distributed systems, while maintaining robust security features. With extensive support for SQL standards and scalable performance, PostgreSQL stands as a preferred choice for managing structured data in modern applications.\\
+
+\item[9] Sendbird
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\columnwidth]{img/SoftInUse/SendBird.jpg}
+\caption{Sendbird} 
+\end{figure}\\
+Sendbird is a cloud-based communication platform that provides real-time chat, voice, and video calling features. It allows developers to integrate rich messaging experiences into mobile and web applications seamlessly. With comprehensive APIs and SDKs, it offers essential functionalities like user management, message threading, read receipts, and push notifications. Sendbird supports high scalability and customization, making it ideal for applications requiring robust communication features, including social networking, e-commerce, and online education platforms.\\
 \end{enumerate}
 
 \clearpage
@@ -497,254 +575,541 @@ ChatGPT is an AI-powered API that integrates generative AI capabilities into app
 \section{SPECIFICATION}
 
 \subsection{Splash Screen Page}
-    \begin{enumerate}
-    \item[1.] TBD-Entry-splashing \\
-        When the application is launched, the startup page should be displayed for a duration of 1 to 2 seconds to prevent an empty page from being shown while the application is loading its data. This ensures a smooth and visually appealing user experience during the app’s startup process. \\
-    \end{enumerate}
+\begin{enumerate}
+    \item[1.] Entry-splashing
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth,height=7cm]
+            {img/UIdesign/splash.png}
+            \caption{Entry Splashing-Page}
+        \end{minipage}}
+    \end{figure}
+    
+    When the application is launched, the startup page should be displayed for a duration of 1 to 2 seconds to prevent an empty page from being shown while the application is loading its data. This ensures a smooth and visually appealing user experience during the app’s startup process. 
+\end{enumerate}
 
 \subsection{SignUp Page}
 
-    \begin{enumerate}
-        \item[1.] TBD-Login-Page \\
-        Users should be able to use the following features in the login page: Sign Up, Log In, Find ID, Reset Password, SNS Login, and Language Change. \\
-    \end{enumerate}
+\begin{enumerate}
+    \item[1.] Login-Page
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/Login - Main.png}
+            \caption{Login-Page}
+        \end{minipage}}
+    \end{figure}
     
-    \begin{enumerate}
-        \item[2.] TBD-Sign Up-Phone Number \\
-        Users are required to enter their phone number. The phone number will serve as the user’s ID during the login process after registration. The validity of the phone number should be verified through the authentication system of the mobile service provider. \\
-    \end{enumerate}
-    
-    \begin{enumerate}
-        \item[3.] TBD-Sign Up-Password \\
-        Users must enter a password. The password should be at least 8 characters long and must contain a combination of at least 3 of the following: uppercase letters, lowercase letters, numbers, and special characters. When the user enters their desired password, it is displayed in the form of ‘****’ on the screen, with each condition changing color to green when it is satisfied, and red when it is not. \\
-    \end{enumerate}
-    
-    \begin{enumerate}
-        \item[4.] TBD-Sign Up-Name and Birthdate \\
-        Users must enter their name and date of birth. This information will be used for ’ID retrieval’ purposes. The date of birth should be entered in the ’YY/MM/DD’ format, and gender will be verified based on the first digit of the resident registration number. This information is utilized for the ‘Find ID’ functionality. \\
-    \end{enumerate}
-    
-    \begin{enumerate}
-        \item[5.] TBD-Sign{\hspace{4pt}}Up-Preventing{\hspace{4pt}}Duplicated PhoneNumber \\
-        Registration with duplicate phone numbers must be prevented. Attempting to register with a phone number that is already in use should not be allowed. \\
-    \end{enumerate}
+    Users should be able to use the following features in the login page: Sign Up, Log In, Reset Password, SNS Login, and Language Change. \\
+\end{enumerate}
 
-    \begin{enumerate}
-        \item[6.] TBD-Sign{\hspace{4pt}}Up-Registration Completed \\
-        Upon successful registration, a notification should be displayed to the user, and they should be automatically redi- rected to the login process. \\
-    \end{enumerate}
-\\
+    
+\begin{enumerate}
+    \item[2.] Sign Up-Phone Number
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Sign Up - Name and Birthdate}
+            \caption{Sign Up Page}
+        \end{minipage}}
+    \end{figure}
+    
+    Users are required to enter their phone number. The phone number will serve as the user’s ID during the login process after registration. The validity of the phone number should be verified through the authentication system of the mobile service provider. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[3.] Sign Up-Password
+    
+    Users must enter a password. The password should be at least 8 characters long and must contain a combination of at least 3 of the following: uppercase letters, lowercase letters, numbers, and special characters. When the user enters their desired password, it is displayed in the form of ‘****’ on the screen, with each condition changing color to green when it is satisfied, and red when it is not. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[4.] Sign Up-Name and Birthdate
+    
+    Users must enter their name and date of birth. The date of birth should be entered in the ‘YY/MM/DD’ format, and gender will be verified based on the first digit of the resident registration number. \\ 
+\end{enumerate}
+
+\clearpage
+
+\begin{enumerate}
+    \item[5.] Sign Up-Preventing Duplicated PhoneNumber
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/Sign Up - Preventing Duplicated.png}
+            \caption{Sign Up - Preventing Duplicated Phone Number}
+        \end{minipage}}
+    \end{figure}
+    Registration with duplicate phone numbers must be prevented. Attempting to register with a phone number that is already in use should not be allowed. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[6.] Sign Up-Registration Completed
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth,height=6cm]{img/UIdesign/Sign Up - Registration Completed.png}
+            \caption{Sign Up - Registration Completed}
+        \end{minipage}}
+    \end{figure}
+    
+    Upon successful registration, a notification should be displayed to the user, and they should be automatically redirected to the login process. If the phone number is already registered, the screen displays existing account’s information including phone number and registering date.
+\end{enumerate}
 
 \subsection{Login Page}
 
-    \begin{enumerate}
-        \item[1.] TBD-Login-Types \\ 
-        Users should be able to log in using two types of login methods: (1) Local login via HOLME membership, (2) SNS login via social media integration. \\
-    \end{enumerate}
+\begin{enumerate}
+    \item[1.] Login-Types
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/Login - Main.png}
+            \caption{Login-Types}
+        \end{minipage}}
+    \end{figure}
     
-    \begin{enumerate}
-        \item[2.] TBD-Login-Local Success \\
-        If the ID and password entered by the user exist in the member database, the user will successfully log in and be directed to the main page. \\
-    \end{enumerate}
+    Users should be able to log in using two types of login methods: (1) Local login via ALIVE membership, (2) SNS login via social media integration. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[2.] Login-Local Success
+
+    If the ID and password entered by the user exist in the member database, the user will successfully log in and be directed to the main page. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[3.] Login-Local Failed
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/Login - Local Failed.png}
+            \caption{Login - Local Failed}
+        \end{minipage}}
+    \end{figure}
     
-    \begin{enumerate}
-        \item[3.] TBD-Login-Local Failed (1) \\
-        If the user enters their ID and pass- word, but either the ID or the password is incorrect, a popup window will request the user to check their ID and password again. \\
-    \end{enumerate}
+    If the user enters their ID and password, but either the ID or the password is incorrect or the user does not exist in the member database, a popup window will request the user to check their ID and password again. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[4.] Login-SNS Login
     
-    \begin{enumerate}
-        \item[4.] TBD-Login-Local Failed (2) \\
-        If the phone number and password entered by the user do not exist in the member database, the user will fail to log in, and a popup window will display the message ’Non-existent Member’. \\
-    \end{enumerate}
+    The system utilizes SNS registration APIs such as Google, Naver, Kakao, and more. Users should be able to conveniently log in through these platforms. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[5.] Login-MyLG Login
     
-    \begin{enumerate}
-        \item[5.] TBD-Login-SNS login \\
-        The system utilizes SNS registration APIs such as Google, Facebook, Kakao, and more. Users should be able to conveniently log in through these platforms. \\
-    \end{enumerate}
+    The system utilizes registration through MyLG. Users should be able to conveniently log in through these platforms. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[6.] Login-Password Reset Authentication
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Login - New Password.png}
+            \caption{Password Reset - Authentication}
+        \end{minipage}}
+    \end{figure}
     
-    \begin{enumerate}
-        \item[6.] TBD-Login-Password Reset-Authentication \\
-        The system should offer users guidance on setting a new password through carrier-based verification. Upon successful carrier authentication, users will be directed to the ’Password Reset’ page; in case of failure, they will return to this page. \\
-    \end{enumerate}
+    The system should offer users guidance on setting a new password through carrier-based verification. Upon successful carrier authentication, users will be directed to the ‘Password Reset’ page; in case of failure, they will return to this page. \\ \\ \\ \\ \\ \\ \\ 
     
-    \begin{enumerate}
-        \item[7.] TBD-Login-Password Reset Page \\
-        Users should enter their registered phone number. The entered phone number should be verified to match the information in the user database. \\
-    \end{enumerate}
+\end{enumerate}
+
+
+
+\begin{enumerate}
+    \item[7.] Login-New Password
+    \begin{figure}[h]
+        \centering
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth, keepaspectratio]{img/UIdesign/Login - New Password-1.png}
+            \caption{New Password Failed}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth, keepaspectratio]{img/UIdesign/Login - New Password-2.png}
+            \caption{New Password Success}
+        \end{minipage}
+    \end{figure}
     
-    \begin{enumerate}
-        \item[8.] TBD-Login-New Password \\
-        When setting a new password, users should be provided with appropriate security requirements, such as a combination of at least 8 characters, including uppercase letters, lowercase letters, numbers, and special characters. \\
-    \end{enumerate}
+    When setting a new password, users should be provided with appropriate security requirements, such as a combination of at least 8 characters, including at least three of uppercase letters, lowercase letters, numbers, and special characters.
+\end{enumerate}
+
     
     
 
 \subsection{Home Page}
 
-    \begin{enumerate}
-        \item[1.] TBD-Default-Not Imported \\
-        System must initialize with import options when no devices are registered. System should display two primary action buttons: 'Import ThinQ' and 'Import Directly' in the main interface. These buttons must remain prominently visible until initial device registration is completed. \\
-    \end{enumerate}
-
-    \begin{enumerate}
-        \item[2.] TBD-Import ThinQ \\
-        When users tap the Import ThinQ button, a connection popup should immediately appear on screen. The system should then automatically initiate ThinQ service connection while displaying a loading indicator to show progress. Upon completion, the system must show either a success or failure message to inform the user of the connection status. \\
-    \end{enumerate}
+\begin{enumerate}
+    \item[1.] Default-Not Imported
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Home - Main.png}
+            \caption{Default - Not Imported}
+        \end{minipage}}
+    \end{figure}
     
-    \begin{enumerate}
-        \item[3.] TBD-Import Directly \\
-        When users select the Import Directly option, the system should display a modal popup presenting two distinct import methods: QR scanning and WiFi/Bluetooth connection.  \\
-    \end{enumerate}
+    System must initialize with import options when no devices are registered. System should display two primary action buttons: 'Import ThinQ' and 'Import Directly' in the main interface. These buttons must remain prominently visible until initial device registration is completed. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[2.] Import ThinQ
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Home - Connect with LG ThinQ.png}
+            \caption{Import ThinQ}
+        \end{minipage}}
+    \end{figure}
     
-    \begin{enumerate}
-        \item[4.] TBD-Import Directly-QR \\
-        Upon selecting the QR method, the system should first request camera permissions if not previously granted. The QR scanner should immediately open, displaying a clear scanning area in the viewfinder. The system should display appropriate error messages for invalid or unrecognized QR codes.  \\
-    \end{enumerate}
+    When users tap the Import ThinQ button, a connection popup should immediately appear on screen. The system should then automatically initiate ThinQ service connection while displaying a loading indicator to show progress. Upon completion, the system must show either a success or failure message to inform the user of the connection status. \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[3.] Import Directly
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Home - Register Appliances Directly.png}
+            \caption{Import Directly}
+        \end{minipage}}
+    \end{figure}
     
-    \begin{enumerate}
-        \item[5.] TBD-Import Directly-Wifi or Bluetooth \\
-        When users choose the WiFi/Bluetooth import method, the system should check and request any necessary device permissions. The interface should display a list of available devices for connection, clearly indicating the connection status throughout the process. Users should be provided with clear, step-by-step connection instructions to ensure successful device pairing.\\
-    \end{enumerate}
+    When users select the Import Directly option, the system should display a modal popup presenting two distinct import methods: QR scanning and Wi-Fi/Bluetooth connection. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[4.] Import Directly-QR
     
-    \begin{enumerate}
-        \item[6.] TBD-Entire Chat \\
-        The system should display the main chat room interface that includes all connected appliances. The header section must contain four essential buttons: a chat room selection toggle for switching between different chat rooms, a create chat room button for establishing new chat spaces, a notification button for accessing system alerts, and an others button for additional settings. This comprehensive chat interface serves as the default landing page, providing users with immediate access to all their connected appliances and core functionality. \\
-    \end{enumerate}
+    Upon selecting the QR method, the system should first request camera permissions if not previously granted. The QR scanner should immediately open, displaying a clear scanning area in the viewfinder. The system should display appropriate error messages for invalid or unrecognized QR codes. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[5.] Import Directly-WiFi or Bluetooth
     
-    \begin{enumerate}
-        \item[7.] TBD-Select ChatRoom \\
-        The system should allow users to navigate between different appliance chat rooms through the chat room toggle button. When clicked, users should be presented with a list of available chat rooms and can easily switch to their desired room. The selected chat room should become immediately active, displaying all relevant appliance interactions and chat history. \\
-    \end{enumerate}
+    When users choose the WiFi/Bluetooth import method, the system should check and request any necessary device permissions. The interface should display a list of available devices for connection, clearly indicating the connection status throughout the process. Users should be provided with clear, step-by-step connection instructions to ensure successful device pairing.
+\end{enumerate}
+
+\clearpage
+
+\begin{enumerate}
+    \item[6.] Entire Chat
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/Home - Main-2.png}
+            \caption{Entire Chat}
+        \end{minipage}}
+    \end{figure}
     
-    \begin{enumerate}
-        \item[8.] TBD-Create ChatRoom \\
-        When users tap the create chat room button, the system should display a comprehensive list of all connected appliances. Users should be able to freely select any combination of room appliances to create customized chat groups. The interface must show clear checkboxes or selection indicators next to each appliance, and include a prominent create button that becomes active only when at least one appliance is selected. User can assign chat room name maximum 10 letters. Upon clicking the create button, the system should immediately generate and display the new chat room. The maximum number of chat room is 5 and the maximum number of appliances are 20. \\
-    \end{enumerate}
+    The system should display the main chat room interface that includes all connected appliances. The header section must contain four essential buttons: a chat room selection toggle for switching between different chat rooms, a create chat room button for establishing new chat spaces, a notification button for accessing system alerts, and an others button for additional settings. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[7.] Select ChatRoom
+    \begin{figure}[h]
+        \centering
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth, keepaspectratio]{img/UIdesign/Home - Create-ChatRoom - Select None.png}
+            \caption{Select ChatRoom - None}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth, keepaspectratio]{img/UIdesign/Home - Create-ChatRoom - Select Complete.png}
+            \caption{Select ChatRoom - Available}
+        \end{minipage}
+    \end{figure}
     
-    \begin{enumerate}
-        \item[9.] TBD-Notice \\
-        The notification system should provide users with important app alerts and updates. A red dot indicator must appear on the notification icon when there are unread alerts, ensuring users are aware of new notifications. Upon clicking the notification button, the system should display a chronological list of all notifications, distinguishing between read and unread messages. Each notification should include timestamps and allow for direct interaction when applicable. \\
-    \end{enumerate}
+    The system should allow users to navigate between different appliance chat rooms through the chat room toggle button. Users should be presented with a list of available chat rooms and can easily switch to their desired room. \\
+\end{enumerate}
 
-    \begin{enumerate}
-        \item[10.] TBD-Others-Edit \\
-        User should be able to edit chat room information. User can rename chat room, and can add and delete appliances of chat room. But, the minimum number of appliance must be more than 1 appliance.
-Also users should be able to click on active devices listed in the chat room to toggle their power status (ON/OFF). When a device is turned OFF, it becomes inactive in the chat room and cannot participate in conversations until turned back ON. Only active (ON) devices can receive commands and participate in chat room interactions. \\
-    \end{enumerate}
-  
-    \begin{enumerate}
-        \item[11.] TBD-Chat-Appliance-Tag \\
-                Users should be able to tag and command home appliances within chat rooms using "@" symbol (e.g., "@WashingMachine"). System must provide real-time validation of device availability. \\
-    \end{enumerate}
-
-    \begin{enumerate}
-        \item[12.] TBD-Voice-Command \\
-                Users should be able to directly communicate with their appliances through voice commands, creating a personal connection with each device. For example, users can say "Air conditioner, I'm feeling a bit warm" and receive conversational responses about adjusting the temperature settings. \\
-    \end{enumerate}
-
-    \begin{enumerate}
-        \item[13.] TBD-Command-Verification \\
-                The appliance should respond within the chat with a message asking the user if they would like the appliance to perform the suggested action. Next to this message, there should be small "Confirm" (O) and "Cancel" (X) icons that the user can click to approve or reject the appliance's proposed action. The appliance will only execute the action after the user confirms. \\
-    \end{enumerate}
-
-    \begin{enumerate}
-        \item[14.] TBD-Rating-System \\
-                Users should be able to rate their experience with the executed command by selecting 1 to 5 stars on a small popup that appears after command completion. The rating window should not interrupt ongoing tasks \\
-    \end{enumerate}
-
-    \begin{enumerate}
-        \item[15.] TBD-Feedback-Collection \\
-                Users should be able to type additional comments or suggestions about their experience in a text box limited to 100 characters. Users can skip this step if they choose. \\
-    \end{enumerate}
-
-    \begin{enumerate}
-        \item[16.] TBD-Learning-Integration \\
-                 System must systematically store and analyze user feedback, ratings, and usage patterns to improve device recommendations and command execution accuracy. \\
-    \end{enumerate}
-
-    \begin{enumerate}
-        \item[17.] TBD-ChatRoom-Search\\
-            Users should be able to search for past conversations within the chat room by typing keywords or device names. The search function should display relevant chat history, allowing users to review previous interactions and commands with their appliances. The search results should be easily navigable and provide context around when the conversations took place. \\
-    \end{enumerate}
-
-    \begin{enumerate}
-        \item[18.] TBD-ChatRoom-Delete\\
-            Users should be able to delete an appliance chat room they have created. When deleting, the user will be prompted to confirm the action, and upon confirmation, the chat room and all its contents will be permanently removed. Users should have the option to archive the chat room history before deletion if desired. \\
-    \end{enumerate}
-
-    \begin{enumerate}
-        \item[19.] TBD-ChatRoom-Chat\\
-            Users should be able to send text messages within the appliance chat room. The chat interface should have a text input field with a 150-character limit, allowing users to communicate with their connected devices. Users can click a "Send" button to transmit their messages to the active devices in the chat room. \\
-    \end{enumerate}
+\begin{enumerate}
+    \item[8.] Create ChatRoom
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/Home - Create-ChatRoom - Set Name Complete.png}
+            \caption{Create ChatRoom}
+        \end{minipage}}
+    \end{figure}
     
+    When users tap the create chat room button, the system should display a comprehensive list of all connected appliances. Users can assign a chat room name with a maximum of 10 letters.\\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[9.] Notice
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/My Page - Alram-1.png}
+            \caption{Notice}
+        \end{minipage}}
+    \end{figure}
+    
+    The notification system should provide users with important app alerts and updates. A red dot indicator must appear on the notification icon when there are unread alerts, ensuring users are aware of new notifications. Upon clicking the notification button, the system should display a chronological list of all notifications, distinguishing between read and unread messages.\\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[10.] Others-Edit
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth,,height=7cm ]{img/UIdesign/Home - _Chat - Side.png}
+            \caption{Others-Edit}
+        \end{minipage}}
+    \end{figure}
+    
+    Users should be able to edit chat room information. They can rename chat rooms, and add or delete appliances. The minimum number of appliances in a chat room must be at least one. Users should also be able to toggle the power status (ON/OFF) of devices in the chat room. Only active (ON) devices can receive commands and participate in interactions. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[11.] Chat-Appliance-Tag
+    
+    Users should be able to tag and command home appliances within chat rooms using the "@" symbol (e.g., "@WashingMachine"). The system must provide real-time validation of device availability. \\ \\ \\ \\ \\ \\ \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[12.] Voice-Command
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Home - _Chat - MIC.png}
+            \caption{Voice Command}
+        \end{minipage}}
+    \end{figure}
+    
+    Users should be able to communicate with their appliances through voice commands. For example, users can say, "Air conditioner, I'm feeling a bit warm," and receive conversational responses about adjusting the temperature settings. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[13.] Command-Verification
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Home - _Chat - CV.png}
+            \caption{Command Verification}
+        \end{minipage}}
+    \end{figure}
+    
+    The appliance should respond within the chat with a message asking if the user would like to perform the suggested action. There should be small "Confirm" (O) and "Cancel" (X) icons for user approval or rejection. The appliance will only execute the action after the user confirms. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[14.] ChatRoom-Search
+    
+    Users should be able to search for past conversations within the chat room by typing keywords or device names. The search results should display relevant chat history with context on when the conversations occurred. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[15.] ChatRoom-Exit
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Home - _Chat - Exit.png}
+            \caption{ChatRoom Exit}
+        \end{minipage}}
+    \end{figure}
+    \\ Users should be able to delete an appliance chat room they have created. Upon deletion, the user will be prompted to confirm, and all contents will be permanently removed. Users should have the option to archive the chat history before deletion if desired.
+\end{enumerate}
+
+\clearpage
 
 \subsection{Appliance Page}
     \begin{enumerate}
-        \item[1.] TBD-Appliances-Default \\
-        The system should display a comprehensive list of all connected appliances, providing users with a clear overview of their smart home ecosystem. Each appliance entry should show essential information including connection status, device name, and current operational status. The list must be automatically updated whenever device status changes or new devices are added. \\
-    \end{enumerate}
+    \item[1.] Appliances-Default
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth,height=9cm]{img/UIdesign/Appliance-Lists - Main.png}
+            \caption{Appliances Default}
+        \end{minipage}}
+    \end{figure}
+
+    The system should display a comprehensive list of all connected appliances, providing users with a clear overview of their smart home ecosystem. Each appliance entry should show essential information, including connection status, device name, and current operational status. The list must be updated whenever device status changes or new devices are added. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[2.] Appliances-Sync
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.2\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Appliance-sync.png}
+            \captionsetup{width=2.5\linewidth}
+            \caption{Appliances Sync}
+        \end{minipage}}
+    \end{figure}
+
+    When users activate the sync button, the system should initiate synchronization with ThinQ services and the application list in the internal app to update the appliance list. Upon successful synchronization of new devices, the system must automatically add them to the entire chat room and display a welcome message in the format ``Appliance [Name] joined default chat room". The synchronization process should show a clear progress indicator and confirmation of completion or any errors encountered. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[3.] Appliances-Import
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.2\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Appliance - import.png}
+            \captionsetup{width=2.5\linewidth}
+        \caption{Appliances Import} % 강제로 한 줄 유지
+        \end{minipage}}
+    \end{figure}
+
+    The appliance import functionality should mirror the import options available on the main page, providing users with two distinct import methods: QR code scanning and WiFi/Bluetooth connection. For QR scanning, the system must activate the device camera and provide clear scanning guidance. The WiFi/Bluetooth method should display available devices and guide users through the connection process with clear step-by-step instructions. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[4.] Applications-Detail
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth,height=9cm]{img/UIdesign/Appliance-Lists - Main.png}
+            \caption{Applications Detail}
+        \end{minipage}}
+    \end{figure}
+
+    When users select an appliance from the list, the system should display a detailed information page including comprehensive usage statistics and interaction history. This detail view must show a list of participating chat rooms, total operation time, user feedback and ratings, and a chronological history of interactions with other appliances. The interface should present this information in clearly organized sections, allowing users to easily track and analyze their appliance usage patterns and performance history. \\ 
+\end{enumerate}
+
     
-    \begin{enumerate}
-        \item[2.] TBD-Appliances-Sync \\
-        When users activate the sync button, the system should initiate synchronization with ThinQ services and application list in the internal app to update the appliance list. Upon successful synchronization of new devices, the system must automatically add them to the entire chat room and display a welcome message in the format "Appliance [Name] joined default chat room". The synchronization process should show a clear progress indicator and confirmation of completion or any errors encountered. \\
-    \end{enumerate}
-    
-    \begin{enumerate}
-        \item[3.] TBD-Appliances-Import \\
-        The appliance import functionality should mirror the import options available on the main page, providing users with two distinct import methods: QR code scanning and WiFi/Bluetooth connection. For QR scanning, the system must activate the device camera and provide clear scanning guidance. The WiFi/Bluetooth method should display available devices and guide users through the connection process with clear step-by-step instructions.  \\
-    \end{enumerate}
-    
-    \begin{enumerate}
-        \item[4.] TBD-Applications-Detail \\
-        When users select an appliance from the list, the system should display a detailed information page including comprehensive usage statistics and interaction history. This detail view must show total operation time, user feedback and ratings, and a chronological history of interactions with other appliances. The interface should present this information in clearly organized sections, allowing users to easily track and analyze their appliance usage patterns and performance history. \\
-    \end{enumerate}
+\subsection{MyPage}
+
+\begin{enumerate}
+    \item[1.] Mypage-Password Change
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Password_Change.png}
+            \caption{Password Change}
+        \end{minipage}}
+    \end{figure}
+
+    Users must enter their current password to verify their identity before changing it to a new one. The new password must be at least 8 characters long, including special characters. If the new password is identical to the current one, a notification will inform the user that it cannot be reused. Passwords must include at least 3 of the following: uppercase letters, lowercase letters, numbers, and special characters. \\ \\ \\ \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[2.] Mypage-Profile Picture Update
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/Profile_Picture_Update.png}
+            \caption{Profile Picture Update}
+        \end{minipage}}
+    \end{figure}
+
+    Users can upload a new profile picture or select from existing images on their device. The updated profile picture will appear throughout the app. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[3.] Mypage-Notification Settings
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/My Page - Alram.png}
+            \caption{Notification Settings}
+        \end{minipage}}
+    \end{figure}
+
+    Users can enable or disable notifications for app events like messages, updates, and alerts. Preferences are saved immediately. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[4.] Mypage-App Version Check
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/My Page - Version_check.png}
+            \caption{App Version Check}
+        \end{minipage}}
+    \end{figure}
+
+    The app displays the current version installed on the user's device. Users can check if they have the latest version. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[5.] Mypage-Language Settings
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/My Page - Language}
+            \caption{Language Settings}
+        \end{minipage}}
+    \end{figure}
+
+    Users can choose their preferred language for the app interface, which updates immediately upon selection. \\ \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[6.] Mypage-Personal Information
+    \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/My Page - Personal_Info.png}
+            \caption{Personal Information}
+        \end{minipage}}
+    \end{figure}
+
+    Users can view personal details like carrier, phone number, and registration date, and set up simplified login options.
+\end{enumerate}
+
 
 \subsection{Result Page}
     \begin{enumerate}
-        \item[1.] Results Analysis Page
-        \begin{enumerate}
-            \item[(a)] This page presents a calendar-based view of all interaction outcomes from appliance conversations, where each date shows specific choices and results provided to the user. This format enables users to look back on prior interactions and see how the system responded to different situations over time.
-            \item[(b)] By displaying these results in a calendar, users can track patterns in their interactions and easily identify dates with particular results, providing a clear and organized way to review the history of appliance responses and decision-making outcomes
-        \end{enumerate}
+        \item[1.] ResultAnalysis-Calendar View
+        \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/_Scenario Anlaysis - Main.png}
+            \caption{Result Calender}
+        \end{minipage}}
+    \end{figure}
+        \\ The Result Analysis page should display a calendar-based view that shows all interaction outcomes from appliance conversations. Each calendar date must present the specific choices and results that were provided to users during their interactions. The system should maintain a comprehensive record of all interactions, displaying them in a chronological format that allows users to easily navigate through their history.\\
     \end{enumerate}
-
+    
+    \begin{enumerate}
+        \item[2.] ResultAnalysis-Data 
+        Presentation
+        \begin{figure}[h]
+        {\centering
+        \hspace{4cm}
+        \begin{minipage}{0.4\columnwidth}
+            \includegraphics[width=\linewidth]{img/UIdesign/_Scenario Anlaysis - Detail (mod).png}
+            \caption{ResultAnalysis-Data }
+        \end{minipage}}
+    \end{figure}
+        \\ The system must present all interaction data in an organized and easy-to-understand format within the calendar view. Each date with recorded interactions should be clearly marked, and users should be able to view detailed information about the interactions that occurred on any specific date. The interface should allow users to track patterns in their appliance usage and decision-making over time, providing valuable insights into their interaction history. This calendar-based presentation format ensures that users can efficiently review and analyze their past interactions, understanding how the system responded to different situations across various timeframes.\\
+    \end{enumerate}
         
-\subsection{MyPage}
-
-    \begin{enumerate}    
-        \item[1.] TBD-Password Change
-        \begin{enumerate}
-            \item[(a)] Users must enter their current password to verify identity before changing it.
-            \item[(b)] The new password must be at least 8 characters long and meet security criteria. \\
-        \end{enumerate}
-    \end{enumerate}
-
-    \begin{enumerate} 
-        \item[2.] TBD-Profile Picture Update \\
-         Users can upload a new profile picture or select from existing images on their mobile device. The updated profile picture will be visible across user-related sections within the app. \\
-    \end{enumerate}
-
-    \begin{enumerate}  
-        \item[3.] TBD-Notification Settings \\
-        Users can enable or disable notifications for various app events such as messages, updates, and alerts. Notification preferences are saved immediately and can be modified at any time to reflect the user’s choices. \\
-    \end{enumerate}
-
-    \begin{enumerate}    
-        \item[4.] TBD-App Version Check \\ 
-             The current app version installed on the user’s device is displayed in this section. Users can check for the latest version by comparing it with their current version to ensure they are up-to-date. \\
-    \end{enumerate}
-
-    \begin{enumerate} 
-        \item[5.] TBD-Language Settings \\
-        Users can select their preferred language for the app interface from a list of supported languages. Changing the language setting will adjust all in-app text to the chosen language immediately upon selection. \\
-    \end{enumerate}
-
-    \begin{enumerate}    
-        \item[6.] TBD-Announcements Check \\
-        This section provides important announcements related to the app, covering updates, new feature releases, and maintenance alerts. Users are advised to review these announcements frequently to stay informed on the latest improvements and any upcoming changes to the app. \\
-    \end{enumerate}
-
-
 
 \begin{thebibliography}{9}
 \bibitem{opensurvey}“opensurvey,"https://blog.opensurvey.co.kr/trendreport/smart-home-2023/, 2023.
