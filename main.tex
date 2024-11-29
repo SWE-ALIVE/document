@@ -62,11 +62,11 @@ cats5565@hanyang.ac.kr}
 
 
 \begin{abstract}
-Smart home provides automated control and convenience in home environments. Although smart homes have improved convenience in daily life, their rigid and uniform structures limit customization and integration of diverse information sources, leading to passive and inflexible management systems. We propose a new multi-turn AI based Chat Room system, AIfred, which enables users to manage and control home appliances. With AIfred, users can register home appliances directly or import them from compatible apps, allowing them to create custom chat rooms for seamless device management. Through our appliance chat rooms, users can identify the most suitable appliances for specific situations and execute them simultaneously, simplifying the process of smart home control. Users can efficiently manage and control their appliances at any time through the chat interface. Furthermore, we've integrated a human feedback mechanism to improve the system. Users can evaluate their experience after the end of process, providing valuable insights for continuous enhancement of the application. This data is systematically stored and utilized for learning and refining the system's performance. AIfred represents a significant step forward in smart home technology, addressing the need for more flexible, user-centric solutions in the evolving landscape of home automation.
+Smart home provides automated control and convenience in home environments. Although smart homes have improved convenience in daily life, their rigid and uniform structures limit customization and integration of diverse information sources, leading to passive and inflexible management systems. We propose a new multi-turn AI based Chat Room system, Alive, which enables users to manage and control home appliances. With Alive, users can register home appliances directly or import them from compatible apps, allowing them to create custom chat rooms for seamless device management. Through our appliance chat rooms, users can identify the most suitable appliances for specific situations and execute them simultaneously, simplifying the process of smart home control. Users can efficiently manage and control their appliances at any time through the chat interface. Furthermore, we've integrated a human feedback mechanism to improve the system. Users can evaluate their experience after the end of process, providing valuable insights for continuous enhancement of the application. This data is systematically stored and utilized for learning and refining the system's performance. Alive represents a significant step forward in smart home technology, addressing the need for more flexible, user-centric solutions in the evolving landscape of home automation.
 \end{abstract}
 
 % Role Assignment
-\begin{table}[h]
+\begin{table}[h] \\
 \caption{Role Assignments}
 \def\arraystretch{1.24} \small
 
@@ -201,7 +201,7 @@ ChatThinQ is an AI feature within LG's ThinQ platform that enhances smart home i
 
 \begin{itemize}
     \item [A.] Sign up \\
-    AIfred needs five types of information to sign up. These are phone numbers, passwords, name, email, and birth dates.
+    ALIVE needs five types of information to sign up. These are phone numbers, passwords, name, email, and birth dates.
 \end{itemize}
 \begin{enumerate}
     \item Enter phone numbers \\
@@ -219,11 +219,11 @@ ChatThinQ is an AI feature within LG's ThinQ platform that enhances smart home i
 
 \begin{itemize}
     \item [B.] Sign in \\
-    There are two types of logins: 1) Local logins through AIfred membership, 2) SNS logins through SNS linkage.
+    There are two types of logins: 1) Local logins through ALIVE membership, 2) SNS logins through SNS linkage.
 \end{itemize}
 
 \begin{enumerate}
-    \item Local logins through AIfred membership
+    \item Local logins through ALIVE membership
     \begin{enumerate}
         \item The system checks whether the ID and password entered by the user have been filled.
         \item When the ID and password input by the user exist in the member database, the user succeeds in logging in. After that, it moves to the main page.
@@ -233,7 +233,7 @@ ChatThinQ is an AI feature within LG's ThinQ platform that enhances smart home i
 
 \begin{itemize}
     \item [C.] Register home appliances 
-    You can register your appliances in AIfred in two ways: 1) Register your appliances directly, 2) Import your registered appliances from the LG ThinQ app.
+    You can register your appliances in ALIVE in two ways: 1) Register your appliances directly, 2) Import your registered appliances from the LG ThinQ app.
 \end{itemize}
 
 \begin{enumerate}
@@ -324,7 +324,7 @@ React Native is a cross-platform framework developed by Facebook, enabling devel
 \includegraphics[width=.5\columnwidth]{img/DevEnv/TypeScript.png}
 \centering
 \caption{Typescript} 
-\end{figure}\\
+\end{figure}
 TypeScript is a superset of JavaScript developed by Microsoft, introducing a static type system that improves code stability and readability. TypeScript catches errors at compile time, reducing runtime issues and enhancing maintainability, especially for large-scale projects. Its rich type inference allows developers to clearly define code structure and intent, fostering better collaboration and improving code quality. Ultimately, TypeScript enables the writing of robust, high-performance applications while retaining JavaScript’s flexibility.\\
 
 \item [(3)] Kotlin\cite{Kotlin}
@@ -445,7 +445,9 @@ Overleaf is a web-based LaTeX editor that facilitates academic writing and docum
 \caption{Postman} 
 \end{figure}\\
 Postman is a specialized API development and testing platform that simplifies the API lifecycle management. The tool offers intuitive request building, automated testing sequences, and detailed response validation capabilities. Its environment management system facilitates API testing across different configurations while supporting team collaboration through shared workspaces. With comprehensive documentation generation and mock server features, Postman accelerates API development and ensures reliable endpoint functionality.\\
-
+\\
+\\
+\\
 \item[11] ChatGPT
 \begin{figure}[h]
 \centering
@@ -454,84 +456,13 @@ Postman is a specialized API development and testing platform that simplifies th
 \end{figure}\\
 ChatGPT is an AI-powered API that integrates generative AI capabilities into applications through OpenAI's endpoints. The service, based on GPT-3.5 and GPT-4 models trained on extensive datasets, provides natural language processing functionalities. Through REST API integration, it enables features like text generation, language translation, and content summarization in applications. Its flexible token-based system and documented endpoints allow developers to implement sophisticated AI features effectively.\\
 
-
-\subsection{Software in use}
-\begin{enumerate}
-\item[1] visual Studio Code
+\item[12] Azure
 \begin{figure}[h]
 \centering
-\includegraphics[width=.3\columnwidth]{img/SoftInUse/VisualStudioCode.png}
-\caption{Visual Studio Code} 
+\includegraphics[width=.6\columnwidth]{img/SoftInUse/Azure.png}
+\caption{Azure} 
 \end{figure}\\
-Visual Studio Code is a lightweight yet powerful source code editor developed by Microsoft, optimized for modern development workflows. It offers essential features including IntelliSense code completion, debugging support, and Git integration, while maintaining high performance. The editor's extensive marketplace provides diverse extensions supporting various programming languages and frameworks, particularly beneficial for React Native development. Its customizable interface and integrated terminal enhance development efficiency, making it an ideal choice for cross-platform mobile application development.
-\\
-
-\item[2] Xcode
-\begin{figure}[h]
-\centering
-\includegraphics[width=.4\columnwidth]{img/SoftInUse/Xcode.png}
-\caption{Xcode} 
-\end{figure}\\
-Xcode is Apple's integrated development environment (IDE) essential for iOS app development and simulation. It provides comprehensive tools including iOS simulators, debugging capabilities, and Interface Builder for UI design. While primarily used for native iOS development, it serves as a crucial tool for React Native developers by offering high-fidelity iOS simulation and testing environments. The IDE integrates seamlessly with Apple's development ecosystem, providing essential features like device management, performance profiling, and automated testing capabilities for ensuring iOS app quality.\\
-
-\item[3] Github
-\begin{figure}[h]
-\centering
-\includegraphics[width=.3\columnwidth]{img/SoftInUse/Github.png}
-\caption{Github} 
-\end{figure}\\
-GitHub is a cloud-based platform for version control and collaborative software development using Git. It provides essential features including repository hosting, branch management, pull requests, and issue tracking. The platform enables smooth team collaboration through code review tools, project management features, and continuous integration/deployment capabilities. With its extensive documentation support and robust security features, GitHub serves as a centralized hub for maintaining code quality and managing development \\
-
-\item[4] Figma
-\begin{figure}[h]
-\centering
-\includegraphics[width=.4\columnwidth]{img/SoftInUse/Figma.png}
-\caption{Figma} 
-\end{figure}\\
-Figma is a collaborative web-based interface design tool for creating user interfaces and prototypes. It offers powerful design features including component-based systems, auto-layout, and interactive prototyping capabilities. The platform allows real-time collaboration among designers and developers, streamlining the design-to-development workflow with efficient handoff tools and design system management. With its cloud-based nature and extensive plugin ecosystem, Figma enhances team productivity and ensures consistent design implementation across projects.\\
-
-\item[5] Jira
-\begin{figure}[h]
-\centering
-\includegraphics[width=.6\columnwidth]{img/SoftInUse/Jira.png}
-\caption{Jira} 
-\end{figure}\\
-Jira is an agile project management tool developed by Atlassian that streamlines software development processes. It provides comprehensive features for issue tracking, sprint planning, and workflow customization. The platform offers robust reporting tools, integration capabilities with development tools, and flexible board views for different agile methodologies. With its detailed task management and progress tracking features, Jira enables teams to effectively monitor project progress and maintain development efficiency.\\
-
-
-\item[6] IntelliJ
-\begin{figure}[h]
-\centering
-\includegraphics[width=.3\columnwidth]{img/SoftInUse/Intellij.png}
-\caption{IntelliJ} 
-\end{figure}\\
-IntelliJ IDEA is a comprehensive Java-based integrated development environment (IDE) developed by JetBrains. It offers advanced code analysis, intelligent code completion, and powerful refactoring tools that enhance development productivity. The IDE provides robust debugging capabilities, seamless integration with various frameworks, and extensive plugin support for multiple programming languages. With its smart code navigation and efficient build tools, IntelliJ IDEA accelerates development processes while maintaining code quality and consistency.\\
-
-\item[7] Notion
-\begin{figure}[h]
-\centering
-\includegraphics[width=.3\columnwidth]{img/SoftInUse/Notion.png}
-\caption{Notion} 
-\end{figure}\\
-Notion is a versatile collaborative workspace that unifies note-taking, task management, and documentation tools. The platform excels in organizing information through customizable databases, interconnected pages, and flexible templates. Its all-in-one approach combines wiki-style documentation, project tracking, and team coordination capabilities. With its adaptable interface and cross-platform accessibility, Notion simplifies knowledge sharing and enhances team communication across projects.\\
-
-\item[8] PostgreSQL
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.3\columnwidth]{img/SoftInUse/PostgreSQL.png}
-\caption{PostgreSQL} 
-\end{figure}\\
-PostgreSQL is an advanced open-source relational database management system known for its reliability and data integrity. The system supports complex queries, custom functions, and multi-version concurrency control for efficient data handling. Its architecture enables handling of diverse workloads, from single machines to distributed systems, while maintaining robust security features. With extensive support for SQL standards and scalable performance, PostgreSQL stands as a preferred choice for managing structured data in modern applications.\\
-
-\item[9] Sendbird
-\begin{figure}[h]
-\centering
-\includegraphics[width=.5\columnwidth]{img/SoftInUse/SendBird.jpg}
-\caption{Sendbird} 
-\end{figure}\\
-Sendbird is a cloud-based communication platform that provides real-time chat, voice, and video calling features. It allows developers to integrate rich messaging experiences into mobile and web applications seamlessly. With comprehensive APIs and SDKs, it offers essential functionalities like user management, message threading, read receipts, and push notifications. Sendbird supports high scalability and customization, making it ideal for applications requiring robust communication features, including social networking, e-commerce, and online education platforms.\\
-\end{enumerate}
-
+Azure is a comprehensive cloud computing platform designed to streamline application development, deployment, and management. The platform provides a wide range of services, including virtual machines, databases, and AI tools, enabling scalable and secure solutions. Its resource management capabilities allow seamless integration across hybrid environments, while built-in DevOps tools enhance collaboration and automation.
 \clearpage
 
 \item[3] Task Distribution
@@ -636,16 +567,16 @@ Sendbird is a cloud-based communication platform that provides real-time chat, v
 \clearpage
 
 \begin{enumerate}
-    \item[5.] Sign Up-Preventing Duplicated PhoneNumber
+    \item[5.] Sign\hspace{0.5em}Up-Preventing\hspace{0.5em}Duplicated PhoneNumber
     \begin{figure}[h]
         {\centering
         \hspace{4cm}
         \begin{minipage}{0.4\columnwidth}
-            \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/Sign Up - Preventing Duplicated.png}
+        \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/Sign Up - Preventing Duplicated.png}
             \caption{Sign Up - Preventing Duplicated Phone Number}
         \end{minipage}}
     \end{figure}
-    Registration with duplicate phone numbers must be prevented. Attempting to register with a phone number that is already in use should not be allowed. \\ 
+    \\ Registration with duplicate phone numbers must be prevented. Attempting to register with a phone number that is already in use should not be allowed. \\ 
 \end{enumerate}
 
 \begin{enumerate}
@@ -670,7 +601,7 @@ Sendbird is a cloud-based communication platform that provides real-time chat, v
         {\centering
         \hspace{4cm}
         \begin{minipage}{0.4\columnwidth}
-            \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/Login - Main.png}
+        \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/Login - Main.png}
             \caption{Login-Types}
         \end{minipage}}
     \end{figure}
@@ -770,7 +701,7 @@ Sendbird is a cloud-based communication platform that provides real-time chat, v
         {\centering
         \hspace{4cm}
         \begin{minipage}{0.4\columnwidth}
-            \includegraphics[width=\linewidth]{img/UIdesign/Home - Connect with LG ThinQ.png}
+            \includegraphics[width=\linewidth]{}
             \caption{Import ThinQ}
         \end{minipage}}
     \end{figure}
@@ -815,8 +746,7 @@ Sendbird is a cloud-based communication platform that provides real-time chat, v
             \includegraphics[width=\linewidth,height=7cm]{img/UIdesign/Home - Main-2.png}
             \caption{Entire Chat}
         \end{minipage}}
-    \end{figure}
-    
+    \end{figure}    
     The system should display the main chat room interface that includes all connected appliances. The header section must contain four essential buttons: a chat room selection toggle for switching between different chat rooms, a create chat room button for establishing new chat spaces, a notification button for accessing system alerts, and an others button for additional settings. \\
 \end{enumerate}
 
@@ -883,7 +813,7 @@ Sendbird is a cloud-based communication platform that provides real-time chat, v
 \begin{enumerate}
     \item[11.] Chat-Appliance-Tag
     
-    Users should be able to tag and command home appliances within chat rooms using the "@" symbol (e.g., "@WashingMachine"). The system must provide real-time validation of device availability. \\ \\ \\ \\ \\ \\ \\
+    Users should be able to tag and command home appliances within chat rooms using the ``@" symbol (e.g., ``@WashingMachine"). The system must provide real-time validation of device availability. \\ \\ \\ \\ \\ \\ \\
 \end{enumerate}
 
 \begin{enumerate}
@@ -897,7 +827,7 @@ Sendbird is a cloud-based communication platform that provides real-time chat, v
         \end{minipage}}
     \end{figure}
     
-    Users should be able to communicate with their appliances through voice commands. For example, users can say, "Air conditioner, I'm feeling a bit warm," and receive conversational responses about adjusting the temperature settings. \\
+    Users should be able to communicate with their appliances through voice commands. For example, users can say, ``Air conditioner, I'm feeling a bit warm," and receive conversational responses about adjusting the temperature settings. \\
 \end{enumerate}
 
 \begin{enumerate}
@@ -911,7 +841,7 @@ Sendbird is a cloud-based communication platform that provides real-time chat, v
         \end{minipage}}
     \end{figure}
     
-    The appliance should respond within the chat with a message asking if the user would like to perform the suggested action. There should be small "Confirm" (O) and "Cancel" (X) icons for user approval or rejection. The appliance will only execute the action after the user confirms. \\ 
+    The appliance should respond within the chat with a message asking if the user would like to perform the suggested action. There should be small ``Confirm" (O) and ``Cancel" (X) icons for user approval or rejection. The appliance will only execute the action after the user confirms. \\ 
 \end{enumerate}
 
 \begin{enumerate}
@@ -942,7 +872,7 @@ Sendbird is a cloud-based communication platform that provides real-time chat, v
         {\centering
         \hspace{4cm}
         \begin{minipage}{0.4\columnwidth}
-            \includegraphics[width=\linewidth,height=9cm]{img/UIdesign/Appliance-Lists - Main.png}
+            \includegraphics[width=\linewidth,height=9cm]{img/UIdesign/Appliance-Default.png}
             \caption{Appliances Default}
         \end{minipage}}
     \end{figure}
@@ -1107,9 +1037,426 @@ Sendbird is a cloud-based communication platform that provides real-time chat, v
             \caption{ResultAnalysis-Data }
         \end{minipage}}
     \end{figure}
-        \\ The system must present all interaction data in an organized and easy-to-understand format within the calendar view. Each date with recorded interactions should be clearly marked, and users should be able to view detailed information about the interactions that occurred on any specific date. The interface should allow users to track patterns in their appliance usage and decision-making over time, providing valuable insights into their interaction history. This calendar-based presentation format ensures that users can efficiently review and analyze their past interactions, understanding how the system responded to different situations across various timeframes.\\
+        \\ The system must present all interaction data in an organized and easy-to-understand format within the calendar view. Each date with recorded interactions should be clearly marked, and users should be able to view detailed information about the interactions that occurred on any specific date. The interface should allow users to track patterns in their appliance usage and decision-making over time, providing valuable insights into their interaction history. This calendar-based presentation format ensures that users can efficiently review and analyze their past interactions, understanding how the system responded to different situations across various timeframes. \\ \\ \\ \\ \\ \\ 
     \end{enumerate}
+
+\section{ARCHITECTURE DESIGN}
+\subsection{Overall Architecture}
+
+\begin{figure}[h]
+\centering   
+\includegraphics[width=1\columnwidth]{img/architecture/OA.png}
+\caption{Overall Architecture}
+\end{figure}
+
+\hspace{0.7em} ALIVE is composed of four main modules: the Frontend, the Backend (Main Server), the Chat Server (Sendbird), and the AI Server, each playing a distinct role in delivering a seamless user experience. \\
+
+\hspace{0.7em} The first module “Frontend.”  is built using React-native with TypeScript, JavaScript and serves as the user interface. It allows users to interact with the system by providing features such as data retrieval, input, and chat functionality, while also displaying AI-generated results. The frontend communicates with the backend server via APIs, connects to the chat server using WebSocket or the Sendbird SDK for real-time messaging, and visualizes responses from the AI server. \\
+
+
+\hspace{0.7em} The second module, “Backend (Main Server)”, implemented using Spring Boot and Kotlin, acts as the core processing unit of the system. It manages user authentication, processes chat-related operations such as creating and managing chat rooms, channels, and channel users, and routes requests to the appropriate components like the database, AI server, or chat server. Additionally, it provides APIs to the frontend and ensures smooth data management through integration with Supabase and PostgreSQL for storing user information, logs, and chat-related data. \\
+
+\hspace{0.7em} The third module “Chat Server” powered by Sendbird, facilitates real-time messaging between users. It supports one-on-one and group chats, manages message storage, and provides notifications and user status updates. The chat server connects with the frontend through the Sendbird SDK, ensuring reliable and real-time communication. It also synchronizes chat data with the backend and database as needed. \\ 
+
+The fourth module “AI Server” is implemented using FastAPI. It is deployed on Azure and integrates with OpenAI to provide intelligent responses. Its primary function is to generate contextually appropriate replies tailored for conversations in chat rooms involving smart appliances. By leveraging OpenAI's generative AI, the server ensures that the responses align with the unique interactions and requirements of smart device communication. \\
+
+\subsection{Directory Organization}
+
+\begin{table}[h]
+\caption{DIRECTORY-ORGANIZATION-FRONTEND-1}
+\def\arraystretch{1.24} \small
+    \begin{tabular}{|p{3.7cm}|p{4.1cm}|}
+\hline
+        Directory & File Name \\ \hline
+          ALIVE/frontend/src/app  & \_layout.tsx \par +html.tsx \par +not-found.tsx \par index.tsx 
+          \\ \hline
+          
+          ALIVE/frontend/src/app/ \par (tabs) \par  & \_layout.tsx \par analysis.tsx \par inbox.tsx \par index.tsx \par list.tsx \par profile.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/app/ \par (tabs)/appDetail \par  & appKey.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/app/ \par (tabs)/chat \par  & [channel\_url].tsx \par create\_chat\_name.tsx \par create\_chat\_room.tsx \par index.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/app/ \par (tabs)/exeAnalysis \par  & [exeKey].tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/analysis \par  & ContentBox.tsx \par CustomCalendar.tsx \par DatePickerModal.tsx \par energyCard.tsx \par RecordsList.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/chat \par  & ChatBubble.tsx \par ChatContainer.tsx \par ChatDrawer.tsx \par ChatInput.tsx \par ChatRoomCard.tsx
+          \\ \hline
+
+    \end{tabular}
+\end{table}
+
+\begin{table}[h]
+\caption{DIRECTORY-ORGANIZATION-FRONTEND-2}
+\def\arraystretch{1.24} \small
+    \begin{tabular}{|p{3.7cm}|p{4.1cm}|}
+\hline
+        Directory & File Name \\ \hline
+          ALIVE/frontend/src/ \par components/common \par  & AppBar.tsx \par Bold.tsx \par Button.tsx \par ClickBox.tsx \par DeviceCard.tsx \par InputField.tsx \par Loading.tsx \par ThemedText.tsx \par ThemedView.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/icons \par  & Analysis.tsx \par Bell.tsx \par BellOff.tsx \par DotsCircle.tsx \par Home.tsx \par MoreVertical.tsx \par Plus.tsx \par Profile.tsx \par Sync.tsx \par Wallet.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/icons/devices \par  & AirConditioner.tsx \par AirPurifier.tsx \par Cleaner.tsx \par Dryer.tsx \par Refrigerator.tsx \par Tv.tsx \par WashingMachine.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/list \par  & deviceList.tsx \par ExeLogBox.tsx \par ParticipatingChatRoom.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/login \par  & toggle.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/navigation \par  & TabBarIcon.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/hooks \par  & useColorScheme.ts \par useColorScheme.web.ts \par useLogin.ts \par useModal.ts \par useThemeColor.ts
+          \\ \hline
+          
+          ALIVE/frontend/src/service \par  & auth.service.ts \par axios-instance.ts \par channel.service.ts \par chat.service.ts \par device.service.ts \par message.service.ts
+          \\ \hline
+          
+          ALIVE/frontend/src/stores \par  &   useDeviceStore.ts \par useUserStore.ts
+          \\ \hline
+          
+          ALIVE/frontend/src/types \par  & chat.ts \par device.ts \par icon.ts \par images.d.ts \par record.types.ts 
+          \\ \hline
+          
+          ALIVE/frontend/src/utils \par  & calendar.ts \par date.ts
+          \\ \hline
+    \end{tabular}
+\end{table}
+
+\clearpage
+
+\begin{table}[h!]
+\caption{DIRECTORY-ORGANIZATION-BACKEND}
+\def\arraystretch{1.24} \small
+    \begin{tabular}{|p{3.9cm}|p{4.4cm}|}
+        \hline
+        Directory & File Name \\ \hline
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo & Application.kt  \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par config & AppConfig.kt \par GlobalExceptionHandler.kt \par SecurityConfig.kt \par SendbirdConfig.kt\\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par controller & AuthController.kt \par ChannelController.kt \par DeviceController.kt \par DeviceUsageRecordController.kt \par UserController.kt \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par controller/sendbird & SendbirdChannelController.kt \par SendbirdMessageController.kt \par SendbirdUserController.kt \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par repository & ChannelDeviceRepository.kt \par ChannelRepository.kt \par DeviceRepository.kt \par DeviceUsageRecordRepository.kt \par UserDeviceRepository.kt \par UserRepository.kt \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par service & ChannelService.kt \par DeviceService.kt \par DeviceUsageRecordService.kt \par UserService.kt \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par service/sendbird & SendbirdChannelService.kt \par SendbirdMessageService.kt \par SendbirdUserService.kt \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par model & Channel.kt \par ChannelDevice.kt \par Device.kt \par DeviceCategory.kt \par DeviceUsageRecord.kt \par User.kt \par UserDevice.kt \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par dto & ActionDTO.kt \par LoginRequestDTO.kt \par UserDeviceResponseDTO.kt \\ \hline
+
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par dto/channel & ChannelDTO.kt \par ChannelDeviceDTO.kt \par ChannelResponseDTO.kt \par CreateChannelRequestDTO.kt \\ \hline
+          
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par dto/sendbird &  QueryMessagesRequest.kt \par  SendMessageRequest.kt \par SendbirdChannelCreateRequest.kt \par SendbirdUserCreateRequest.kt \par SendbirdUserCreateResponse.kt
+         \par SendbirdUserInviteRequest.kt \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par dto/user & UserCreateRequestDTO.kt \par UserDTO.kt \par UserInviteRequestDTO.kt \par UserResponseDTO.kt \\ \hline
+
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par exception & DeviceNotFoundInChannel \par Exception.kt\par DeviceNotInProgressException.kt \par UserDeviceNotFoundException.kt \par UserNotFoundException.kt \\ \hline
+
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/util & SendbirdApiHelper.kt \\ \hline
+          
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\caption{DIRECTORY-ORGANIZATION-AI}
+\def\arraystretch{1.24} \small
+    \begin{tabular}{|p{3.9cm}|p{4cm}|}
+\hline
+        Directory & File Name \\ \hline
+          ALIVE/AI \par  & requirements.txt \\ \hline
+          ALIVE/AI/app \par  & \_\_init\_\_.py \par main.py \par retriever.py \\ \hline
+          ALIVE/AI/app/api \par  & routes.py \\ \hline
+          ALIVE/AI/app/data \par  & create\_dataset\_azure.py \par create\_dataset\_openai.py \par dataset.json \par domain\_slots.json  \\ \hline
+          ALIVE/AI/app/helper \par  &  turn\_data\_to\_str.py \\ \hline
+          ALIVE/AI/app/prompts \par  & system\_prompt.txt \par table\_prompt.txt \\ \hline
         
+    \end{tabular}
+\end{table}
+
+
+\subsection{Module 1: Frontend}
+\begin{enumerate}
+    \item Purpose\\
+    The Frontend Module of ALIVE serves as the client-facing interface, enabling users to interact with the system seamlessly. It handles the display of data, user input, and interactions, ensuring a user-friendly experience across devices. Built using modern web technologies, the frontend communicates with the backend, AI server, and chat server to present real-time data, manage user settings, and facilitate smart device interactions within chat rooms. \\ 
+    \item Functionality \\
+    The frontend provides a range of features, including user authentication, profile management, appliance list views, and device usage analysis presented in calendar and card formats. It enables real-time chat functionality for interacting with smart appliances and supports dynamic routing for detailed views such as chat rooms and execution analysis. Additionally, it includes reusable components like buttons, modals, and charts for efficient UI development. Hooks and services are used to manage states and make API calls for authentication, device control, and messaging, ensuring smooth communication with other modules. \\
+    
+    \item Location of source code:\\ https://github.com/SWE-ALIVE/frontend \\
+    \item Class component
+        \item[-] \_layout.tsx : This is the main layout component that wraps the entire application.\\
+        \item[-] +html.tsx : This is a file that defines the HTML template structure.\\
+        \item[-] +not-found.tsx : This is a file that handles 404 error page rendering.\\
+        \item[-] index.tsx : This is the main entry page of the application.\\
+        
+        \item[-] \_layout.tsx : This is a file that defines the layout structure for tabs. \\
+        \item[-] profile.tsx : This is a file for user profile management.\\
+        \item[-] list.tsx : This is a file for displaying appliance list views.\\
+        \item[-] inbox.tsx : This is a file for handling alarm inbox functionality.\\
+        \item[-] analysis.tsx : This is a file for displaying application analysis records in calendar format.\\
+
+        \item[-] appDetail/[appKey].tsx : This is a dynamic route file for showing detailed application information.\\
+        
+        \item[-] [channel\_url].tsx : This is a dynamic route file for chat room functionality.\\
+        
+        \item[-] exeAnalysis/[exeKey].tsx : This is a dynamic route file for execution analysis views.\\
+        \item[-] ContentBox.tsx : This is a component for displaying analysis content in a structured format.\\
+        \item[-] RecordsList.tsx : This is a component for showing records in a list format.\\
+        \item[-] energyCard.tsx : This is a component for displaying energy usage information. \\
+        \item[-] DatePickerModal.tsx : This is a modal component for date selection.\\
+        \item[-] analysisContentBox.tsx : This is a component for displaying analysis content in a structured format.\\
+        \item[-] CustomCalendar.tsx : This is a component that provides calendar functionality.\\
+        
+        \item[-] ChatBubble.tsx : This is a component for displaying chat messages. \\
+        \item[-] ChatDrawer.tsx : This is a drawer component for chat room side bar. \\
+        \item[-] ChatInput.tsx : This is a component for chat message input.\\
+        \item[-] ChatRoomCard.tsx : This is a component for displaying chat room information. \\
+        \item[-] ChatContainer.tsx : This is a container component for chat functionality.\\
+        
+        \item[-] AppBar.tsx : This is a component for the top application bar.\\
+        \item[-] Button.tsx : This is a reusable button component.\\
+        \item[-] InputField.tsx : This is a reusable input field component. \\
+        \item[-] Loading.tsx : This is a component for displaying loading states.\\
+        \item[-] ThemedText/View.tsx : These are components for theme-aware text and view rendering.\\
+    
+        \item[-] Analysis.tsx, Bell.tsx : These are files containing various icon components.\\
+
+        \item[-] devices : This is a folder containing appliance-specific icons.\\
+        \item[-] useColorScheme.ts: This is a hook for managing color scheme preferences. \\
+        \item[-] useLogin.ts: This is a hook for handling login functionality. \\
+        \item[-] useModal.ts: This is a hook for modal state management. \\
+        \item[-] useThemeColor.ts: This is a hook for theme color management.\\
+        \item[-] auth.service.ts: This is a file for authentication-related API calls. \\
+        \item[-] channel.service.ts: This is a file for channel-related API calls. \\
+        \item[-] chat.service.ts: This is a file for chat-related API calls. \\
+        \item[-] device.service.ts: This is a file for device-related API calls. \\
+        \item[-] message.service.ts: This is a file for message-related API calls. \\
+        \item[-] useDeviceStore.ts: This is a file for managing device-related states. \\
+        \item[-] useUserStore.ts: This is a file for managing user-related states. \\
+        \item[-] chat.ts, device.ts, etc.: These are files containing various type definitions. \\
+        \item[-] calendar.ts: This is a file containing calendar-related utilities. \\
+        \item[-] date.ts: This is a file containing date handling utilities.\\
+        
+\end{enumerate}
+
+\subsection{Module 2: Backend}
+\begin{enumerate}
+    \item Purpose\\
+    The backend for ALIVE is responsible for managing the server-side operations and databases. It stores, processes, and manages data generated from user interactions on the client-side application and facilitates the retrieval of necessary information. The backend also ensures seamless communication between the frontend, chat server (Sendbird), and AI server. To implement the backend for ALIVE, we utilized Spring Boot with Kotlin for its modern syntax and compatibility. For data storage, we used Supabase and PostgreSQL, which ensure reliable and efficient data management. \\
+    \item Functionality\\
+    The ALIVE backend processes user requests from the frontend, chat server, or AI server, managing chatrooms, IoT device synchronization, and user settings. It logs actions in the database to ensure traceability and supports device communication, routine automation, and intelligent chat-based interactions. Additionally, it generates reports and synchronizes settings to deliver a seamless and scalable user experience. \\
+    \item Location of source code:\\ https://github.com/SWE-ALIVE/backend \\ \\
+    \item Class component
+        \item[-] Application.kt : Entry point for launching the Spring Boot application. \\
+
+        \item[-] config : Directory for configuration files and classes, such as application settings and beans.\\
+        \item[-] AppConfig.kt : Contains general application-wide configuration and bean definitions.\\
+        \item[-] GlobalExceptionHandler.kt : Handles exceptions globally across the application.\\
+        \item[-] SecurityConfig.kt : Configures security settings, such as authentication and authorization.\\
+        \item[-] SendbirdConfig.kt : Configures integration settings for the Sendbird chat service.\\
+        
+        \item[-] controller : Directory for handling incoming API requests and routing them to the appropriate services.\\
+        \item[-] AuthController.kt : Manages authenticati-\\on-related endpoints, such as login and logout.\\
+        \item[-] ChannelController.kt : Handles endpoints related to channel creation and management.\\
+        \item[-] DeviceController.kt : Manages device-related operations, such as adding or removing IoT devices \\
+        \item[-] DeviceUsageRecordController.kt : Handles endpoints for managing and retrieving device usage records.\\
+        \item[-] UserController.kt : Manages user-related operations, such as profile updates and user information retrieval\\
+        
+        \item[-] service : Contains business logic for handling core application functionality.\\
+        \item[-] ChannelService.kt : Handles business logic for channel management.
+\\
+        \item[-] DeviceService.kt : Manages IoT device-related operations.\\
+        \item[-] DeviceUsageRecordService.kt : Handles Processes device usage records.\\
+        \item[-] UserService.kt : Implements business logic for user management.\\
+        
+        \item[-] repository : Handles database interactions for various entities.\\
+        \item[-] ChannelRepository.kt : Manages data access for channel entities.\\
+        \item[-] ChannelDeviceRepository.kt : Handles data access for channel-device relationships.\\
+        \item[-] DeviceRepository.kt : Manages database operations for IoT devices.\\
+        \item[-] DeviceUsageRecordRepository.kt : Handles data access for device usage records.\\
+        \item[-] UserDeviceRepository.kt : Manages user-device relationships in the database.\\
+        \item[-] UserRepository.kt : Handles database interactions for user entities.\\
+        
+        \item[-] model : Defines the core data entities used throughout the application.\\
+        \item[-] ChannelDevice.kt : Represents the relationship between channels and devices.\\
+        \item[-] DeviceUsageRecord.kt : Represents records of IoT device usage.\\
+        \item[-] UserDevice.kt : Represents the relationship between users and their devices.\\
+
+        \item[-] dto : Contains Data Transfer Objects for handling requests and responses.\\
+        \item[-] ActionDTO.kt : Represents data for specific actions performed by users or devices. \\
+        \item[-] LoginRequestDTO.kt : Handles login request data from clients.\\
+        \item[-] UserDeviceResponseDTO.kt : Represents response data for user-device relationships.\\
+        
+        \item[-] dto/sendbird : Contains Data Transfer Objects specifically for Sendbird API integration.\\
+        \item[-] QueryMessagesRequest.kt : Represents a request to query messages from a Sendbird channel.\\
+        \item[-] SendMessageRequest.kt : Handles data for sending messages to a Sendbird channel. \\
+        \item[-] SendbirdUserCreateRequest.kt : Represents data for creating a new user in Sendbird.\\
+        \item[-] SendbirdUserCreateResponse.kt : Represents the response data after creating a user in Sendbird.\\
+        \item[-] SendbirdUserInviteRequest.kt : Handles data for inviting users to a Sendbird channel.\\
+        
+        \item[-] dto/channel : Contains Data Transfer Objects for managing channel-related operations.\\
+        \item[-] CreateChannelRequestDTO.kt : Handles data for creating a new channel. \\
+        \item[-] ChannelResponseDTO.kt : Represents response data for channel-related requests.\\
+        \item[-] ChannelDeviceDTO.kt : Represents data for devices associated with a channel.\\
+        
+        \item[-] dto/user : Contains Data Transfer Objects for user-related operations. \\
+        \item[-] UserCreateRequestDTO.kt : Handles data for creating a new user.\\
+        \item[-] UserResponseDTO.kt : Represents response data for user-related requests.\\
+        \item[-] UserInviteRequestDTO.kt : Handles data for inviting a user to a specific channel or group.\\
+        
+        \item[-] exception : Contains custom exceptions for handling application-specific errors.\\
+        \item[-] DeviceNotFoundInChannel : Thrown when a device is not found in the specified channel. \\
+        \item[-] Exception.kt : Base class for defining custom exceptions in the application.\\
+        \item[-] DeviceNotInProgressException.kt : Thrown when a device is not in a valid progress state.\\
+        \item[-] UserDeviceNotFoundException.kt : Thrown when a user-device relationship is not found. \\
+        \item[-] UserNotFoundException.kt : Thrown when the specified user is not found.\\
+        
+        \item[-] util : Contains utility classes and helpers for reusable functionality. \\
+        \item[-] SendbirdApiHelper.kt : Provides helper functions for interacting with the Sendbird API.\\
+        
+\end{enumerate}
+
+\subsection{Module 3: AI}
+\begin{enumerate}
+    \item Purpose\\
+    The AI module serves as the core of intelligent interactions within the ALIVE system. Its primary purpose is to process user inputs, generate context-aware responses, and handle dataset creation and interaction with AI models. By leveraging technologies such as FastAPI, Azure, and OpenAI, the AI module ensures real-time communication and provides dynamic, personalized outputs to enhance the user experience. \\
+    \item Functionality\\
+    The AI module interacts with the backend to process requests and utilizes OpenAI models to generate tailored, context-aware responses. It supports dataset creation using Azure and OpenAI APIs, manages predefined AI prompt templates, and handles natural language processing tasks. Additionally, it provides utilities for data preprocessing and model input preparation, ensuring efficient integration of AI services within the system. \\
+    \item Location of source code:\\ https://github.com/SWE-ALIVE/AI \\
+    \item Class component
+        
+        \item[-] app : Core application logic, including the entry point.\\
+        \item[-] \_\_init\_\_.py : Initializes the app package for the AI server.\\
+        \item[-] main.py : Serves as the entry point for the FastAPI server, defining the application’s startup configuration.\\
+        \item[-] retriever.py : Implements logic for retrieving and processing data, such as querying data sources or preparing input for AI models.\\
+        \item[-] routes.py : Defines the API endpoints for the AI server, managing requests and responses for client interactions.\\
+        
+        \item[-] app/data : Scripts and files for dataset creation and management.\\
+        \item[-] create\_dataset\_azure.py : Generates datasets by interacting with Azure services.\\
+        \item[-] create\_dataset\_openai.py : Creates datasets using OpenAI APIs for training or inference.\\
+        \item[-] dataset.json : Stores preprocessed dataset information used by the AI server.\\
+        \item[-] domain\_slots.json : Contains slot information for domain-specific AI interactions, helping structure conversational data.\\
+        
+        \item[-] app/helper : Utilities for data preprocessing.\\
+        \item[-] turn\_data\_to\_str.py : A utility script to convert structured data into string format, facilitating easier processing or integration with models.\\
+        
+        \item[-] app/prompts : Predefined templates for AI prompts.\\
+        \item[-] system\_prompt.txt : Stores the base system prompt for guiding AI interactions.\\
+        \item[-] table\_prompt.txt : A predefined prompt template tailored for interpreting or generating table-based outputs.\\
+\end{enumerate}
+
+
+\section{AI SPECIFICATION}
+
+\subsection{In-Context Learning for Few-Shot Dialogue State Tracking(ICL-DST)}
+
+\begin{itemize}
+    \item [1)] Introduction \\
+Dialogue State Tracking (DST) is a crucial component in dialogue systems, responsible for tracking user requirements and determining subsequent actions. Traditional DST approaches require retraining the model each time a new domain is added, leading to high costs and inefficiency. To address these challenges, ICL-DST introduces a zero-shot and few-shot learning framework that leverages In-Context Learning by incorporating in-context examples into a pre-trained language model, enabling flexible prediction of dialogue states across new domains. \\ 
+\end{itemize}
+
+\begin{itemize}
+    \item [2)] DST System Design \\
+The ICL-DST system is designed to handle multi-domain scenarios, enabling the tracking and prediction of dialogue states for each domain. Each domain, such as user-appliance interactions or appliance-appliance communications, has a predefined set of slots like "appliance-name" or "appliance-status". The dialogue state is represented as a set of slot-value pairs, potentially spanning multiple domains. \\
+\end{itemize}
+
+\begin{itemize}
+    \item [3)] DST Task Framing \\
+Dialogue consists of a series of turns alternating between user utterances and system responses. The DST task is to predict the current dialogue state at each turn based on the dialogue context. The dialogue state is represented as a set of slot-value pairs and can include slots and values from multiple domains. To mitigate data sparsity in few-shot learning, state changes occurring at each turn are used as labels for prediction. \\ 
+\end{itemize}
+
+\begin{itemize}
+    \item [4)] DST as Text-to-SQL \\
+ICL-DST transforms DST into a Text-to-SQL problem by representing dialogue states in SQL format. Each domain is defined as a table, and each slot is defined as a column. All slots and values are included in the \texttt{WHERE} clause. For turns involving multiple domains, each domain is renamed accordingly. This approach aligns well with Azure's OpenAI GPT-4o-mini, enhancing the effectiveness of state prediction. \\
+\end{itemize}
+
+\begin{itemize}
+    \item [5)] Dialogue Context Representation \\
+Instead of including the entire dialogue history, only the most recent \( N \) turns are considered. ICL-DST leverages the fact that the dialogue state is a summary of the dialogue history by representing the dialogue context as \( [y_{t-1}, A_t, U_t] \), where \( y_{t-1} \) denotes the accumulated dialogue state after the previous user turn. \\
+\end{itemize}
+
+\begin{itemize}
+    \item [6)] In-Context Learning \\
+In-Context Learning (ICL) involves keeping the parameters of a pre-trained language model fixed and providing a prompt that includes task descriptions, examples, and test instances. This allows the model to learn patterns within the dialogue context without requiring additional training. By structuring the dialogue state in SQL format, the model can effectively predict the dialogue state based on this representation. \\
+\end{itemize}
+
+\begin{itemize}
+    \item [7)] Schema Prompting \\
+To represent the dialogue schema within the prompt, SQL tables are used for each domain. Each table consists of rows for slot names and example values associated with each slot. For slots with many possible values, only a few example values are listed to maintain prompt efficiency. In experiments, SQL tables for all domains are generated and concatenated to form part of the input. \\ 
+\end{itemize}
+
+\begin{itemize}
+    \item [8)] In-Context Examples \\
+In few-shot scenarios, a retriever system takes the dialogue context \( [y_{t-1}, A_t, U_t] \) as input and retrieves similar examples from a labeled training set. Using the dialogue state \( y_{t-1} \) instead of the full dialogue history allows for shorter inputs, enabling the inclusion of more examples and more effective similarity scoring. In zero-shot scenarios, in-context examples are formatted as example turns. \\
+\end{itemize}
+
+\begin{itemize}
+    \item [9)] Dialogue Retriever \\
+The success of ICL in few-shot environments heavily depends on the quality of in-context examples. ICL-DST extends retrieval to encompass the entire dialogue history by utilizing embedding models like S-BERT to compute the similarity of dialogue states. This allows for the effective extraction of relevant example dialogues that exhibit similar state changes, ensuring accurate state prediction. \\
+\end{itemize}
+
+\subsection{Dataset}
+
+We created a custom dataset for appliance conversations using Azure OpenAI: GPT-4-mini, following the structure of the well-known multiWOZ dataset. The dataset is specifically designed to suit interactions between smart appliances while maintaining the schema and format of multiWOZ. \\
+
+\begin{itemize} 
+    \item [1)] Dataset Creation Conditions
+    \begin{enumerate}
+        \item Each dialogue involves at least one and up to three appliances participating in the conversation.
+        \item OpenAI's structured output functionality was utilized to ensure the dataset adheres to a consistent JSON format. \\
+    \end{enumerate}
+\end{itemize}
+
+
+\begin{itemize}
+    \item [2)] Dataset Volume
+    \begin{enumerate}
+    \item A total of 1,000 dialogues were generated, far exceeding the 80 dialogues that are considered sufficient for many research applications.
+    \item This larger volume addresses potential accuracy concerns arising from automated generation, providing robustness through diversity and scale. \\
+    \end{enumerate}
+\end{itemize}
+
+
+\begin{itemize}
+    \item [3)] Comparison with multiWOZ
+    \begin{enumerate}
+    \item The multiWOZ dataset was manually curated, ensuring high accuracy for its dialogues. However, its design is tailored for human-to-human or human-to-machine interactions.
+    \item In contrast, our dataset is adapted specifically for appliance-to-appliance and appliance-to-human interactions, replicating multiWOZ’s structural principles while introducing scenarios unique to smart home environments.
+    \item By focusing on quantity and domain-specific relevance, we offset any limitations from the automated generation process, ensuring the dataset remains effective and practical for AI training. \\
+    \end{enumerate}
+\end{itemize}
+
+This approach ensures the dataset is not only scalable but also tailored to the unique needs of smart home technology, bridging the gap between manual curation and large-scale automation.
+
+
+
+\section{APPENDIX}
+
+\label{app: Database Entity Relationship Diagram}
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=1.9\columnwidth]{img/architecture/erd.png}
+    \label{fig}
+    \caption{Database Entity Relationship Diagram}
+    \end{figure}
+
+\clearpage
 
 \begin{thebibliography}{9}
 \bibitem{opensurvey}“opensurvey,"https://blog.opensurvey.co.kr/trendreport/smart-home-2023/, 2023.
