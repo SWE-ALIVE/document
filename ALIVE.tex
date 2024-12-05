@@ -64,7 +64,7 @@ cats5565@hanyang.ac.kr}
 
 
 \begin{abstract}
-Smart home provides automated control and convenience in home environments. Although smart homes have improved convenience in daily life, their rigid and uniform structures limit customization and integration of diverse information sources, leading to passive and inflexible management systems. We propose a new multi-turn AI based Chat Room system, Alive, which enables users to manage and control home appliances. With Alive, users can register home appliances directly or import them from compatible apps, allowing them to create custom chat rooms for seamless device management. Through our appliance chat rooms, users can identify the most suitable appliances for specific situations and execute them simultaneously, simplifying the process of smart home control. Users can efficiently manage and control their appliances at any time through the chat interface. Furthermore, we've integrated a human feedback mechanism to improve the system. Users can evaluate their experience after the end of process, providing valuable insights for continuous enhancement of the application. This data is systematically stored and utilized for learning and refining the system's performance. Alive represents a significant step forward in smart home technology, addressing the need for more flexible, user-centric solutions in the evolving landscape of home automation.
+Smart home provides automated control and convenience in home environments. Although smart homes have improved convenience in daily life, their rigid and uniform structures limit customization and integration of diverse information sources, leading to passive and inflexible management systems. We propose a new multi-chat AI based Chat Room system, Alive, which enables users to manage and control home appliances. With Alive, users can register home appliances directly or import them from compatible apps, allowing them to create custom chat rooms for seamless device management. Through our appliance chat rooms, users can identify the most suitable appliances for specific situations and execute them simultaneously, simplifying the process of smart home control. Users can efficiently manage and control their appliances at any time through the chat interface. Alive represents a significant step forward in smart home technology, addressing the need for more flexible, user-centric solutions in the evolving landscape of home automation.
 \end{abstract}
 
 % Role Assignment
@@ -96,13 +96,15 @@ Smart home provides automated control and convenience in home environments. Alth
 \end{tabular}
 \end{table}
 
+\clearpage
+    
 % Introduction 시작
 \section{INTRODUCTION}
 
 \subsection{Motivation}
 
 \begin{itemize}
-    \item [1)] The Advancement of AI Technology and the Rise of Multi-chat Systems 
+    \item [1)] The Advancement of AI Technology
 \end{itemize}
      \hspace{0.5em} Artificial intelligence technology has been developing at an astonishing rate over the past few years. In 2016, Google DeepMind's AlphaGo defeating the world's top Go player marked the beginning of the AI era. Since then, AI technology has become even more sophisticated, with the release of OpenAI's ChatGPT in late 2022 ushering in the era of generative AI. ChatGPT reached 1 million users within a week of its launch and saw explosive growth, surpassing 100 million active users in just two months.
 
@@ -520,7 +522,19 @@ ChatGPT is an AI-powered API that integrates generative AI capabilities into app
     \caption{Azure}
 \end{minipage}
 \end{figure} \\
-Azure is a comprehensive cloud computing platform designed to streamline application development, deployment, and management. The platform provides a wide range of services, including virtual machines, databases, and AI tools, enabling scalable and secure solutions. Its resource management capabilities allow seamless integration across hybrid environments, while built-in DevOps tools enhance collaboration and automation.
+Azure is a comprehensive cloud computing platform designed to streamline application development, deployment, and management. The platform provides a wide range of services, including virtual machines, databases, and AI tools, enabling scalable and secure solutions. Its resource management capabilities allow seamless integration across hybrid environments, while built-in DevOps tools enhance collaboration and automation. \\ 
+
+\item[13.] Amazon Web Services (AWS)
+\begin{figure}[h]
+\hspace{1cm}
+\centering
+\begin{minipage}{0.5\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/AWS.jpg}
+    \caption{Amazon Web Services (AWS)}
+\end{minipage}
+\end{figure}\\
+Amazon Web Services (AWS) is a comprehensive cloud computing platform developed by Amazon, offering a wide range of on-demand computing services and APIs to individuals, companies, and governments. It provides scalable and reliable solutions for application hosting, data storage, machine learning, and DevOps workflows. AWS's extensive global infrastructure supports high availability and low latency, while services like EC2, S3, and Lambda cater to diverse development needs. Its robust security features and pay-as-you-go pricing model make it an optimal choice for building and deploying scalable, cost-effective applications across various industries.
+
 \clearpage
 
 \end{enumerate}
@@ -950,7 +964,7 @@ Azure is a comprehensive cloud computing platform designed to streamline applica
 \end{minipage}
 \end{figure} \\
 
-    When users activate the sync button, the system should initiate synchronization with ThinQ services and the application list in the internal app to update the appliance list. Upon successful synchronization of new devices, the system must automatically add them to the entire chat room and display a welcome message in the format ``Appliance [Name] joined default chat room". The synchronization process should show a clear progress indicator and confirmation of completion or any errors encountered.
+    When users activate the sync button, the system should initiate synchronization with ThinQ services and the application list in the internal app to update the appliance list. Upon successful synchronization of new devices, the system must automatically add them to the entire chat room and display a welcome message in the format ``Appliance [Name] joined default chat room". The synchronization process should show a clear progress indicator and confirmation of completion or any errors encountered. \\
 \end{enumerate}
 
 \begin{enumerate}
@@ -1100,7 +1114,7 @@ Azure is a comprehensive cloud computing platform designed to streamline applica
 
 \begin{figure}[h]
 \centering   
-\includegraphics[width=1\columnwidth]{img/architecture/OA.png}
+\includegraphics[width=0.9\columnwidth]{img/architecture/OverallArchitecture.png}
 \caption{Overall Architecture}
 \end{figure}
 
@@ -1129,7 +1143,7 @@ Azure is a comprehensive cloud computing platform designed to streamline applica
           ALIVE/frontend/src/app/ \par (tabs) \par  & \_layout.tsx \par analysis.tsx \par inbox.tsx \par index.tsx \par list.tsx \par profile.tsx
           \\ \hline
           
-          ALIVE/frontend/src/app/ \par (tabs)/appDetail \par  & appKey.tsx
+          ALIVE/frontend/src/app/ \par (tabs)/appDetail \par  & [appKey].tsx
           \\ \hline
           
           ALIVE/frontend/src/app/ \par (tabs)/chat \par  & [channel\_url].tsx \par create\_chat\_name.tsx \par create\_chat\_room.tsx \par index.tsx
@@ -1150,7 +1164,7 @@ Azure is a comprehensive cloud computing platform designed to streamline applica
     \begin{tabular}{|p{3.7cm}|p{4.1cm}|}
 \hline
         Directory & File Name \\ \hline
-          ALIVE/frontend/src/app/ \par (tabs)/exeAnalysis \par  & [exeKey].tsx
+          ALIVE/frontend/src/app/ \par (tabs)/exeAnalysis & [exeKey].tsx
           \\ \hline
           
           ALIVE/frontend/src/ \par components/common \par  & AppBar.tsx \par Bold.tsx \par Button.tsx \par ClickBox.tsx \par DeviceCard.tsx \par InputField.tsx \par Loading.tsx \par ThemedText.tsx \par ThemedView.tsx
@@ -1165,10 +1179,10 @@ Azure is a comprehensive cloud computing platform designed to streamline applica
           ALIVE/frontend/src/ \par components/list \par  & deviceList.tsx \par ExeLogBox.tsx \par ParticipatingChatRoom.tsx
           \\ \hline
           
-          ALIVE/frontend/src/ \par components/login \par  & toggle.tsx
+          ALIVE/frontend/src/ \par components/login  & toggle.tsx
           \\ \hline
           
-          ALIVE/frontend/src/ \par components/navigation \par  & TabBarIcon.tsx
+          ALIVE/frontend/src/ \par components/navigation  & TabBarIcon.tsx
           \\ \hline
           
           ALIVE/frontend/src/hooks \par  & useColorScheme.ts \par useColorScheme.web.ts \par useLogin.ts \par useModal.ts \par useThemeColor.ts
@@ -1183,8 +1197,12 @@ Azure is a comprehensive cloud computing platform designed to streamline applica
           ALIVE/frontend/src/types \par  & chat.ts \par device.ts \par icon.ts \par images.d.ts \par record.types.ts 
           \\ \hline
           
+          ALIVE/frontend/src/constant \par  & color.constant.ts \par device.constant.ts \par typography.constant.ts
+          \\ \hline
+          
           ALIVE/frontend/src/utils \par  & calendar.ts \par date.ts
           \\ \hline
+          
     \end{tabular}
 \end{table}
 
@@ -1336,6 +1354,9 @@ Azure is a comprehensive cloud computing platform designed to streamline applica
         \item[-] useDeviceStore.ts: This is a file for managing device-related states. \\
         \item[-] useUserStore.ts: This is a file for managing user-\\related states. \\
         \item[-] chat.ts, device.ts, etc.: These are files containing various type definitions. \\
+        \item[-] colors.constant.ts : This is a file containing color-\\related constants and theme definitions.\\
+        \item[-] devices.constant.ts : This is a file containing device\\-related types.\\
+        \item[-] typography.constant.ts : This is a file containing typography-related constants like font sizes, weight\\s, and styles.\\
         \item[-] calendar.ts: This is a file containing calendar-related utilities. \\
         \item[-] date.ts: This is a file containing date handling utilities.\\
         
@@ -1417,7 +1438,6 @@ Azure is a comprehensive cloud computing platform designed to streamline applica
         \item[-] ContextDTO.kt : Represents the context information used throughout the application's conversational processes.\\
         \item[-] DialogRequest.kt : Represents requests related to in\\itiating or managing dialogs within the application. \\
         
-        \item[-] dto/user : Contains Data Transfer Objects for user-\\related operations. \\
         \item[-] UserCreateRequestDTO.kt : Handles data for crea-\\ting a new user.\\
         \item[-] UserInviteRequestDTO.kt : Handles data for invi-\\ting a user to a specific cha
         nnel or group.\\
@@ -1472,7 +1492,7 @@ Azure is a comprehensive cloud computing platform designed to streamline applica
         
         \item[-] app/prompts : Predefined templates for AI prompts.\\
         \item[-] system\_prompt.txt : Stores the base system prompt for guiding AI interactions.\\
-        \item[-] table\_prompt.txt : A predefined prompt template tailored for interpreting or generating table-based outputs. \\ \\ \\ \\ \\ \\ \\
+        \item[-] table\_prompt.txt : A predefined prompt template tailored for interpreting or generating table-based outputs. \\
 \end{enumerate}
 
 \section{USE CASE}
@@ -1754,7 +1774,7 @@ The ICL-DST system is designed to handle multi-domain scenarios, enabling the tr
 
 \begin{itemize}
     \item [2)] DST as Text-to-SQL \\
-ICL-DST transforms DST into a Text-to-SQL problem by representing dialogue states in SQL format. Each domain is defined as a table, and each slot is defined as a column. All slots and values are included in the \texttt{WHERE} clause. For turns involving multiple domains, each domain is renamed accordingly. This approach aligns well with Azure's OpenAI GPT-4o-mini, enhancing the effectiveness of state prediction. \\
+ICL-DST transforms DST into a Text-to-SQL problem by representing dialogue states in SQL format. Each domain is defined as a table, and each slot is defined as a column. All slots and values are included in the \texttt{WHERE} clause. For turns involving multiple domains, each domain is renamed accordingly. This approach aligns well with Azure's OpenAI GPT-4o, enhancing the effectiveness of state prediction. \\
 \end{itemize}
 
 \begin{itemize}
@@ -1801,6 +1821,15 @@ This approach ensures the dataset is not only scalable but also tailored to the 
 
 \subsection{Methodology}
 
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.8\columnwidth}
+    \includegraphics[width=\linewidth]{img/AI/methodology.png}
+    \caption{\\ ALIVE ICL-DST Architecture }
+\end{minipage}
+\end{figure}
+
 Our approach is based on the principles of In-Context Learning for Dialogue State Tracking (IC-DST). By leveraging labeled examples and pre-trained models, we dynamically generate SQL queries and provide natural language responses to user inputs. The process can be summarized as follows: \\
     
 \begin{enumerate}
@@ -1825,7 +1854,7 @@ Our approach is based on the principles of In-Context Learning for Dialogue Stat
 
 \item[4.] Using Pre-trained Model for Completion
 \begin{itemize}
-    \item[1)] A pre-trained model, such as CodeGen, is used to process the prompt and generate SQL queries and natural language responses.
+    \item[1)] A pre-trained model, such as CodeGen, GPT-4o is used to process the prompt and generate SQL queries and natural language responses.
     \item[2)] The model's inference aligns with the dialogue context and examples provided. \\
 \end{itemize} 
 
@@ -1850,7 +1879,7 @@ In our approach, we utilize two distinct configurations of GPT-4o: GPT-4o-mini a
     
 \end{enumerate}
 
-Our use of these two configurations aligns with the methodology outlined in the IC-DST paper, where separate models or configurations are strategically employed to optimize different stages of the workflow. GPT-4o-mini facilitates the creation of robust and efficient training data, while GPT-4o ensures the system generates accurate and context-aware outputs during real-time inference. \\ \\ \\ \\ \\ \\ \\
+Our use of these two configurations aligns with the methodology outlined in the IC-DST paper, where separate models or configurations are strategically employed to optimize different stages of the workflow. GPT-4o-mini facilitates the creation of robust and efficient training data, while GPT-4o ensures the system generates accurate and context-aware outputs during real-time inference. \\ 
 
 \subsection{Prompt Examples}
 
@@ -1909,6 +1938,8 @@ CREATE TABLE air_conditioner(
     \includegraphics[width=\linewidth]{img/AI/air_conditioner.jpg}
 \end{minipage}
 \end{figure}
+
+\clearpage
 
 \subsection*{Air Purifier}
 \begin{lstlisting}
@@ -2008,7 +2039,8 @@ Before any appliance function is executed, the power must be turned on first. \\
 \begin{enumerate}
     \item [1)] Limitations in Dataset Quality 
 \end{enumerate}
-    \hspace{0.3em} One of the technical difficulties encountered was the use of machine-generated conversation datasets rather than human-curated and validated datasets such as MultiWOZ. As a result, the quality of the dialogues was somewhat suboptimal, potentially impacting the overall performance and user experience. In the future, integrating user-generated data from ChatThinQ could significantly improve the quality of conversations, leading to more robust and realistic results. \\
+    \hspace{0.3em} 
+One of the significant challenges we encountered was the limitation of the existing MultiWoz 2.2 dataset, which did not encompass the specific domains required for our app. To address this, we generated a custom dataset using a large language model (LLM) to create initial data samples. Afterward, we conducted a manual labeling process to assign appropriate labels to the data and performed thorough human review to ensure its quality and accuracy. However, this workflow was time-consuming and labor-intensive, highlighting the need for an automated pipeline to streamline the dataset creation, labeling, and validation process. In the future, we aim to utilize ChatThinQ's user data to build an automated system that can dynamically generate and refine datasets tailored to specific domains. \\
 \begin{enumerate}
     \item [2)]  Simplifying Actions with Routine Integration
 \end{enumerate}
