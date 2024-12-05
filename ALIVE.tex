@@ -1,0 +1,2071 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{enumitem}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{xeCJK} % 한국어와 중국어 지원
+\usepackage{xcolor} % (선택 사항) 색상 설정
+\usepackage{caption}
+\usepackage[english]{babel} % 언어에 맞는 하이픈 처리
+\usepackage{microtype}      % 자동 간격 및 하이픈 조정
+\usepackage[justification=centering]{caption}
+\setlength{\parindent}{1em}  % 문단 들여쓰기 설정
+
+\begin{document}
+    
+\title{ALIVE\\{\large
+ AI-driven multi-chat system for Intuitive Smart Home Management
+ }
+}
+
+% Team Member 소개
+\author{\IEEEauthorblockN{Jun Seong Pyo}
+\IEEEauthorblockA{\textit{College of Engineering} \\
+\textit{Hanyang University}\\
+\textit{Dept.of Information Systems}\\
+Seoul, Korea \\
+standardstar@hanyang.ac.kr}
+
+\and
+
+\IEEEauthorblockN{Byeong Hyun Yang}
+\IEEEauthorblockA{\textit{College of Engineering} \\
+\textit{Hanyang University}\\
+\textit{Dept.of Information Systems}\\
+Seoul, Korea \\
+zxvm5962@hanyang.ac.kr}
+
+\and
+
+\IEEEauthorblockN{Dong Hun Kang}
+\IEEEauthorblockA{\textit{College of Engineering} \\
+\textit{Hanyang University}\\
+\textit{Dept.of Information Systems}\\
+Seoul, Korea \\
+kdu3840@hanyang.ac.kr}
+
+\and
+
+\IEEEauthorblockN{Hye Jin Bae}
+\IEEEauthorblockA{\textit{College of Engineering} \\
+\textit{Hanyang University}\\
+\textit{Dept.of Information Systems}\\
+Seoul, Korea \\
+cats5565@hanyang.ac.kr}
+}
+
+\maketitle
+
+
+\begin{abstract}
+Smart home provides automated control and convenience in home environments. Although smart homes have improved convenience in daily life, their rigid and uniform structures limit customization and integration of diverse information sources, leading to passive and inflexible management systems. We propose a new multi-turn AI based Chat Room system, Alive, which enables users to manage and control home appliances. With Alive, users can register home appliances directly or import them from compatible apps, allowing them to create custom chat rooms for seamless device management. Through our appliance chat rooms, users can identify the most suitable appliances for specific situations and execute them simultaneously, simplifying the process of smart home control. Users can efficiently manage and control their appliances at any time through the chat interface. Furthermore, we've integrated a human feedback mechanism to improve the system. Users can evaluate their experience after the end of process, providing valuable insights for continuous enhancement of the application. This data is systematically stored and utilized for learning and refining the system's performance. Alive represents a significant step forward in smart home technology, addressing the need for more flexible, user-centric solutions in the evolving landscape of home automation.
+\end{abstract}
+
+% Role Assignment
+\begin{table}[h] \\
+\caption{Role Assignments}
+\def\arraystretch{1.24} \small
+
+\begin{tabular}{|p{1.5cm}|p{1.2cm}|p{4.9cm}|}
+    \hline
+    Roles & Name & Task description and etc. \\ 
+    \hline
+    User, \par Customer,\par Development \par manager & Pyo \par Jun Seong & Users/customers consider what features should be added from the perspective of users or customers. They think about what needs exist and what solutions could address these needs.
+    The Development Manager takes charge of the project's comprehensive elements, including timeline creation, strategic planning, and maintaining the quality standards of products and services. Furthermore, they ensure a thorough understanding of user specifications and oversee the complete software engineering lifecycle, encompassing phases such as design, implementation, and quality assurance testing.\\
+    \hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\def\arraystretch{1.24} \small 
+
+\begin{tabular}{|p{1.5cm}|p{1.2cm}|p{4.9cm}|}
+    \hline
+    AI \par Developer & Yang \par Byeong Hyun & AI developers create customized programs tailored to business needs based on collected and analyzed data. In this service, they build AI systems that present various scenarios using users' historical data and user requirements. Specifically, they apply multi-chat system to provide accurate and personalized responses to user requirements. AI developers are responsible for the design, development, implementation, and monitoring of the entire AI system, focusing on building efficient data collection and transformation architectures.  \\ 
+    \hline
+    Software \par Developer \par(Back-end) & Kang \par Dong hun & Software developers (backend) design and manage server-side infrastructure and database systems required for project development. This includes building and maintaining robust backend solutions that support the capabilities of web and mobile applications, and ensuring seamless integration with front-end components. This includes database operations, efficient query generation, and API endpoint implementation. It also involves leveraging Java, Kotlin, and Spring programming languages to develop scalable and maintainable systems that meet the requirements of the project. \\ 
+    \hline
+    Software \par Developer\par(Front-end) & Bae \par Hye jin & Software Developers (Front-end) are responsible for designing and implementing the overall UI/UX of applications to create exceptional user experiences. They craft visual layouts and interactive elements, ensuring interfaces are aesthetically pleasing, intuitive, and user-friendly. Using tools like Figma, they create and refine designs, which they then implement using technologies such as React-Native, TypeScript, and CSS. The role involves creating responsive interfaces, optimizing performance, and ensuring accessibility throughout the development process.\\ 
+    \hline
+\end{tabular}
+\end{table}
+
+% Introduction 시작
+\section{INTRODUCTION}
+
+\subsection{Motivation}
+
+\begin{itemize}
+    \item [1)] The Advancement of AI Technology and the Rise of Multi-chat Systems 
+\end{itemize}
+     \hspace{0.5em} Artificial intelligence technology has been developing at an astonishing rate over the past few years. In 2016, Google DeepMind's AlphaGo defeating the world's top Go player marked the beginning of the AI era. Since then, AI technology has become even more sophisticated, with the release of OpenAI's ChatGPT in late 2022 ushering in the era of generative AI. ChatGPT reached 1 million users within a week of its launch and saw explosive growth, surpassing 100 million active users in just two months.
+
+    \hspace{0.5em} In 2023, GPT-4 was released, showcasing even more advanced features. GPT-4 evolved into a multimodal model that can simultaneously process various input data such as text, images, audio, and video, utilizing a dataset about 500 times larger than its previous model. These advancements reflect a broader trend in AI development, where the technology is moving beyond simple content generation to more complex, interactive, and adaptive capabilities.
+    
+    \hspace{0.5em} The future of the AI industry points to evolve from generative models to autonomous systems, where multiple systems collaborate, think, and learn independently. This evolution will likely lead to the integration of multiple systems within the Artificial Intelligence of Things (AIoT), which combines AI and the Internet of Things (IoT), and is expected to spread to various industries, centered around manufacturing. \\
+\begin{itemize}
+    \item [2)] IoT Technology Market Trends and the Current Status of Smart Homes
+\end{itemize}
+    \hspace{0.5em} The spread of IoT technology is dramatically changing all aspects of daily life, with `smart homes' being a prime example. In smart homes, home appliances and various devices are interconnected via the internet, allowing users to control them remotely and automate daily tasks.  The smart appliance market continues to grow rapidly, fueled by increasing consumer interest in convenience, energy efficiency, and personalized living environments. 
+
+    \hspace{0.5em} Despite widespread awareness and adoption of smart home devices, many users are not fully utilizing their potential. Over Half of users (53.1\%) still rely on basic functions like power control and status monitoring, while advanced capabilities such as automation or device interlinking remain underutilized. This indicates a gap between the technology's capabilities and how users engage with it, suggesting a need for more intuitive interfaces and seamless integration to encourage deeper interaction.
+    
+    \hspace{0.5em} As smart home technology continues to evolve, there is a growing opportunity to move beyond simple control features and offer more intelligent, adaptive experiences that anticipate users' needs. The next step for smart homes involves leveraging AI to enable dynamic collaboration among devices, creating environments that actively respond to user behavior and preferences.
+    
+    \hspace{0.5em} Our team's goal is to push the boundaries of smart home technology by advancing from passive AI systems to dynamic and intelligent interactions. We aim to deliver optimal results for users by implementing the ability for smart devices to communicate with each other using Large Language Models (LLMs). Through this solution, we aim to address the current gap between the potential of smart home technology and its real-world use to increase access and smoothness to advanced automation, ultimately improving the daily life experience of individual users.
+
+
+\subsection{Problem Statement}
+\begin{itemize}
+    \item [a.] Need for improved Customization and Differentiated User Experience \\ \\
+    According to the Smart Home Trend Report 2023, major dissatisfaction factors for smart home appliances include `lack of additional functions when using devices in conjunction'. The response `lack of additional functions when using devices in conjunction' suggests that users are not fully utilizing the functions of smart home appliances. In fact, while smart appliances offer various functions through applications, customer satisfaction is declining as users fail to effectively utilize these functions. This indicates the need for improved Customization and User Experience so that users can effectively use them. \\ 
+    
+    \item [b.] Limited and Uniform Scenarios \\ \\ 
+    While the current routine functions of smart appliances are useful for automating users' daily patterns, they have limitations in responding to complex and diverse real-life scenarios. For example, in situations with many variables such as sudden weather changes, pre-set routines alone are insufficient for appropriate responses. Moreover, it's difficult to flexibly handle complex interactions between various appliances or immediate changes in user demands. Therefore, for a truly smart home solution, more advanced technologies such as real-time situation awareness and machine learning are needed. This requires the development of intelligent systems that can understand users' living patterns more deeply and respond according to the situation. \\
+    
+    \item [c.] Limitations of Passive and Individual Management \\ \\
+    Despite being labeled as `smart', current smart home appliances still heavily rely on passive and individual management by users. In most cases, users need to adjust settings for each device separately and make judgments and decisions for various situations directly. For example, user intervention is required in many aspects such as adjusting the air conditioner's temperature, selecting the washing machine's cycle, or setting the robot vacuum's cleaning schedule. Furthermore, even in routine settings, users have to perform logical structure design themselves, which can lead to logical errors. This indicates that the focus is on the independent operation of each device rather than on device interconnection and overall home environment optimization.\\
+    
+    \item [d.] Lack of Information Integration \\ \\ 
+    Smart home applications individually offer rich features and information. Each app provides useful data such as energy usage monitoring, device status checks, and even general lifestyle information. However, these diverse information and functions are not connected into a single integrated system, which limits the user experience. As a result, users must open each section separately to check information and make their own judgments to decide on their next actions based on this information. This hinders the convenience and efficiency of smart homes, causing users the inconvenience of having to manually integrate and analyze multiple pieces of information.
+    
+\end{itemize} 
+
+
+\subsection{Solution}
+\begin{itemize}
+    \item [a.] Providing Customized Services and improving user Experience \\ \\ 
+    It is necessary to improve the user experience by providing customized services that meet user needs. This can be achieved by using AI to provide user-customized interfaces and improve user experience through more user interactions.
+
+    \hspace{1em} Specifically, in this system, when the user simply instructs a task via chat or voice, AI coordinates the `conversation' between home appliances to derive the optimal execution plan. It obtains user confirmation before execution, suggests alternatives based on changing situations, and learns user preferences. It also collects feedback after task completion for continuous improvement.
+    
+    \hspace{1em} This approach goes beyond simply controlling devices, providing a true smart home experience that deeply understands and reflects the user's intentions and values. As a result, users can enjoy a home environment perfectly tailored to their lifestyle and preferences without complex settings, making the interaction between technology and humans more natural and efficient.\\
+    
+    \item [b.] AI-based Integrated Control and Scenario Optimization \\ \\
+    LLM (Large Language Model) technology can generate and analyze various complex scenarios. Based on tasks instructed by users via chat or voice, LLM can establish comprehensive preparation plans.
+    
+    For example, with just the simple information that ``friends are coming over tonight," LLM can establish a comprehensive preparation plan including lighting settings, indoor temperature adjustment, music playback, and activating cleaning robots. In this process, LLM suggests optimal solutions considering the user's past preferences, current situation, and energy efficiency.
+    
+    \hspace{1em} If changes are needed during execution, LLM immediately generates alternatives and provides options to the user. Additionally, by analyzing feedback collected after task completion, it can provide better solutions in similar situations in the future. In this way, LLM acts as an intelligent mediator between users and appliances, contributing to more accurately understanding and realizing the user's intentions.\\
+    
+    \item [c.] Integrated Control Between Devices and Adaptation to Changing Environments \\ \\ 
+    The optimization of environment-adaptive scenarios through integrated control systems and collaboration between products greatly enhances the efficiency and user experience of smart homes. Each device performs status checks and transmissions, and the central control system monitors this and comprehensively analyzes data collected from each device.
+    
+    \hspace{1em} Based on this, dynamic adjustments between devices are made according to changing environmental conditions (e.g., weather changes, indoor air quality, user activity patterns). For example, when the temperature rises, the air conditioner and blinds can work together to efficiently maintain indoor temperature, or the air purifier and ventilation system can be linked to create an optimal indoor air environment.
+    
+    \hspace{1em} This system maintains the optimal living environment continuously with minimal user intervention and can flexibly respond to unpredictable situations, thus implementing a smart home in the true sense of the term. Furthermore, by entrusting logical structure design to AI, it can solve the problem of logical errors that may occur when users set it directly.\\
+    
+    \item [d.] Integration of IoT Technology and Information \\ \\
+    Integrating and utilizing the diverse information and functions provided by IoT devices greatly improves the efficiency of smart home systems. Current smart home appliances, i.e., IoT devices, offer a wide variety of convenient functions, but users are not fully utilizing them.
+    
+    \hspace{1em} To solve this problem, we propose managing various lifestyle information such as energy consumption, indoor environmental data, user schedules, and weather information provided by apps comprehensively on a single platform. This integrated information is used for smarter decision-making by home appliances.
+    
+    \hspace{1em} For example, a washing machine can analyze the user's schedule and power usage patterns to suggest optimal operating times. This integrated approach enables complex scenario settings that optimize the entire home environment, going beyond simple automation of individual devices.
+    
+    \hspace{1em} As a result, users can enjoy a more convenient and energy-efficient smart home experience. Additionally, it allows users to easily obtain information and maximize the interaction effect with IoT devices and, by extension, with the smart home.
+\end{itemize}
+
+
+\subsection{Research on Related Software}
+
+\begin{itemize}
+\item [1.]LG ThinQ ON\\
+LG ThinQ ON is an AI home hub equipped with Furon, which integrates various large language models (LLM) into the LG ThinQ platform. This system continuously monitors the home environment and appliances, engaging in conversations with users to assess situations and optimally control devices. Unlike traditional voice recognition speakers that provide simple responses and execute predefined commands, LG ThinQ ON offers a more interactive and intelligent experience. \\
+\item [2.]SmartThings\\
+SmartThings is Samsung’s integrated smart home platform that allows users to easily control and manage various IoT devices through a mobile app. This platform include SmartThings Energy, an AI-based automated energy management service that optimizes energy usage through the ``Energy AI Save Mode," and SmartThings Air Care, which controls air flow recommends appropriate air purification methods.\\
+\item [3.]Amazon Alexa Hunches\\
+Amazon Alexa Hunches is a feature that enables Alexa to learn user patterns related to smart home devices. It proactively suggest actions or automatically perform tasks based on these behaviors. Additionally, users can configure Alexa to execute actions automatically with their consent. Hunches also helps optimize energy consumption by monitoring the status of devices such as lights, thermostats, and plugs, thereby assisting in energy savings.
+\\
+\item [4.]Vivint Smart Home\\
+Vivint Smart Home is a home automation and security platform that provides comprehensive smart home solutions, including security cameras, smart locks, lighting, and energy management systems. It integrates various smart devices into a single system, enabling users to control their home environment via the Vivint app or voice commands through smart assistants. Vivint's security-focused features, such as professional monitoring and customizable alerts, ensure safety, while its smart home automation enhances convenience and energy efficiency for users.
+\\
+\item [5.]Apple HomeKit\\
+Apple HomeKit is a software framework that allows users to configure, communicate with, and control smart appliances through Apple devices such as iPhones and macOS computers. It supports both Apple’s own products and those compatible with Matter, enabling users to register devices using their setup codes. HomeKit facilitates the management of these devices, allowing for control and the registration of detailed routines.
+\\
+\item [6.]Google Nest Hub\\
+Smart display developed by Google, this provides a range of smart home features based on Google Assistant. It extends the voice-centric capabilities of Google Home by adding conversational interactions and learning user behavior patterns to better understand and anticipate their needs. In addition, its display-based interface offers visual feedback, enhancing user interaction with smart home devices and delivering a more intuitive and engaging experience.
+\\
+\item [7.]Azure IoT Hub\\
+Azure IoT Hub is a versatile and scalable cloud platform (IoT PaaS) that caters to multiple tenants. It comprises an IoT device registry, data storage, and robust security features. It also offers a service interface to facilitate IoT application development.
+\\
+\item [8.]ChatThinQ\\
+ChatThinQ is an AI feature within LG's ThinQ platform that enhances smart home interactions. By using large language models, it supports natural, context-aware conversations for controlling appliances, offering personalized recommendations, and providing status updates. It can proactively suggest actions, optimize device settings, and create custom routines based on user preferences. The multi-turn dialogue capability ensures fluid interactions, making the smart home experience more intuitive and engaging. \\ \\
+
+\end{itemize}
+
+
+\section{REQUIREMENT}
+
+\begin{itemize}
+    \item [A.] Sign up \\
+    ALIVE needs five types of information to sign up. These are phone numbers, passwords, name, email, and birth dates.
+\end{itemize}
+\begin{enumerate}
+    \item Enter phone numbers \\
+    The phone number must be entered, and the phone number is verified through the carrier’s authentication system to confirm whether the phone number is valid for membership registration. The phone number serves as an ID in the subsequent login process.
+
+    \item Enter passwords \\
+    Passwords must be entered and must be at least 8 characters long in a combination of 3 or more of English uppercase, English lowercase, numbers, or special characters. When the user enters the desired password, it is displayed in the form of ‘****’ on the screen, with each condition changing color to green when it is satisfied, and red when it is not.
+
+    \item Enter a name \\
+    The name must be entered, and it is subsequently set as the default nickname at the first login. The name is also used in ID search.
+
+    \item Enter birth dates \\
+    The birth date must be entered, and a pop-up window is displayed every year to celebrate the user's birthday. The date of birth is also used in ID search. \\
+\end{enumerate}
+
+\begin{itemize}
+    \item [B.] Sign in \\
+    There are two types of logins: 1) Local logins through ALIVE membership, 2) SNS logins through SNS linkage.
+\end{itemize}
+
+\begin{enumerate}
+    \item Local logins through ALIVE membership
+    \begin{enumerate}
+        \item The system checks whether the ID and password entered by the user have been filled.
+        \item When the ID and password input by the user exist in the member database, the user succeeds in logging in. After that, it moves to the main page.
+        \item If the phone number and password entered by the user do not exist in the member database, the user fails to log in and a “Non-existent member” message is displayed in the pop-up window. \\
+    \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [C.] Register home appliances 
+    You can register your appliances in ALIVE in two ways: 1) Register your appliances directly, 2) Import your registered appliances from the LG ThinQ app.
+\end{itemize}
+
+\begin{enumerate}
+    \item Register your appliances directly
+    \begin{enumerate}
+        \item via QR code: When the camera access permission request screen appears, simply follow the instructions to grant access. After that, locate the QR code on each product. Scan the QR code along the guide lines on the edge.
+        \item find appliances on your own: you can search for appliances by two methods:
+        \begin{itemize}
+            \item Wi-Fi or Bluetooth
+            \item Product name and serial number
+        \end{itemize}
+    \end{enumerate}
+    \item Import from LG ThinQ \\
+    You can import a list of appliances pre-registered in the LG ThinQ app. After clicking the `Import from LG ThinQ' button, the LG ThinQ app will open. The user must agree to the following:
+    \begin{itemize}
+        \item Agree to import the information of the registered home appliances into the app.
+        \item Agree to import the settings from the ThinQ app into the app.
+    \end{itemize}
+    If information is imported from the LG ThinQ app, it may include the following:
+    \begin{itemize}
+        \item Registered home appliances
+        \item Room list and list of appliances added to the room
+        \item Smart routines
+    \end{itemize}
+    After all the settings are imported, the following chat rooms will be opened automatically:
+    \begin{itemize}
+        \item A chat room with all your appliances
+        \item A room-specific chat room \\
+    \end{itemize} 
+\end{enumerate}
+
+\begin{itemize}
+    \item [D.] Creation of Appliance Chat Rooms
+\end{itemize}
+
+\begin{enumerate}
+    \item Integration with LG ThinQ App \\
+    Enable users to retrieve all connected electronic appliances by integrating with the LG ThinQ app. Ensure seamless synchronization so that any changes in connected devices are reflected in the chat application.
+
+    \item Automatic Generation of Default Chat Room \\
+    Automatically generate default chat rooms during the initial setup, including all connected appliances and grouping them by room. This provides users with immediate access to control all their devices without additional configuration.
+
+    \item Custom Chat Room Creation \\
+    Allow users to create new chat rooms through the ``+" button at the top right corner of the screen, and invite only the appliances they wish to include.
+
+    \item Support for Multiple Chat Rooms \\
+    Permit the creation of multiple chat rooms to manage appliances based on rooms, functions, or user preferences.
+
+    \item Dynamic Management of Appliances \\
+    Enable users to later invite additional appliances or remove existing ones. Provide easy-to-use interfaces for managing device participation within chat rooms.
+\end{enumerate}
+
+By incorporating these features, users can efficiently manage their connected appliances through customizable chat rooms. This approach enhances usability and provides personalized control over their smart home environment, allowing for a more intuitive and flexible user experience. \\
+
+\section{DEVELOPMENT ENVIRONMENT}
+
+\subsection{Choice of software development platform}
+\begin{enumerate}
+
+\item[1] Development Platform
+
+\begin{itemize}
+\item [1)] Windows\\
+Windows provides a wide range of development tools and integrated development environments (IDEs) for creating various types of applications, including web applications, desktop applications, mobile apps, and games. This supports effective code editing, debugging, testing, deployment, and collaboration, ultimately enhancing developers’ productivity. Furthermore, Windows supports multiple programming languages and frameworks, allowing developers to choose their preferred languages and technologies to flexibly meet project requirements. Windows offers a user-friendly and intuitive interface, making it easy for developers to configure and manage their development environments. Lastly, Windows continuously updates and improves, ensuring access to the latest technologies and tools, empowering developers to stay current and modernize their applications. Windows is recognized as a versatile platform suitable for various software development fields, playing a crucial role in turning developers’ ideas into reality. \\
+
+\item [2)] macOS\\
+macOS is a highly regarded operating system in the field of software development, known for its user-friendly interface and exceptional versatility. This operating system offers several advantages to developers, and let’s explore some of them. Firstly, macOS provides essential development tools and an integrated development environment (IDE) for creating a wide range of applications, including web applications, desktop applications, mobile apps, and games. Additionally, macOS supports a variety of programming languages and frameworks, allowing developers to choose their preferred languages and technologies, making it flexible to adapt to project requirements. macOS offers an intuitive and user-friendly interface that simplifies development environment setup and project management. The active macOS developer community provides a platform for sharing experiences and collaboration among developers. Finally, macOS ensures access to the latest technologies and tools through continuous updates and improvements. Apple’s dedication to innovation provides developers with the necessaryfeatures to leverage the latest technologies and modernize their applications. For these reasons, macOS is recognized as an essential platform for software development, playing a significant role in turning ideas into reality. \\
+\end{itemize}
+\end{enumerate}
+
+\begin{enumerate}
+\item[2] Language / Framework
+
+\begin{itemize}
+\item [1)] Programming Languages
+\begin{itemize}
+\item [(1)] React Native\cite{ReactNative}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.5\columnwidth}
+    \includegraphics[width=\linewidth]{img/DevEnv/ReactNative.png}
+    \caption{React Native}
+\end{minipage}
+\end{figure} \\
+React Native is a cross-platform framework developed by Facebook, enabling developers to build iOS and Android applications simultaneously using JavaScript. React Native ensures a consistent UI/UX across platforms while providing high compatibility with native modules, allowing optimal user experiences without compromising performance. Leveraging React's component-based architecture, it maximizes code reusability, which enhances project efficiency and manageability. Consequently, React Native supports fast release cycles and delivers high-quality mobile applications, making it a powerful solution for efficient mobile app development.\\
+
+\item [(2)] TypeScript\cite{Typescript}
+\begin{figure}[h]
+\hspace{1cm}
+\centering
+\begin{minipage}{0.5\columnwidth}
+    \includegraphics[width=\linewidth]{img/DevEnv/TypeScript.png}
+    \caption{Typescript}
+\end{minipage}
+\end{figure} \\
+TypeScript is a superset of JavaScript developed by Microsoft, introducing a static type system that improves code stability and readability. TypeScript catches errors at compile time, reducing runtime issues and enhancing maintainability, especially for large-scale projects. Its rich type inference allows developers to clearly define code structure and intent, fostering better collaboration and improving code quality. Ultimately, TypeScript enables the writing of robust, high-performance applications while retaining JavaScript’s flexibility.\\
+
+\item [(3)] Kotlin\cite{Kotlin}
+\begin{figure}[h]
+\hspace{1cm}
+\centering
+\begin{minipage}{0.5\columnwidth}
+    \includegraphics[width=\linewidth]{img/DevEnv/Kotlin.png}
+    \caption{Kotlin}
+\end{minipage}
+\end{figure}\\
+Kotlin is a modern language developed by JetBrains and widely adopted as a Java alternative, particularly in Android development. With concise syntax and a strong type system, Kotlin simplifies code writing and maintenance, allowing developers to produce efficient, maintainable code. Its seamless Java interoperability supports integrating new code into legacy projects, improving productivity and minimizing runtime issues. Kotlin empowers Android developers to build efficient applications with better user experiences, making it an ideal choice for modern, high-quality programming.\\
+\end{itemize}
+
+\begin{itemize}
+\item [2)] Frameworks
+\begin{itemize}
+\item [(1)] SpringBoot\cite{SpringBoot}
+\begin{figure}[h]
+\hspace{2cm}
+\centering
+\begin{minipage}{0.5\columnwidth}
+    \includegraphics[width=\linewidth]{img/DevEnv/SpringBoot.png}
+    \caption{SpringBoot}
+\end{minipage}
+\end{figure}\\
+Spring Boot is a framework designed to simplify the development of Java-based web applications and microservices. This framework offers streamlined configuration, an embedded web server, automatic setup, starter dependencies, monitoring and management tools, robust microservices support, and integration with a vast ecosystem of libraries and tools. By using Spring Boot, developers can accelerate application development, simplify complex configurations, and boost overall productivity, making it an ideal choice for scalable and maintainable applications.\\
+
+\item [(2)] Hibernate\cite{Hibernate}
+\begin{figure}[h]
+\hspace{2cm}
+\centering
+\begin{minipage}{0.5\columnwidth}
+    \includegraphics[width=\linewidth]{img/DevEnv/Hibernate.jpg}
+    \caption{Hibernate}
+\end{minipage}
+\end{figure}\\
+Hibernate is an open-source Object-Relational Mapping (ORM) framework for Java, facilitating seamless interaction between Java objects and relational databases. Hibernate offers database independence, automatic schema generation, an Object-Oriented Query Language (HQL), caching support, integrated transaction management, and a well-established community and ecosystem. In essence, Hibernate optimizes database operations in Java applications, providing flexibility, efficiency, and cross-database portability.\\
+
+\item [(3)] FastApi\cite{FastAPI}\\
+\begin{figure}[h]
+\hspace{2cm}
+\centering
+\begin{minipage}{0.5\columnwidth}
+    \includegraphics[width=\linewidth]{img/DevEnv/FastApi.png}
+    \caption{FastApi}
+\end{minipage}
+\end{figure}\\ 
+FastAPI is a modern Python-based web framework designed for fast and efficient API development. FastAPI offers asynchronous support and data validation through Pydantic, maximizing developer productivity. Its automatic OpenAPI and JSON Schema documentation simplifies API testing and enhances collaboration. Renowned for its high performance, FastAPI is widely adopted across fields like machine learning model deployment and data analysis, making it a trusted choice for designing reliable APIs.\\
+\end{itemize}
+\end{enumerate}
+
+\subsection{Software in use}
+\begin{enumerate}
+\item[1.] visual Studio Code
+\begin{figure}[h]
+\hspace{1cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/VisualStudioCode.png}
+    \caption{Visual Studio Code}
+\end{minipage}
+\end{figure}\\
+Visual Studio Code is a lightweight yet powerful source code editor developed by Microsoft, optimized for modern development workflows. It offers essential features including IntelliSense code completion, debugging support, and Git integration, while maintaining high performance. The editor's extensive marketplace provides diverse extensions supporting various programming languages and frameworks, particularly beneficial for React Native development. Its customizable interface and integrated terminal enhance development efficiency, making it an ideal choice for cross-platform mobile application development.
+\\ \\ \\ \\ \\ \\
+
+\item[2.] Xcode
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/Xcode.png}
+    \caption{Xcode}
+\end{minipage}
+\end{figure}\\
+Xcode is Apple's integrated development environment (IDE) essential for iOS app development and simulation. It provides comprehensive tools including iOS simulators, debugging capabilities, and Interface Builder for UI design. While primarily used for native iOS development, it serves as a crucial tool for React Native developers by offering high-fidelity iOS simulation and testing environments. The IDE integrates seamlessly with Apple's development ecosystem, providing essential features like device management, performance profiling, and automated testing capabilities for ensuring iOS app quality.\\
+
+\item[3.] Github
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/Github.png}
+    \caption{Github}
+\end{minipage}
+\end{figure}\\
+GitHub is a cloud-based platform for version control and collaborative software development using Git. It provides essential features including repository hosting, branch management, pull requests, and issue tracking. The platform enables smooth team collaboration through code review tools, project management features, and continuous integration/deployment capabilities. With its extensive documentation support and robust security features, GitHub serves as a centralized hub for maintaining code quality and managing development \\ \\ \\
+
+\item[4.] Figma
+\begin{figure}[h]
+\hspace{1cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/Figma.png}
+    \caption{Figma}
+\end{minipage}
+\end{figure}\\
+Figma is a collaborative web-based interface design tool for creating user interfaces and prototypes. It offers powerful design features including component-based systems, auto-layout, and interactive prototyping capabilities. The platform allows real-time collaboration among designers and developers, streamlining the design-to-development workflow with efficient handoff tools and design system management. With its cloud-based nature and extensive plugin ecosystem, Figma enhances team productivity and ensures consistent design implementation across projects.\\
+
+\item[5.] Jira
+\begin{figure}[h]
+\hspace{1cm}
+\centering
+\begin{minipage}{0.5\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/Jira.png}
+    \caption{Jira}
+\end{minipage}
+\end{figure}\\
+Jira is an agile project management tool developed by Atlassian that streamlines software development processes. It provides comprehensive features for issue tracking, sprint planning, and workflow customization. The platform offers robust reporting tools, integration capabilities with development tools, and flexible board views for different agile methodologies. With its detailed task management and progress tracking features, Jira enables teams to effectively monitor project progress and maintain development efficiency.
+
+\clearpage
+
+\item[6.] IntelliJ
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/Intellij.png}
+    \caption{IntelliJ}
+\end{minipage}
+\end{figure}\\
+IntelliJ IDEA is a comprehensive Java-based integrated development environment (IDE) developed by JetBrains. It offers advanced code analysis, intelligent code completion, and powerful refactoring tools that enhance development productivity. The IDE provides robust debugging capabilities, seamless integration with various frameworks, and extensive plugin support for multiple programming languages. With its smart code navigation and efficient build tools, IntelliJ IDEA accelerates development processes while maintaining code quality and consistency.\\
+
+\item[7.] Notion
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/Notion.png}
+    \caption{Notion}
+\end{minipage}
+\end{figure}\\
+Notion is a versatile collaborative workspace that unifies note-taking, task management, and documentation tools. The platform excels in organizing information through customizable databases, interconnected pages, and flexible templates. Its all-in-one approach combines wiki-style documentation, project tracking, and team coordination capabilities. With its adaptable interface and cross-platform accessibility, Notion simplifies knowledge sharing and enhances team communication across projects.\\ \\ \\ \\ \\ \\ \\
+
+\item[8.] PostgreSQL
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/PostgreSQL.png}
+    \caption{PostgreSQL}
+\end{minipage}
+\end{figure}\\
+PostgreSQL is an advanced open-source relational database management system known for its reliability and data integrity. The system supports complex queries, custom functions, and multi-version concurrency control for efficient data handling. Its architecture enables handling of diverse workloads, from single machines to distributed systems, while maintaining robust security features. With extensive support for SQL standards and scalable performance, PostgreSQL stands as a preferred choice for managing structured data in modern applications.\\
+
+\item[9.] Overleaf
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.5\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/Overleaf.png}
+    \caption{Overleaf}
+\end{minipage}
+\end{figure}\\
+Overleaf is a web-based LaTeX editor that facilitates academic writing and document preparation. The platform combines real-time preview capabilities, extensive template libraries, and reference management tools for scholarly publications. Its browser-based environment enables collaborative writing among researchers, supporting version control and simultaneous editing features. With its integrated compilation engine and comprehensive documentation, Overleaf streamlines the creation of professional academic documents and research papers.\\ \\ \\ \\ \\ \\ \\ \\ \\ \\
+
+\item[10.] Postman
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/Postman.png}
+    \caption{Postman}
+\end{minipage}
+\end{figure}\\
+Postman is a specialized API development and testing platform that simplifies the API lifecycle management. The tool offers intuitive request building, automated testing sequences, and detailed response validation capabilities. Its environment management system facilitates API testing across different configurations while supporting team collaboration through shared workspaces. With comprehensive documentation generation and mock server features, Postman accelerates API development and ensures reliable endpoint functionality.\\
+
+\item[11.] ChatGPT
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/ChaGPT.png}
+    \caption{ChatGPT}
+\end{minipage}
+\end{figure}\\
+ChatGPT is an AI-powered API that integrates generative AI capabilities into applications through OpenAI's endpoints. The service, based on GPT-3.5 and GPT-4 models trained on extensive datasets, provides natural language processing functionalities. Through REST API integration, it enables features like text generation, language translation, and content summarization in applications. Its flexible token-based system and documented endpoints allow developers to implement sophisticated AI features effectively.\\ \\ \\ \\ \\ \\ \\
+
+\item[12.] Azure
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.7\columnwidth}
+    \includegraphics[width=\linewidth]{img/SoftInUse/Azure.png}
+    \caption{Azure}
+\end{minipage}
+\end{figure} \\
+Azure is a comprehensive cloud computing platform designed to streamline application development, deployment, and management. The platform provides a wide range of services, including virtual machines, databases, and AI tools, enabling scalable and secure solutions. Its resource management capabilities allow seamless integration across hybrid environments, while built-in DevOps tools enhance collaboration and automation.
+\clearpage
+
+\end{enumerate}
+
+\begin{enumerate}
+
+\item[3] Task Distribution
+
+\begin{table}[h]
+\caption{Role Assignments}
+\def\arraystretch{1.24} \small
+
+\begin{tabular}{|p{1.2cm}|p{1.2cm}|p{5.4cm}|}
+    \hline
+    Tasks & Name & Descriptions \\
+    \hline
+    Project Manager & Kang DongHun & A Project Manager functions as the operational orchestrator responsible for planning, executing, and delivering projects within specified constraints of scope, time, and budget. Their role involves developing comprehensive project plans, establishing critical milestones, and implementing methodologies such as Agile or Waterfall to ensure efficient project delivery. They are accountable for resource allocation, timeline management, and budget control, utilizing project management tools and methodologies to track progress, identify bottlenecks, and maintain project momentum. Critical responsibilities include conducting regular status meetings, managing project documentation, tracking deliverables, and ensuring quality standards are met throughout the project lifecycle. Their success is measured through project completion metrics, team performance, and adherence to initial project parameters, requiring strong leadership skills and the ability to adapt to changing project demands while maintaining team cohesion and project focus.  \\ 
+    \hline
+    Frontend Developer & Pyo \par JunSeong, \par Bae \par Hyejin & Frontend developers utilize languages like React Native and TypeScript to create applications. They are responsible for designing the interfaces that users interact with, such as tapping buttons and swiping through screens. Their primary objective is to create a user experience that is both accessible and engaging, while adhering to the specified design. Additionally, frontend developers are responsible for transferring user-entered information to the backend developers. The reason for having three frontend developers is that two of them write code for each screen, while the third developer reviews and optimizes the code for the screens that users see. This organizational structure requires effective teamwork, clear role allocation, excellent communication skills, and collaborative synergy. \\
+    \hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\def\arraystretch{1.24} \small 
+
+\begin{tabular}{|p{1.2cm}|p{1.2cm}|p{5.2cm}|}
+    \hline
+    Backend Developer & Kang DongHun,  Yang Byeong \par Hyun & Backend developers are responsible for designing the database and application architecture, as well as writing the APIs used by frontend developers. When working with APIs, backend developers need to be able to receive information from application users through the frontend and provide the correct return value to the API. They also need to design APIs that interact with the backend to leverage generative AI and machine learning features, and make them accessible to application users. This role requires a strong understanding of the central database and software structure, and ensuring that software development aligns with that structure moment \\ 
+    \hline
+    UI-UX Designer & Pyo \par JunSeong, \par Bae \par Hyejin & The UI-UX designer, using Figma, is responsible for determining how the application screens are presented to users. This role involves deciding which screens will be more engaging and comfortable for users to use. As a UI-UX designer, the goal is to create a design that keeps users engaged and encourages them to return to the application. Once the UI-UX decisions are finalized, they can be communicated to the front-end developers \\ 
+    \hline
+    AI Developer & Pyo \par JunSeong, Yang Byeong \par Hyun & A machine learning software developer works with algorithms, data, and artificial intelligence. Their role involves researching, building, and designing artificial intelligence software specifically for machine learning purposes. They primarily focus on applying artificial intelligence systems to various applications. The responsibilities of this role include collecting, cleaning, and preprocessing data to extract meaningful value. They then use this data to train models and deploy them in software. Additionally, the machine learning software developer must appropriately implement machine learning algorithms into software functions, conduct experiments and tests of AI systems, and determine the most suitable models for the application’s functions. They are also responsible for designing and developing machine learning systems, as well as performing statistical analysis. \\
+    \hline
+    \end{tabular}
+    \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ 
+
+\end{table}
+
+\end{enumerate}
+\clearpage
+
+
+\section{SPECIFICATION}
+
+\subsection{Splash Screen Page}
+\begin{enumerate}
+    \item[1.] Entry-splashing
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/splash.png}
+    \caption{Entry Page}
+\end{minipage}
+\end{figure}
+    
+    When the application is launched, the startup page should be displayed for a duration of 1 to 2 seconds to prevent an empty page from being shown while the application is loading its data. This ensures a smooth and visually appealing user experience during the app’s startup process. 
+\end{enumerate}
+
+\subsection{SignUp Page}
+
+\begin{enumerate}
+    \item[1.] Login-Page
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Login - Main.png}
+    \caption{Login-Page}
+\end{minipage}
+\end{figure}
+    
+    Users should be able to use the following features in the login page: Sign Up, Log In, Reset Password, SNS Login, and Language Change. \\
+\end{enumerate}
+
+    
+\begin{enumerate}
+    \item[2.] Sign Up-Phone Number
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Sign Up - Name and Birthdate.png}
+    \caption{Sign Up Page}
+\end{minipage}
+\end{figure}
+    
+    Users are required to enter their phone number. The phone number will serve as the user’s ID during the login process after registration. The validity of the phone number should be verified through the authentication system of the mobile service provider. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[3.] Sign Up-Password
+    
+    Users must enter a password. The passw-\\ord should be at least 8 characters long and must contain a combination of at least 3 of the following: uppercase letters, lowercase letters, numbers, and special characters. When the user enters their desired password, it is displayed in the form of ‘****’ on the screen, with each condition changing color to green when it is satisfied, and red when it is not. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[4.] Sign Up-Name and Birthdate
+    
+    Users must enter their name and date of birth. The date of birth should be entered in the ‘YY/MM/DD’ format, and gender will be verified based on the first digit of the resident registration number. \\ 
+\end{enumerate}
+
+\clearpage
+
+\begin{enumerate}
+    \item[5.] Sign\hspace{0.5em}Up-Preventing\hspace{0.5em}Duplicated PhoneNumber
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Sign Up - Preventing Duplicated.png}
+    \caption{Sign up - \\ Preventing Duplicate}
+\end{minipage}
+\end{figure}
+    \\ Registration with duplicate phone numbers must be prevented. Attempting to register with a phone number that is already in use should not be allowed. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[6.] Sign Up-Registration Completed
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Sign Up - Registration Completed.png}
+    \caption{Sign up - \\ Register Completed}
+\end{minipage}
+\end{figure}
+    
+    Upon successful registration, a notification should be displayed to the user, and they should be automatically redirected to the login process. If the phone number is already registered, the screen displays existing account’s information including phone number and registering date.
+\end{enumerate}
+
+\subsection{Login Page}
+
+\begin{enumerate}
+    \item[1.] Login-Types
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Login - Main.png}
+    \caption{Login-Types}
+\end{minipage}
+\end{figure}
+    
+    Users should be able to log in using two types of login methods: (1) Local login via ALIVE membership, (2) SNS login via social media integration. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[2.] Login-Local Success
+
+    If the ID and password entered by the user exist in the member database, the user will successfully log in and be directed to the main page. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[3.] Login-Local Failed
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Login - Local Failed.png}
+    \caption{Login Failed}
+\end{minipage}
+\end{figure}
+    
+    If the user enters their ID and password, but either the ID or the password is incorrect or the user does not exist in the member database, a popup window will request the user to check their ID and password again. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[4.] Login-SNS Login
+    
+    The system utilizes SNS registration APIs such as Google, Naver, Kakao, and more. Users should be able to conveniently log in through these platforms. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[5.] Login-MyLG Login
+    
+    The system utilizes registration through MyLG. Users should be able to conveni-\\ently log in through these platforms. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[6.] Login-Password Reset Authentication
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Login - New Password.png}
+    \caption{Password \\ Reset Authentication}
+\end{minipage}
+\end{figure}
+    
+    The system should offer users guidance on setting a new password through carrier-based verification. Upon successful carrier authentication, users will be directed to the ‘Password Reset’ page; in case of failure, they will return to this page. \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\
+    
+\end{enumerate}
+
+
+
+\begin{enumerate}
+    \item[7.] Login-New Password
+    \begin{figure}[h]
+        \centering
+        \begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Login - New Password-1.png}
+    \caption{New Passowrd Failed}
+\end{minipage}
+        \hfill
+        \begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Login - New Password-2.png}
+    \caption{New Password Passed}
+\end{minipage}
+    \end{figure}
+
+    When setting a new password, users should be provided with appropriate security requirements, such as a combination of at least 8 characters, including at least three of uppercase letters, lowercase letters, numbers, and special characters.
+\end{enumerate}
+
+    
+    
+
+\subsection{Home Page}
+
+\begin{enumerate}
+    \item[1.] Default-Not Imported
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Home - Main.png}
+    \caption{Default Not Imported}
+\end{minipage}
+\end{figure}
+    
+    System must initialize with import options when no devices are registered. System should display two primary action buttons: 'Import ThinQ' and 'Import Directly' in the main interface. These buttons must remain prominently visible until initial device registration is completed. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[2.] Import ThinQ
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Import ThinQ.jpg}
+    \caption{Import ThinQ}
+\end{minipage}
+\end{figure}
+    
+    When users tap the Import ThinQ button, a connection popup should immediately appear on screen. The system should then automatically initiate ThinQ service connection while displaying a loading indicator to show progress. Upon completion, the system must show either a success or failure message to inform the user of the connection status.  \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[3.] Import Directly
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Home - Register Appliances Directly.png}
+    \caption{Import Directly}
+\end{minipage}
+\end{figure} \\
+    
+    When users select the Import Directly option, the system should display a modal popup presenting two distinct import methods: QR scanning and Wi-Fi/Bluetooth connection. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[4.] Import Directly-QR
+    
+    Upon selecting the QR method, the system should first request camera permissions if not previously granted. The QR scanner should immediately open, displaying a clear scanning area in the viewfinder. The system should display appropriate error messages for invalid or unrecognized QR codes. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[5.] Import Directly-WiFi or Bluetooth
+    
+    When users choose the WiFi/Bluetooth import method, the system should check and request any necessary device permissions. The interface should display a list of available devices for connection, clearly indicating the connection status throughout the process. Users should be provided with clear, step-by-step connection instructions to ensure successful device pairing.
+\end{enumerate}
+
+\clearpage
+
+\begin{enumerate}
+    \item[6.] Entire Chat
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Home - Main-2.png}
+    \caption{Entire Chat}
+\end{minipage}
+\end{figure}
+    \\ The system should display the main chat room interface that includes all connected appliances. The header section must contain four essential buttons: a chat room selection toggle for switching between different chat rooms, a create chat room button for establishing new chat spaces, a notification button for accessing system alerts, and an others button for additional settings. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[7.] Select ChatRoom
+    \begin{figure}[h]
+        \centering
+        \begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Home - Create-ChatRoom - Select None.png}
+    \caption{Select None}
+\end{minipage}
+        \hfill
+        \begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Home - Create-ChatRoom - Select Complete.png}
+    \caption{Select Done}
+\end{minipage}
+    \end{figure}
+    
+    The system should allow users to navigate between different appliance chat rooms through the chat room toggle button. Users should be presented with a list of available chat rooms and can easily switch to their desired room. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[8.] Create ChatRoom
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Home - Create-ChatRoom - Set Name Complete.png}
+    \caption{Set Name}
+\end{minipage}
+\end{figure}
+    
+    When users tap the create chat room button, the system should display a comprehensive list of all connected appliances. Users can assign a chat room name with a maximum of 10 letters.\\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[9.] Notice
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/My Page - Alram.png}
+    \caption{Notice}
+\end{minipage}
+\end{figure}
+    
+    The notification system should provide users with important app alerts and updates. A red dot indicator must appear on the notification icon when there are unread alerts, ensuring users are aware of new notifications. Upon clicking the notification button, the system should display a chronological list of all notifications, distinguishing between read and unread messages.\\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[10.] Others-Edit
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Home - _Chat - Side.png}
+    \caption{Others-Edit}
+\end{minipage}
+\end{figure}
+    
+    Users should be able to edit chat room information. They can rename chat rooms, and add or delete appliances. The minimum number of appliances in a chat room must be at least one. Users should also be able to toggle the power status (ON/OFF) of devices in the chat room. Only active (ON) devices can receive commands and participate in interactions. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[11.] Chat-Appliance-Tag
+    
+    Users should be able to tag and command home appliances within chat rooms using the ``@" symbol (e.g., ``@WashingMachine"). The system must provide real-time validation of device availability. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[12.] Voice-Command
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[ width=\linewidth]{img/UIdesign/Home - _Chat - MIC.png}
+    \caption{Voice Command}
+\end{minipage}
+\end{figure}
+    
+    Users should be able to communicate with their appliances through voice commands. For example, users can say, ``Air conditioner, I'm feeling a bit warm," and receive conversational responses about adjusting the temperature settings. \\ \\ \\ \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[13.] Command-Verification
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/UIdesign/Home - _Chat - CV.png}
+    \caption{Command Verification}
+\end{minipage}
+\end{figure}
+    
+    The appliance should respond within the chat with a message asking if the user would like to perform the suggested action. There should be small ``Confirm" (O) and ``Cancel" (X) icons for user approval or rejection. The appliance will only execute the action after the user confirms. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[14.] ChatRoom-Search
+    
+    Users should be able to search for past conversations within the chat room by typing keywords or device names. The search results should display relevant chat history with context on when the conversations occurred. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[15.] ChatRoom-Exit
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/UIdesign/Home - _Chat - Exit.png}
+    \caption{ChatRoom Exit}
+\end{minipage}
+\end{figure}
+\\ Users should be able to delete an appliance chat room they have created. Upon deletion, the user will be prompted to confirm, and all contents will be permanently removed. Users should have the option to archive the chat history before deletion if desired.
+\end{enumerate}
+
+\clearpage
+
+\subsection{Appliance Page}
+    \begin{enumerate}
+    \item[1.] Appliances-Default
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Appliance-Default.png}
+    \caption{Appliances Default}
+\end{minipage}
+\end{figure} \\
+    The system should display a comprehensive list of all connected appliances, providing users with a clear overview of their smart home ecosystem. Each appliance entry should show essential information, including connection status, device name, and current operational status. The list must be updated whenever device status changes or new devices are added. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[2.] Appliances-Sync
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.3\columnwidth}
+    \includegraphics[width=\linewidth]{img/UIdesign/Appliance-sync.png}
+    \caption{Appliance Sync}
+\end{minipage}
+\end{figure} \\
+
+    When users activate the sync button, the system should initiate synchronization with ThinQ services and the application list in the internal app to update the appliance list. Upon successful synchronization of new devices, the system must automatically add them to the entire chat room and display a welcome message in the format ``Appliance [Name] joined default chat room". The synchronization process should show a clear progress indicator and confirmation of completion or any errors encountered.
+\end{enumerate}
+
+\begin{enumerate}
+    \item[3.] Appliances-Import
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.3\columnwidth}
+    \includegraphics[width=\linewidth]{img/UIdesign/Appliance - import.png}
+    \caption{Appliance Import}
+\end{minipage}
+\end{figure}
+
+    The appliance import functionality should mirror the import options available on the main page, providing users with two distinct import methods: QR code scanning and WiFi/Bluetooth connection. For QR scanning, the system must activate the device camera and provide clear scanning guidance. The WiFi/Bluetooth method should display available devices and guide users through the connection process with clear step-by-step instructions. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[4.] Appliances-Detail
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Appliance-Lists - Main.png}
+    \caption{Appliance Detail}
+\end{minipage}
+\end{figure} 
+
+    When users select an appliance from the list, the system should display a detailed information page including comprehensive usage statistics and interaction history. This detail view must show a list of participating chat rooms, total operation time, user feedback and ratings, and a chronological history of interactions with other appliances. The interface should present this information in clearly organized sections, allowing users to easily track and analyze their appliance usage patterns and performance history. \\ 
+\end{enumerate}
+
+    
+\subsection{MyPage}
+
+\begin{enumerate}
+    \item[1.] Mypage-Password Change
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Password_Change.png}
+    \caption{ \\ Password Change}
+\end{minipage}
+\end{figure}
+
+    Users must enter their current password to verify their identity before changing it to a new one. The new password must be at least 8 characters long, including special characters. If the new password is identical to the current one, a notification will inform the user that it cannot be reused. Passwords must include at least 3 of the following: uppercase letters, lowercase letters, numbers, and special characters. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[2.] Mypage-Profile Picture Update
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/Profile_Picture_Update.png}
+    \caption{\\ Profile Update}
+\end{minipage}
+\end{figure} \\
+
+    Users can upload a new profile picture or select from existing images on their device. The updated profile picture will appear throughout the app. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[3.] Mypage-Notification Settings
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/My Page - Alram.png}
+    \caption{Notification Settings}
+\end{minipage}
+\end{figure} 
+
+    Users can enable or disable notifications for app events like messages, updates, and alerts. Preferences are saved immediately. \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \item[4.] Mypage-App Version Check
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/My Page - Version_check.png}
+    \caption{App \\ Version Check}
+\end{minipage}
+\end{figure} \\
+    The app displays the current version installed on the user's device. Users can check if they have the latest version. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[5.] Mypage-Language Settings
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/My Page - Language.png}
+    \caption{\\ Language Setting}
+\end{minipage}
+\end{figure}
+
+    Users can choose their preferred language for the app interface, which updates immediately upon selection. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \item[6.] Mypage-Personal Information
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/My Page - Personal_Info.png}
+    \caption{\\ Personal Info}
+\end{minipage}
+\end{figure}
+
+    Users can view personal details like carrier, phone number, and registration date, and set up simplified login options. \\ \\ \\ \\ \\
+\end{enumerate}
+
+\subsection{Result Page}
+    \begin{enumerate}
+        \item[1.] ResultAnalysis-Calendar View
+        \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/_Scenario Anlaysis - Main.png}
+    \caption{\\ Result calender}
+\end{minipage}
+\end{figure}
+        \\ The Result Analysis page should display a calendar-based view that shows all interaction outcomes from appliance conversations. Each calendar date must present the specific choices and results that were provided to users during their interactions. The system should maintain a comprehensive record of all interactions, displaying them in a chronological format that allows users to easily navigate through their history.\\
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item[2.] ResultAnalysis-Data 
+        Presentation
+        \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/UIdesign/_Scenario Anlaysis - Detail (mod).png}
+    \caption{\\ Result Analyze}
+\end{minipage}
+\end{figure}
+        \\ The system must present all interaction data in an organized and easy-to-understand format within the calendar view. Each date with recorded interactions should be clearly marked, and users should be able to view detailed information about the interactions that occurred on any specific date. The interface should allow users to track patterns in their appliance usage and decision-making over time, providing valuable insights into their interaction history. This calendar-based presentation format ensures that users can efficiently review and analyze their past interactions, understanding how the system responded to different situations across various timeframes. 
+    \end{enumerate}
+
+\section{ARCHITECTURE DESIGN}
+\subsection{Overall Architecture}
+
+\begin{figure}[h]
+\centering   
+\includegraphics[width=1\columnwidth]{img/architecture/OA.png}
+\caption{Overall Architecture}
+\end{figure}
+
+\hspace{0.7em} ALIVE is composed of four main modules: the Frontend, the Backend (Main Server), the Chat Server, and the AI Server, each playing a distinct role in delivering a seamless user experience. \\
+
+\hspace{0.7em} The first module “Frontend.”  is built using React-native with TypeScript, JavaScript and serves as the user interface. It allows users to interact with the system by providing features such as data retrieval, input, and chat functionality, while also displaying AI-generated results. The frontend communicates with the backend server via APIs, connects to the chat server using WebSocket or the dialog SDK for real-time messaging, and visualizes responses from the AI server. \\
+
+
+\hspace{0.7em} The second module, “Backend (Main Server)”, implemented using Spring Boot and Kotlin, acts as the core processing unit of the system. It manages user authentication, processes chat-related operations such as creating and managing chat rooms, channels, and channel users, and routes requests to the appropriate components like the database, AI server, or chat server. Additionally, it provides APIs to the frontend and ensures smooth data management through integration with Supabase and PostgreSQL for storing user information, logs, and chat-related data. \\
+
+\hspace{0.7em} The third module “Chat Server” facilitates real-time messaging between users. It supports one-on-one and group chats, manages message storage, and provides notifications and user status updates. The chat server connects directly with the frontend, ensuring reliable and real-time communication. It also synchronizes chat data with the backend and database as needed. \\ 
+
+\hspace{0.7em} The fourth module “AI Server” is implemented using FastAPI. It is deployed on Azure and integrates with OpenAI to provide intelligent responses. Its primary function is to generate contextually appropriate replies tailored for conversations in chat rooms involving smart appliances. By leveraging OpenAI's generative AI, the server ensures that the responses align with the unique interactions and requirements of smart device communication.
+
+\subsection{Directory Organization}
+
+\begin{table}[h]
+\caption{DIRECTORY-ORGANIZATION-FRONTEND-1}
+\def\arraystretch{1.24} \small
+    \begin{tabular}{|p{3.7cm}|p{4.1cm}|}
+\hline
+        Directory & File Name \\ \hline
+          ALIVE/frontend/src/app  & \_layout.tsx \par +html.tsx \par +not-found.tsx \par index.tsx 
+          \\ \hline
+          
+          ALIVE/frontend/src/app/ \par (tabs) \par  & \_layout.tsx \par analysis.tsx \par inbox.tsx \par index.tsx \par list.tsx \par profile.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/app/ \par (tabs)/appDetail \par  & appKey.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/app/ \par (tabs)/chat \par  & [channel\_url].tsx \par create\_chat\_name.tsx \par create\_chat\_room.tsx \par index.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/analysis \par  & ContentBox.tsx \par CustomCalendar.tsx \par DatePickerModal.tsx \par energyCard.tsx \par RecordsList.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/chat \par  & ChatBubble.tsx \par ChatContainer.tsx \par ChatDrawer.tsx \par ChatInput.tsx \par ChatRoomCard.tsx
+          \\ \hline
+
+    \end{tabular}
+\end{table}
+
+\begin{table}[h]
+\caption{DIRECTORY-ORGANIZATION-FRONTEND-2}
+\def\arraystretch{1.24} \small
+    \begin{tabular}{|p{3.7cm}|p{4.1cm}|}
+\hline
+        Directory & File Name \\ \hline
+          ALIVE/frontend/src/app/ \par (tabs)/exeAnalysis \par  & [exeKey].tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/common \par  & AppBar.tsx \par Bold.tsx \par Button.tsx \par ClickBox.tsx \par DeviceCard.tsx \par InputField.tsx \par Loading.tsx \par ThemedText.tsx \par ThemedView.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/icons \par  & Analysis.tsx \par Bell.tsx \par BellOff.tsx \par DotsCircle.tsx \par Home.tsx \par MoreVertical.tsx \par Plus.tsx \par Profile.tsx \par Sync.tsx \par Wallet.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/icons/devices \par  & AirConditioner.tsx \par AirPurifier.tsx \par Cleaner.tsx \par Dryer.tsx \par Refrigerator.tsx \par Tv.tsx \par WashingMachine.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/list \par  & deviceList.tsx \par ExeLogBox.tsx \par ParticipatingChatRoom.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/login \par  & toggle.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/ \par components/navigation \par  & TabBarIcon.tsx
+          \\ \hline
+          
+          ALIVE/frontend/src/hooks \par  & useColorScheme.ts \par useColorScheme.web.ts \par useLogin.ts \par useModal.ts \par useThemeColor.ts
+          \\ \hline
+          
+          ALIVE/frontend/src/service \par  & auth.service.ts \par axios-instance.ts \par channel.service.ts \par chat.service.ts \par device.service.ts \par message.service.ts
+          \\ \hline
+          
+          ALIVE/frontend/src/stores \par  &   useDeviceStore.ts \par useUserStore.ts
+          \\ \hline
+          
+          ALIVE/frontend/src/types \par  & chat.ts \par device.ts \par icon.ts \par images.d.ts \par record.types.ts 
+          \\ \hline
+          
+          ALIVE/frontend/src/utils \par  & calendar.ts \par date.ts
+          \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\caption{DIRECTORY-ORGANIZATION-BACKEND-1}
+\def\arraystretch{1.24} \small
+    \begin{tabular}{|p{3.8cm}|p{4.3cm}|}
+        \hline
+        Directory & File Name \\ \hline
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo & Application.kt  \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par controller & AuthController.kt \par AIMessageController.kt \par \par MessageController \par ChannelController.kt \par DeviceController.kt \par DeviceUsageRecordController.kt \par UserController.kt \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par repository & ChannelDeviceRepository.kt \par ChannelRepository.kt \par DeviceRepository.kt \par DeviceUsageRecordRepository.kt \par UserDeviceRepository.kt \par UserRepository.kt \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par service & ChannelService.kt \par DeviceService.kt \par DeviceUsageRecordService.kt \par MessageService.kt \par dialogUserService.kt \par dialogChannelService.kt \par  UserService.kt \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par model & Channel.kt \par ChannelDevice.kt \par Device.kt \par DeviceCategory.kt \par DeviceUsageRecord.kt \par User.kt \par
+          QueryMessagesRequest.kt \par 
+          UserDevice.kt \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par dto & ActionDTO.kt \par LoginRequestDTO.kt \par UserDeviceResponseDTO.kt \\ \hline
+
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par dto/channel & ChannelDTO.kt \par ChannelDeviceDTO.kt \par ChannelResponseDTO.kt \par SendMessageRequest.kt \par 
+          QueryMessageRequest.kt \par 
+          InviteUserRequest.kt \par 
+          CreateChannelRequest.kt \par CreateChannelRequestDTO.kt \\ \hline
+
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par dto/ai & AIMessageRequest.kt \par AIMessageResponse.kt \par ContextDTO.kt \par DialogRequest.kt 
+          \\ \hline
+
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par dto/user & UserCreateRequestDTO.kt \par UserDTO.kt \par UserInviteRequestDTO.kt \par CreateUserRequest.kt \par
+          CreateUserResponse.kt \par
+          UserResponseDTO.kt \\ \hline
+
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par exception & DeviceNotFoundInChannel.kt \par Exception.kt\par DeviceNotInProgressException.kt \par UserDeviceNotFoundException.kt \par UserNotFoundException.kt \\ \hline
+          
+	\end{tabular}
+\end{table}
+
+\clearpage
+
+\begin{table}[h!]
+\caption{DIRECTORY-ORGANIZATION-BACKEND-2}
+\def\arraystretch{1.24} \small
+    \begin{tabular}{|p{3.9cm}|p{4cm}|}
+        \hline
+        Directory & File Name \\ \hline
+          
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/ \par config & AppConfig.kt \par \par AIServerConfig.kt \par GlobalExceptionHandler.kt \par SecurityConfig.kt \par dialogConfig.kt\\ \hline
+
+          ALIVE/backend/src/main/ \par kotlin/com/example/demo/util & ApiHelper.kt \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\caption{DIRECTORY-ORGANIZATION-AI}
+\def\arraystretch{1.24} \small
+    \begin{tabular}{|p{3.9cm}|p{4cm}|}
+\hline
+        Directory & File Name \\ \hline
+        
+          ALIVE/AI & 
+          requirements.txt \\ \hline
+
+          ALIVE/AI/display \par  &
+           monitor.py \par 
+           simulator.py \par
+          state\_manager.py \par
+          status\_viewer.py \\ \hline
+          
+          ALIVE/AI/app  &
+          \_\_init\_\_.py \par 
+          main.py \par retriever.py \\ \hline
+          
+          ALIVE/AI/app/api &
+          routes.py \\ \hline
+          
+          ALIVE/AI/app/data \par  & create\_dataset\_azure.py \par create\_dataset\_openai.py \par 
+          dataset.json \par 
+          domain\_slots.json  \\ \hline
+          
+          ALIVE/AI/app/helper \par  &  turn\_data\_to\_str.py \\ \hline
+          
+          ALIVE/AI/app/prompts \par  & system\_prompt.txt \par 
+          table\_prompt.txt \\ \hline
+        
+    \end{tabular}
+\end{table}
+
+\subsection{Module 1: Frontend}
+\begin{enumerate}
+    \item[1)] Purpose\\
+    The Frontend Module of ALIVE serves as the client-facing interface, enabling users to interact with the system seamlessly. It handles the display of data, user input, and interactions, ensuring a user-friendly experience across devices. Built using modern web technologies, the frontend communicates with the backend, AI server, and chat server to present real-time data, manage user settings, and facilitate smart device interactions within chat rooms. \\ 
+    \item[2)] Functionality \\
+    The frontend provides a range of features, including user authentication, profile management, appliance list views, and device usage analysis presented in calendar and card formats. It enables real-time chat functionality for interacting with smart appliances and supports dynamic routing for detailed views such as chat rooms and execution analysis. Additionally, it includes reusable components like buttons, modals, and charts for efficient UI development. Hooks and services are used to manage states and make API calls for authentication, device control, and messaging, ensuring smooth communication with other modules. \\
+    
+    \item[3)] Location of source code:\\ https://github.com/SWE-ALIVE/frontend \\
+    
+    \item[4)] Class component
+        \item[-] \_layout.tsx : This is the main layout component that wraps the entire application.\\
+        \item[-] +html.tsx : This is a file that defines the HTML template structure.\\
+        \item[-] +not-found.tsx : This is a file that handles 404 error page rendering.\\
+        \item[-] index.tsx : This is the main entry page of the application.\\
+        
+        \item[-] \_layout.tsx : This is a file that defines the layout structure for tabs. \\
+        \item[-] profile.tsx : This is a file for user profile managem-\\ent.\\
+        \item[-] list.tsx : This is a file for displaying appliance list views.\\
+        \item[-] inbox.tsx : This is a file for handling alarm inbox functionality.\\
+        \item[-] analysis.tsx : This is a file for displaying application analysis records in calendar format.\\
+
+        \item[-] appDetail/[appKey].tsx : This is a dynamic route file for showing detailed application information.\\
+        
+        \item[-] [channel\_url].tsx : This is a dynamic route file for chat room functionality.\\
+        
+        \item[-] exeAnalysis/[exeKey].tsx : This is a dynamic route file for execution analysis views.\\
+        \item[-] ContentBox.tsx : This is a component for displaying analysis content in a structured format.\\
+        \item[-] RecordsList.tsx : This is a component for showing records in a list format.\\
+        \item[-] energyCard.tsx : This is a component for displaying energy usage information. \\
+        \item[-] DatePickerModal.tsx : This is a modal component for date selection.\\
+        \item[-] analysisContentBox.tsx : This is a component for displaying analysis content in a structured format.\\
+        \item[-] CustomCalendar.tsx : This is a component that pro-\\vides calendar functionality.\\
+        
+        \item[-] ChatBubble.tsx : This is a component for displaying chat messages. \\
+        \item[-] ChatDrawer.tsx : This is a drawer component for chat room side bar. \\
+        \item[-] ChatInput.tsx : This is a component for chat mess-\\age input.\\
+        \item[-] ChatRoomCard.tsx : This is a component for displaying chat room information. \\
+        \item[-] ChatContainer.tsx : This is a container component for chat functionality.\\
+        
+        \item[-] AppBar.tsx : This is a component for the top appl-\\ication bar.\\
+        \item[-] Button.tsx : This is a reusable button component.\\
+        \item[-] InputField.tsx : This is a reusable input field comp-\\onent. \\
+        \item[-] Loading.tsx : This is a component for displaying loading states.\\
+        \item[-] ThemedText/View.tsx : These are components for theme-aware text and view rendering.\\
+    
+        \item[-] Analysis.tsx, Bell.tsx : These are files containing various icon components.\\
+
+        \item[-] devices : This is a folder containing appliance-specific icons.\\
+        \item[-] useColorScheme.ts: This is a hook for managing color scheme preferences. \\
+        \item[-] useLogin.ts: This is a hook for handling login fun-\\ctionality. \\
+        \item[-] useModal.ts: This is a hook for modal state man-\\agement. \\
+        \item[-] useThemeColor.ts: This is a hook for theme color management.\\
+        \item[-] auth.service.ts: This is a file for authentication-related API calls. \\
+        \item[-] channel.service.ts: This is a file for channel-related API calls. \\
+        \item[-] chat.service.ts: This is a file for chat-related API calls. \\
+        \item[-] device.service.ts: This is a file for device-related API calls. \\
+        \item[-] message.service.ts: This is a file for message-related API calls. \\
+        \item[-] useDeviceStore.ts: This is a file for managing device-related states. \\
+        \item[-] useUserStore.ts: This is a file for managing user-\\related states. \\
+        \item[-] chat.ts, device.ts, etc.: These are files containing various type definitions. \\
+        \item[-] calendar.ts: This is a file containing calendar-related utilities. \\
+        \item[-] date.ts: This is a file containing date handling utilities.\\
+        
+\end{enumerate}
+
+\subsection{Module 2: Backend}
+\begin{enumerate}
+    \item[1)] Purpose\\
+    The backend for ALIVE is responsible for managing the server-side operations and databases. It stores, processes, and manages data generated from user interactions on the client-side application and facilitates the retrieval of necessary information. The backend also ensures seamless communication between the frontend, chat server (dialog), and AI server. To implement the backend for ALIVE, we utilized Spring Boot with Kotlin for its modern syntax and compatibility. For data storage, we used Supabase and PostgreSQL, which ensure reliable and efficient data management. \\
+    \item[2)] Functionality\\
+    The ALIVE backend processes user requests from the frontend, chat server, or AI server, managing chatrooms, IoT device synchronization, and user settings. It logs actions in the database to ensure traceability and supports device communication, routine automation, and intelligent chat-based interactions. Additionally, it generates reports and synchronizes settings to deliver a seamless and scalable user experience. \\
+    
+    \item[3)] Location of source code:\\ https://github.com/SWE-ALIVE/backend \\ \\
+    
+    \item[4)] Class component
+        \item[-] Application.kt : Entry point for launching the Spri-\\ng Boot application. \\
+        
+        \item[-] controller : Directory for handling incoming API requests and routing them to the appropriate serv-\\ices.\\
+        
+        \item[-] AuthController.kt : Manages authenticati-\\on-related endpoints, such as login and logout.\\
+        
+        \item[-] MessageController.kt : Processes HTTP requests related to messaging functionalities.\\
+        
+        \item[-] AIMessageController.kt : Handles HTTP requests specifically for AI-driven message processing.\\
+        
+        \item[-] ChannelController.kt : Handles endpoints related to channel creation and management.\\
+        
+        \item[-] DeviceController.kt : Manages device-related ope-\\rations, such as adding or removing IoT devices \\
+        
+        \item[-] DeviceUsageRecordController.kt : Handles endpoi-\\nts for managing and retrieving device usage records.\\
+        
+        \item[-] UserController.kt : Manages user-related operations, such as profile updates and user information retrieval\\
+
+        \item[-] repository : Handles database interactions for var-\\ious entities.\\
+        \item[-] ChannelDeviceRepository.kt : Handles data access for channel-device relationships.\\
+        \item[-] ChannelRepository.kt : Manages data access for ch-\\annel entities.\\
+        \item[-] DeviceRepository.kt : Manages database operations for IoT devices.\\
+        \item[-] DeviceUsageRecordRepository.kt : Handles data ac\\cess for device usage records.\\
+        \item[-] UserDeviceRepository.kt : Manages user-device re-\\lationships in the database.\\
+        \item[-] UserRepository.kt : Handles database interactions for user entities.\\
+        
+        \item[-] service : Contains business logic for handling core application functionality.\\
+        
+        \item[-] ChannelService.kt : Handles business logic for channel management. \\
+        
+        \item[-] DeviceService.kt : Manages IoT device-related op\\erations.\\
+        
+        \item[-] DeviceUsageRecordService.kt : Handles Processes device usage records.\\
+        
+        \item[-] MessageService.kt : Implements business logic for processing and managing messages\\
+        
+        \item[-] DialogUserService.kt : Manages user-related ope-\\rations within dialog contexts.
+\\
+        \item[-] DialogChannelService.kt : Handles channel-related operations within dialog contexts.\\
+        
+        \item[-] UserService.kt : Implements business logic for user management.\\
+        
+        \item[-] model : Defines the core data entities used throug-\\hout the application.\\
+        \item[-] ChannelDevice.kt : Represents the relationship bet-\\ween channels and devices.\\
+        \item[-] DeviceUsageRecord.kt : Represents records of IoT device usage.\\
+        \item[-] UserDevice.kt : Represents the relationship between users and their devices.\\
+
+        \item[-] dto : Contains Data Transfer Objects for handling requests and responses.\\
+        \item[-] ActionDTO.kt : Represents data for specific actions performed by users or devices. \\
+        \item[-] LoginRequestDTO.kt : Handles login request data\\ from clients.\\
+        \item[-] UserDeviceResponseDTO.kt : Represents response data for user-device relationships.\\
+        
+        
+        \item[-] dto/channel : Contains Data Transfer Objects for managing channel-related operations.\\
+        \item[-] ChannelResponseDTO.kt : Represents response data for channel-related requests.\\
+        \item[-] SendMessageRequest.kt : Handles data for sending messages to a dialog channel. \\
+        \item[-] QueryMessagesRequest.kt : Represents a request to query messages from a dialog channel.\\
+        \item[-] InviteUserRequest.kt : Handles data for inviting users to a dialog channel.\\
+        \item[-] CreateChannelRequestDTO.kt : Handles data for creating a new channel. \\
+        \item[-] ChannelDeviceDTO.kt : Represents data for devices associated with a channel.\\
+
+        \item[-] AIMessageRequest.kt : Defines the data structure for AI message requests sent to the AI server.\\
+        \item[-] AIMessageResponse.kt : Defines the data structure for AI message responses received from the AI server. \\
+        \item[-] ContextDTO.kt : Represents the context information used throughout the application's conversational processes.\\
+        \item[-] DialogRequest.kt : Represents requests related to in\\itiating or managing dialogs within the application. \\
+        
+        \item[-] dto/user : Contains Data Transfer Objects for user-\\related operations. \\
+        \item[-] UserCreateRequestDTO.kt : Handles data for crea-\\ting a new user.\\
+        \item[-] UserInviteRequestDTO.kt : Handles data for invi-\\ting a user to a specific cha
+        nnel or group.\\
+        \item[-] CreateUserRequest.kt : Represents data for creating a new user in dialog.\\
+        \item[-] CreateUserResponse.kt : Represents the response data after creating a user in dialog.\\
+        \item[-] UserResponseDTO.kt : Represents response data for user-related requests.\\
+        
+        \item[-] exception : Contains custom exceptions for handl-\\ing application-specific errors.\\
+        \item[-] DeviceNotFoundInChannel : Thrown when a device is not found in the specified channel. \\
+        \item[-] Exception.kt : Base class for defining custom exce-\\ptions in the application.\\
+        \item[-] DeviceNotInProgressException.kt : Thrown when a device is not in a valid progress state.\\
+        \item[-] UserDeviceNotFoundException.kt : Thrown when a user-device relationship is not found. \\
+        \item[-] UserNotFoundException.kt : Thrown when the spe-\\cified user is not found.\\
+
+        \item[-] config : Directory for configuration files and clas-\\ses, such as application settings and beans.\\
+        \item[-] AppConfig.kt : Contains general application-wide configuration and bean definitions.\\
+        \item[-] AIServerConfig.kt : Manages configuration settings for integrating with the AI server.\\
+        \item[-] GlobalExceptionHandler.kt : Handles exceptions gl\\obally across the application.\\
+        \item[-] SecurityConfig.kt : Configures security settings, such as authentication and authorization.\\
+        \item[-] dialogConfig.kt : Configures integration settings for the dialog chat service.\\
+        
+        \item[-] util : Contains utility classes and helpers for reus-\\able functionality. \\
+        \item[-] dialogApiHelper.kt : Provides helper functions for interacting with the dialog API.\\
+        
+\end{enumerate}
+
+\subsection{Module 3: AI}
+\begin{enumerate}
+    \item[1)] Purpose\\
+    The AI module serves as the core of intelligent interactions within the ALIVE system. Its primary purpose is to process user inputs, generate context-aware responses, and handle dataset creation and interaction with AI models. By leveraging technologies such as FastAPI, Azure, and OpenAI, the AI module ensures real-time communication and provides dynamic, personalized outputs to enhance the user experience. \\
+    \item[2)] Functionality\\
+    The AI module interacts with the backend to process requests and utilizes OpenAI models to generate tailored, context-aware responses. It supports dataset creation using Azure and OpenAI APIs, manages predefined AI prompt templates, and handles natural language processing tasks. Additionally, it provides utilities for data preprocessing and model input preparation, ensuring efficient integration of AI services within the system. \\
+    
+    \item[3)] Location of source code:\\ https://github.com/SWE-ALIVE/AI \\
+    
+    \item[4)] Class component
+        
+        \item[-] app : Core application logic, including the entry point.\\
+        \item[-] \_\_init\_\_.py : Initializes the app package for the AI server.\\
+        \item[-] main.py : Serves as the entry point for the FastAPI server, defining the application’s startup configuration.\\
+        \item[-] retriever.py : Implements logic for retrieving and processing data, such as querying data sources or preparing input for AI models.\\
+        \item[-] routes.py : Defines the API endpoints for the AI server, managing requests and responses for client interactions.\\
+        
+        \item[-] app/data : Scripts and files for dataset creation and management.\\
+        \item[-] create\_dataset\_azure.py : Generates datasets by interacting with Azure services.\\
+        \item[-] create\_dataset\_openai.py : Creates datasets using OpenAI APIs for training or inference.\\
+        \item[-] dataset.json : Stores preprocessed dataset informa-\\tion used by the AI server.\\
+        \item[-] domain\_slots.json : Contains slot information for domain-specific AI interactions, helping structure conversational data.\\
+        
+        \item[-] app/helper : Utilities for data preprocessing.\\
+        \item[-] turn\_data\_to\_str.py : A utility script to convert str-\\uctured data into string format, facilitating easier processing or integration with models.\\
+        
+        \item[-] app/prompts : Predefined templates for AI prompts.\\
+        \item[-] system\_prompt.txt : Stores the base system prompt for guiding AI interactions.\\
+        \item[-] table\_prompt.txt : A predefined prompt template tailored for interpreting or generating table-based outputs. \\ \\ \\ \\ \\ \\ \\
+\end{enumerate}
+
+\section{USE CASE}
+\subsection{Loading}
+
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Loading.png}
+    \caption{Loading}
+\end{minipage}
+\end{figure}
+When the app is launched, an initial loading screen appears. This page is turned on only while the application loads the elements needed to operate, and automatically moves on to the import page at the end of loading. \\
+
+\subsection{Sign Up}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Sign Up.jpg}
+    \caption{Sign Up}
+\end{minipage}
+\end{figure}
+The user enter name, password, birthdate and authent-\\icate their phone number through the telecommunica-\\tions provider to use it as their ID. After entering information, they can proceed to the login page and attempt to log in with the newly created account. \\
+
+\subsection{Login}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Login.png}
+    \caption{Login}
+\end{minipage}
+\end{figure}
+After signing up, the login page is displayed. User then enters their registered phone number and password to log in and access the system. \\
+
+\subsection{Import}
+The user can select the Import option to upload data into the system. There are two options available, Import ThinQ
+and Import Directly. \\
+
+\begin{enumerate}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Import.png}
+    \caption{Import ThinQ}
+\end{minipage}
+\end{figure}
+    \item [1)] Import ThinQ : User can Import product by connecting ThinQ and retrieves registered smart home devices. \\
+\end{enumerate}
+
+\begin{enumerate}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[width=\linewidth]{img/Usecase/Import Directly.jpg}
+    \caption{\\ Import Directly}
+\end{minipage}
+\end{figure}
+    \item [2)] Import Directly : User can Import products by scanning a QR code or using Wi-Fi and Bluetooth to detect nearby devices.
+\end{enumerate}
+
+\subsection{Main Page}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Main Page.png}
+    \caption{Main Page}
+\end{minipage}
+\end{figure}
+After the product import is completed, the user is directed to the main page, where an initial chatroom for all devices is automatically created. On the Main page, users can create a chatroom to manage devices and communicate. 
+
+\clearpage
+
+\subsection{Create Chatroom}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Create Chatroom.png}
+    \caption{\\ Create ChatRoom}
+\end{minipage}
+\end{figure}
+The user can access and view a comprehensive list of all the devices they currently own. This list is organized to display detailed information, including the category each device belongs to and the specific name of each device. \\  
+\begin{enumerate}
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Select Devices.png}
+    \caption{Select Devices}
+\end{minipage}
+\end{figure}
+    \item [1)] Select Devices : The user chooses devices from the list to include in the chatroom, after which an animation is displayed for the selected devices. \\ \\ \\ \\
+\end{enumerate}
+\begin{enumerate}
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Set Chatroom Name.png}
+    \caption{Set \\ Chatroom Name}
+\end{minipage}
+\end{figure}
+    \item [2)] Set Chatroom Name : The user assigns a name to the chatroom for easier identification \\
+\end{enumerate}
+
+\subsection{ChatRoom}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/ChatRoom.png}
+    \caption{ChatRoom}
+\end{minipage}
+\end{figure}
+The user interacts with others and controls devices in a chatroom. Within the chatroom, Upon entering the chatroom, the invited devices are introduced. \\ \\ \\ \\ \\ \\ \\
+
+\begin{enumerate}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Select Conversation Partner.png}
+    \caption{Select Conversation Partner}
+\end{minipage}
+\end{figure}
+    \item [1)] Select Conversation Partner : 
+    In chatroom, user selects a device to communicate with in the chatroom. Devices that are not participating in the chat are displayed with a gray indicator to differentiate them. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Chat Message.png}
+    \caption{\\ Chat Message}
+\end{minipage}
+\end{figure}
+    \item [2)] Chat Message : User types a message and sends it through the chat interface. The message format could be direct, indirect, and simultaneous commands, allowing flexible communication with multiple devices through the chat interface. \\ \\ \\
+\end{enumerate}
+
+\begin{enumerate}
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Execute Device.png}
+    \caption{\\ Execute Device}
+\end{minipage}
+\end{figure}
+    \item [3)] Execute Device : After sending commands through the chat interface, system recognizing the input and ensuring the appropriate devices and execute the specified actions. \\
+\end{enumerate}
+
+\subsection{Devices}
+The user can manage device information through the system. This allows the user to track and manage records for each device individually. \\
+
+\begin{enumerate}
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Devices List.png}
+    \caption{\\ Device List}
+\end{minipage}
+\end{figure}
+    \item [1)] Device List : This page shows a list of all available devices connected to the system. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Device Details.png}
+    \caption{\\ Device Details}
+\end{minipage}
+\end{figure}
+    \item [2)] Device Details : The user selects a device from the list to view its detailed information, such as participating chatrooms and its activity list.  \\
+\end{enumerate}
+
+\subsection{History}
+The user checks the records of past activities in the system, where they can view the execution history of devices organized by date. \\
+\begin{enumerate}
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Calender.png}
+    \caption{Calender}
+\end{minipage}
+\end{figure}
+    \item [1)] Calender : The first section displayed is the calendar, where dates with execution history are marked with a dot under the date.  \\ \\ 
+\end{enumerate}
+
+\begin{enumerate}
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Overview by Date.png}
+    \caption{Overview \\ By Date}
+\end{minipage}
+\end{figure}
+    \item [2)] Overview by Date : When the user clicks on a specific date, the summary of activities for that date appears. \\
+\end{enumerate}
+
+\begin{enumerate}
+    \begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Detailed Records.png}
+    \caption{\\ Detailed Record}
+\end{minipage}
+\end{figure}
+    \item [3)] Detailed Records : User can select a specific activity to see detailed information. Clicking on an activity shown in the Overview by Date page displays details such as power consumption and usage time.
+\end{enumerate}
+
+\clearpage 
+
+\subsection{Mypage}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.4\columnwidth}
+    \includegraphics[height=7cm, width=\linewidth]{img/Usecase/Mypage.png}
+    \caption{Mypage}
+\end{minipage}
+\end{figure}
+Users can manage their personal settings and preferences by accessing the 'My Page' section through the menu bar. On the 'My Page' they can update their profile, personal information and password change along with accessing other personal customization options. \\ 
+\begin{enumerate}
+    \item [1)] Change Profile \\
+    User can update their profile information, such as name or profile picture by clicking profile picture \\
+\end{enumerate}
+\begin{enumerate}
+    \item [2)] Personal Information \\
+    Users can check their personal information stored in the system, including details such as their mobile carrier, phone number, registration date, and quick login settings. \\
+\end{enumerate}
+\begin{enumerate} 
+    \item [3)] Change Password \\
+    The user updates their password for account security. The password can be changed only if it meets the specified requirements. \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ 
+\end{enumerate}
+
+
+\section{AI SPECIFICATION}
+
+\subsection{In-Context Learning for Few-Shot Dialogue State Tracking(ICL-DST)}
+
+
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.8\columnwidth}
+    \includegraphics[width=\linewidth]{img/AI/architecture.jpg}
+    \caption{\\     ICL-DST Architecture }
+\end{minipage}
+\end{figure}
+
+\begin{itemize}
+    \item [1.] Introduction \\
+    Dialogue State Tracking (DST) is a crucial component in dialogue systems, tracking user requirements and guiding actions. Traditional DST approaches often require retraining models whenever a new domain is introduced, leading to high costs and inefficiencies. \\ 
+    To overcome these challenges, we propose a novel process that applies In-Context Learning (ICL) for DST, leveraging our custom-built dataset, a dialogue retriever for selecting relevant examples, and the powerful pre-trained model, Qwen-Coder 2.5 7B. \\
+    \hspace{1cm} Our approach extends ICL-DST by introducing a dialogue retriever that retrieves labeled examples most relevant to the current dialogue turn. These retrieved examples are then provided to the pre-trained model as in-context examples, enabling efficient adaptation to new domains with minimal retraining. By combining the retriever with in-context learning, we ensure flexible dialogue state prediction and support scalable updates with domain-specific data. \\
+\end{itemize}
+
+\begin{itemize}
+    \item [2.] Background
+    
+    \begin{itemize}
+    \item [1)] DST System Design \\
+The ICL-DST system is designed to handle multi-domain scenarios, enabling the tracking and prediction of dialogue states for each domain. Each domain, such as user-appliance interactions or appliance-appliance communications, has a predefined set of slots like "appliance-name" or "appliance-status". The dialogue state is represented as a set of slot-value pairs, potentially spanning multiple domains. \\
+\end{itemize}
+
+\begin{itemize}
+    \item [2)] DST as Text-to-SQL \\
+ICL-DST transforms DST into a Text-to-SQL problem by representing dialogue states in SQL format. Each domain is defined as a table, and each slot is defined as a column. All slots and values are included in the \texttt{WHERE} clause. For turns involving multiple domains, each domain is renamed accordingly. This approach aligns well with Azure's OpenAI GPT-4o-mini, enhancing the effectiveness of state prediction. \\
+\end{itemize}
+
+\begin{itemize}
+    \item [3)] In-Context Learning \\
+In-Context Learning (ICL) involves keeping the parameters of a pre-trained language model fixed and providing a prompt that includes task descriptions, examples, and test instances. This allows the model to learn patterns within the dialogue context without requiring additional training. By structuring the dialogue state in SQL format, the model can effectively predict the dialogue state based on this representation. \\
+\end{itemize}
+
+\begin{itemize}
+    \item [4)] Dialogue Retriever \\
+The success of ICL in few-shot environments heavily depends on the quality of in-context examples. ICL-DST extends retrieval to encompass the entire dialogue history by utilizing embedding models like S-BERT to compute the similarity of dialogue states. This allows for the effective extraction of relevant example dialogues that exhibit similar state changes, ensuring accurate state prediction. \\
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Dataset}
+
+This approach ensures the dataset is not only scalable but also tailored to the unique needs of smart home technology, bridging the gap between manual curation and large-scale automation. \\
+
+\begin{itemize} 
+    \item [1.] Dataset Creation Conditions
+    \begin{enumerate}
+        \item[1)] Each dialogue involves at least one and up to three appliances participating in the conversation.
+        \item[2)] OpenAI's structured output functionality was utilized to ensure the dataset adheres to a consistent JSON format. \\
+    \end{enumerate}
+\end{itemize}
+
+\begin{itemize}
+    \item [2.] Dataset Volume
+    \begin{enumerate}
+    \item[1)] A total of 1,000 dialogues were generated, far exceeding the 80 dialogues that are considered sufficient for many research applications.
+    \item[2)] This larger volume addresses potential accuracy concerns arising from automated generation, providing robustness through diversity and scale. \\
+    \end{enumerate}
+\end{itemize}
+
+
+\begin{itemize}
+    \item [3.] Comparison with multiWOZ
+    \begin{enumerate}
+    \item[1)] The multiWOZ dataset was manually curated, ensuring high accuracy for its dialogues. However, its design is tailored for human-to-human or human-to-machine interactions.
+    \item[2)] In contrast, our dataset is adapted specifically for appliance-to-appliance and appliance-to-human interactions, replicating multiWOZ’s structural principles while introducing scenarios unique to smart home environments.
+    \item[3)] By focusing on quantity and domain-specific relevance, we offset any limitations from the automated generation process, ensuring the dataset remains effective and practical for AI training. \\
+    \end{enumerate}
+\end{itemize}
+
+\subsection{Methodology}
+
+Our approach is based on the principles of In-Context Learning for Dialogue State Tracking (IC-DST). By leveraging labeled examples and pre-trained models, we dynamically generate SQL queries and provide natural language responses to user inputs. The process can be summarized as follows: \\
+    
+\begin{enumerate}
+    \item[1.] Parsing Current Test Turn
+    \begin{itemize}
+    \item[1)] The system processes the user's latest utterance and the system's previous response.
+    \item[2)] This step provides the context for the current dialogue turn, forming the basis for understanding the user's request. \\
+    \end{itemize} 
+
+\item[2.] Retrieving Relevant Examples
+\begin{itemize}
+    \item[1)] Relevant labeled examples are retrieved from a dataset to serve as few-shot prompts for the model.
+    \item[2)] These examples include the dialogue context, sample system responses, and the corresponding SQL queries.
+    \item[3)] The retrieved examples guide the model to handle similar requests and produce consistent outputs. \\
+\end{itemize} 
+
+\item[3.] Combining the Prompt
+\begin{itemize}
+    \item[1)] The current test turn, labeled examples, and the SQL structure are combined into a single prompt.
+    \item[2)] This structured prompt ensures the model has the necessary context for accurate inference. \\
+\end{itemize} 
+
+\item[4.] Using Pre-trained Model for Completion
+\begin{itemize}
+    \item[1)] A pre-trained model, such as CodeGen, is used to process the prompt and generate SQL queries and natural language responses.
+    \item[2)] The model's inference aligns with the dialogue context and examples provided. \\
+\end{itemize} 
+
+\item[5.] Communication Between Main and AI Servers
+\begin{itemize}
+    \item[1)] The main server sends a structured request to the AI server, which includes dialogue information and updated slot values.
+    \item[2)] The AI server processes the request, generates an SQL query, and provides a response back to the main server.
+\end{itemize} 
+\end{enumerate}
+
+
+\subsection{Language Models}
+
+In our approach, we utilize two distinct configurations of GPT-4o: GPT-4o-mini and GPT-4o, each serving a specific role in the system. \\ 
+
+\begin{enumerate}
+    \item[1.] GPT-4o-mini \\
+    This configuration is employed for dataset generation, ensuring that the examples used for in-context learning are of high quality, contextually accurate, and well-aligned with the task requirements. By leveraging GPT-4o-mini's efficient generative capabilities, we can create diverse labeled dialogue examples while maintaining computational efficiency. \\ 
+
+    \item[2.] GPT-4o \\
+    This configuration is used to generate the final outputs, such as SQL queries and natural language responses. Its advanced architecture is well-suited for producing precise and context-sensitive outputs, enabling accurate real-time inference based on the provided prompts and examples. \\
+    
+\end{enumerate}
+
+Our use of these two configurations aligns with the methodology outlined in the IC-DST paper, where separate models or configurations are strategically employed to optimize different stages of the workflow. GPT-4o-mini facilitates the creation of robust and efficient training data, while GPT-4o ensures the system generates accurate and context-aware outputs during real-time inference. \\ \\ \\ \\ \\ \\ \\
+
+\subsection{Prompt Examples}
+
+
+\lstset{
+    language=SQL,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    breaklines=true,  % 줄바꿈
+    frame=single,     % 테두리 추가
+    numbers=left,     % 왼쪽에 줄 번호 추가
+    numberstyle=\tiny\color{gray},
+    tabsize=4,        % 탭 간격
+    showspaces=false, % 공백 표시 안 함
+    showstringspaces=false
+}
+
+\begin{itemize}
+    \item[1.] Table Prompt
+\end{itemize}
+
+\subsection*{Robot Cleaner}
+\\
+\begin{lstlisting}
+CREATE TABLE robot_cleaner(
+    name text,
+    power text CHECK (power IN ('on', 'off')),
+    mode text CHECK (mode IN ('ZigZag',       'detail', 'intense', 'normal'))
+);
+\end{lstlisting}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.8\columnwidth}
+    \includegraphics[width=\linewidth]{img/AI/robot_cleaner.jpg}
+\end{minipage}
+\end{figure}
+
+\subsection*{Air Conditioner}
+\begin{lstlisting}
+CREATE TABLE air_conditioner(
+    name text,
+    power text CHECK (power IN ('on', 'off')),
+    temperature int CHECK (temperature BETWEEN 16 AND 30),
+    mode text CHECK (mode IN ('cooling', 'heating', 'auto', 'dehumidification')),
+    fan_speed text CHECK (fan_speed IN ('low', 'normal', 'high', 'auto'))
+);
+\end{lstlisting}
+
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.8\columnwidth}
+    \includegraphics[width=\linewidth]{img/AI/air_conditioner.jpg}
+\end{minipage}
+\end{figure}
+
+\subsection*{Air Purifier}
+\begin{lstlisting}
+CREATE TABLE air_purifier(
+    name text,
+    power text CHECK (power IN ('on', 'off')),
+    mode text CHECK (mode IN ('auto', 'sleep', 'turbo')),
+    fan_speed text CHECK (fan_speed IN ('low', 'normal', 'high', 'auto'))
+);
+\end{lstlisting}
+
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.8\columnwidth}
+    \includegraphics[width=\linewidth]{img/AI/air_purifier.jpg}
+\end{minipage}
+\end{figure}
+
+\subsection*{TV}
+\begin{lstlisting}
+CREATE TABLE tv(
+    name text,
+    power text CHECK (power IN ('on', 'off')),
+    volume int CHECK (volume BETWEEN 0 AND 100),
+    channel int CHECK (channel BETWEEN 1 AND 999),
+    mode text CHECK (mode IN ('standard', 'movie', 'sports', 'game'))
+);
+\end{lstlisting}
+\begin{figure}[h]
+\hspace{1.5cm}
+\centering
+\begin{minipage}{0.8\columnwidth}
+    \includegraphics[width=\linewidth]{img/AI/tv.jpg}
+\end{minipage}
+\end{figure}
+
+\begin{itemize}
+    \item[2.] System Prompt
+\end{itemize}
+You are an AI that conducts natural conversations with users to control home appliances and generates SQL queries based on the dialogue state. Refer to the following instructions to handle the operations of each appliance: \\
+
+\begin{enumerate}
+
+\begin{itemize}
+    \item[a.] Previous Dialogue
+\end{itemize}
+- User: {User's previous dialogue} \\
+- System: {System's previous dialogue} \\
+
+\begin{itemize}
+    \item[b.] Generation Rules
+\end{itemize}
+Before any appliance function is executed, the power must be turned on first. \\ \\
+
+\end{enumerate}
+
+\begin{itemize}
+    \item[1)] Context
+    \begin{itemize}
+    \item[a.] Previous Context: {Previous context} 
+   \item[b.] Based on the previous context, generate the updated list of all slot values affected by the user's utterance. 
+   \item[c.] The domain must be one of the following: {List of domains}.
+    \item[d.] If the user's utterance is unrelated to the previous context, retain the previous context as is. \\
+   \end{itemize}
+\end{itemize}
+   
+
+\begin{itemize}
+    \item[2)] Messages
+    \begin{lstlisting}
+[
+   {
+      "domain": "appliance domain", 
+      "message": "Response message from the           appliance"
+   }
+]
+\end{lstlisting}
+    \begin{itemize}
+    \item[a.] The appliances should respond directly to the user in a personified manner, as if they are speaking naturally. Responses should be structured as follows
+\end{itemize}
+\end{itemize} 
+
+
+
+\begin{itemize}
+    \item[3)] SQL
+\end{itemize}
+- Generate an SQL query that reflects the updated dialogue state. \\
+
+
+\section{DISCUSSION}
+
+
+
+\subsection{Technical Difficulties}
+\begin{enumerate}
+    \item [1)] Limitations in Dataset Quality 
+\end{enumerate}
+    \hspace{0.3em} One of the technical difficulties encountered was the use of machine-generated conversation datasets rather than human-curated and validated datasets such as MultiWOZ. As a result, the quality of the dialogues was somewhat suboptimal, potentially impacting the overall performance and user experience. In the future, integrating user-generated data from ChatThinQ could significantly improve the quality of conversations, leading to more robust and realistic results. \\
+\begin{enumerate}
+    \item [2)]  Simplifying Actions with Routine Integration
+\end{enumerate}
+    \hspace{0.3em} Integrating pre-set routines into the chat system could also be seamlessly enhance user convenience. By enabling users to trigger actions with a simple command like "Start deep cleaning," the process could be greatly simplified, providing a more intuitive and efficient way to execute tasks directly within the chat interface. \\
+
+\subsection{Non-Technical Difficulties}
+\begin{enumerate}
+    \item [1)] Frontend-Backend Collaboration
+\end{enumerate}
+    \hspace{0.3em} During the development process, maintaining seamless communication between the frontend and backend teams proved challenging. While we utilized Postman to define API endpoints and data formats, real-time communication regarding API updates and JSON format changes was not always efficient. To address this issue, we introduced Jira as a coordination tool to improve task tracking and communication. However, limited familiarity with the tool prevented us from fully leveraging its potential. Through this project, we recognized the critical importance of adopting and mastering collaboration tools like Jira to enhance communication and workflow efficiency in future endeavors. \\ 
+
+\begin{enumerate}
+    \item [2)] 3d animation creation
+\end{enumerate}
+     \hspace{0.3em} During the post-development phase, we planned a promotional video to effectively convey the theme of "conversations with appliances." To bring a sense of vitality to the video, we utilized Blender to create 3D animations, aiming to give the impression that the appliances were alive. However, creating these animations presented challenges, particularly in implementing smooth and natural motion sequences. Additionally, syncing the animations seamlessly with other video elements required extensive revisions, significantly increasing the time and resources needed for production. Despite the difficulties, using Blender allowed us to deliver a more engaging and dynamic visual experience.
+
+
+\subsection{Conclusion}
+\hspace{0.3em} At the start of the project, under the topic of "Implementing Smart Appliance Services with Generative AI," we focused on two key questions. The first was how to make managing home appliances more convenient, and the second was how to shift AI from being perceived as passive to feeling more active and autonomous. We believed that managing home appliances could be more effective through a service that allows users to communicate with them, similar to having conversations with people.
+
+\hspace{0.3em} Over the course of approximately four months, from planning to development, we encountered various challenges, including communication issues, and not everything went as initially intended. However, through these efforts, we successfully developed ALIVE, the device chat application for appliances.
+
+\hspace{0.3em} Nowadays, AI technology continues to advance toward creating more intelligent systems, and it will soon become an even deeper part of our everyday lives. This progress will not be limited to external applications but will also profoundly impact home services, driving innovation in smart home systems. At the heart of this transformation will be communication with appliances, enabling a new level of interaction and convenience —a concept brought to life through ALIVE. We look forward to further evolving smart home services through ALIVE. 
+
+\clearpage
+
+\section{APPENDIX}
+
+% 이미지 삽입
+\begin{figure}[H]
+    \hspace*{-8cm}
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{img/architecture/erd.png}
+    \label{fig:erd}
+\end{figure}
+
+\clearpage
+
+\begin{thebibliography}{9}
+\bibitem{opensurvey}“opensurvey,"https://blog.opensurvey.co.kr/trendreport/smart-home-2023/, 2023.
+\bibitem{ReactNative}  “React Native,” https://reactnative.dev/, 2023.
+\bibitem{Typescript}  “Typescript,” https://www.typescriptlang.org/, 2023.
+\bibitem{Kotlin}  “Kotlin,” https://kotlinlang.org/, 2023.
+\bibitem{SpringBoot}  “SpringBoot,” https://spring.io/projects/spring-boot, 2023.
+\bibitem{Hibernate}  “Hivernate,” https://hibernate.org/, 2023.
+\bibitem{FastAPI} “FastAPI,” https://fastapi.tiangolo.com/, 2023.
+\bibitem{jacqmin2023survey} 
+L{\'e}o Jacqmin, Lina M. Rojas-Barahona, Beno{\^i}t Favre.
+\textit{Do you follow me? A Survey of Recent Approaches in Dialogue State Tracking}. 
+Orange Innovation, Aix-Marseille Universit{\'e}, 2023.
+\bibitem{hu2023incontext}
+Yushi Hu, Chia-Hsuan Lee, Tianbao Xie, Tao Yu, Noah A. Smith, and Mari Ostendorf.
+\textit{In-Context Learning for Few-Shot Dialogue State Tracking}.
+University of Washington, University of Hong Kong, Allen Institute for Artificial Intelligence, 2023.
+\bibitem{Sendbird Chat SDK} "Sendbird Chat SDK,"
+https://sendbird.com/docs/chat/sdk/v4/and\\roid/getting-started/send-first-message
+
+
+\end{thebibliography}
+
+\end{document}
